@@ -2,8 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Sarafan</title>
+    <title>QIService</title>
     <script th:inline="javascript">
+    	var userInfo = [[${userInfo}]];
+		var programs = [[${programs}]];
         var frontendData = [[${frontendData}]];
     </script>
 </head>

@@ -22,6 +22,9 @@
 	      <li class="nav-item">
  	       <router-link class="nav-link" to="university">Ajouter un université</router-link> 
 	      </li>
+	      <li class="nav-item">
+ 	       <router-link class="nav-link" to="programs">Programs</router-link> 
+	      </li>
 	      
 	      <li class="nav-item">
 	        <a class="nav-link" href="#">Pricing</a>
@@ -32,16 +35,20 @@
  	   </span>
 	  </div>
 	</nav>
+	
 	<router-view></router-view>
    </div>
 </template>
 
 <script>
+	import {mapState} from 'vuex'
     export default {
+    
         data() {
             return {
-                messages: [],
-                profile: frontendData.profile
+            	//prog:programs,
+              //  messages: []
+                //profile: frontendData.profile
             }
         },
 	created(){

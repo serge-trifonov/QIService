@@ -8,7 +8,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
    
+	state: {
+		allprograms: programs
+		},
+		
     actions: {
+    	
         async addProgramAction({commit}, program) {
             const result = await programApi.add(program)
             const data = await result.json()

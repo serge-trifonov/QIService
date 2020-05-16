@@ -28,7 +28,7 @@ public class ProgramController {
             @RequestBody Program program
     ) {
     //	System.out.println("program "+program);
-    //	System.out.println("program name"+program.getName());
+    	System.out.println("program name"+program.getLevel());
         return programRepository.save(program);
     }
     

@@ -8,6 +8,8 @@ import '@babel/polyfill'
 import store from 'vuex/store'
 Vue.use(VueResource)
 
+
+
 new Vue({
     el: '#app',
     router,
