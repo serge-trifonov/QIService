@@ -11,7 +11,7 @@ import lombok.Data;
 @Entity
 @Table
 @Data
-public class University {
+public class University extends QIServiceProfile{
 	private String name;
 	private String status;
 	@OneToOne
@@ -22,10 +22,6 @@ public class University {
 	@OneToMany
 	private List<Student> accepted;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-
 	public String getName() {
 		return name;
 	}
@@ -64,20 +60,6 @@ public class University {
 
 	public void setAccepted(List<Student> accepted) {
 		this.accepted = accepted;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
-	
-	
-	
-	
-	
+	}	
 
 }

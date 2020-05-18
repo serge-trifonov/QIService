@@ -1,22 +1,25 @@
 package cnam.project.QIService.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
 @Entity
 @Table
 @Data
-public class Student {
-	
+public class Student extends QIServiceProfile implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private String surname;
 	private int age;
@@ -24,12 +27,12 @@ public class Student {
 	@OneToOne
 	private Address address;
 	
-	@OneToMany
+	
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Program> demands;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	
 	public String getName() {
 		return name;
 	}
@@ -77,20 +80,5 @@ public class Student {
 	public void setDemands(List<Program> demands) {
 		this.demands = demands;
 	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	
-	
-	
-	 
-	
-	
 
 }

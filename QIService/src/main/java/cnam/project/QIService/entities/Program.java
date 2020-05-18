@@ -15,6 +15,9 @@ import lombok.Data;
 public class Program {
 	private String name;
 	private int duration;
+	
+	private Faculty faculty;
+	
 	private Level level;
 	@ManyToOne
 	private University university;
@@ -26,6 +29,14 @@ public class Program {
 		return name;
 	}
 	
+	public Faculty getFaculty() {
+		return faculty;
+	}
+
+	public void setFaculty(Faculty faculty) {
+		this.faculty = faculty;
+	}
+
 	public Level getLevel() {
 		return level;
 	}

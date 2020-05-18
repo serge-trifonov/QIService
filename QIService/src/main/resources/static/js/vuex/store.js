@@ -3,13 +3,15 @@ import Vuex from 'vuex'
 import programApi from 'api/program'
 import studentApi from 'api/student'
 import universityApi from 'api/university'
+import userApi from 'api/user'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
    
 	state: {
-		allprograms: programs
+		allprograms: programs,
+		user: userInfo.user
 		},
 		
     actions: {
@@ -23,7 +25,10 @@ export default new Vuex.Store({
         },async addUniversityAction({commit}, university) {
 	    	const result = await universityApi.add(university)
 	    	const data = await result.json()
-	    }
+	    },async updateUserAction({commit}, user) {
+	    	const result = await userApi.update(user)
+	    	const data = await result.json()
+    }
         
         
     }

@@ -46,12 +46,13 @@
 </template>
 
 <script>
-    import { mapActions } from 'vuex'
+    import { mapActions,mapState } from 'vuex'
     export default {
-        data() {
+       computed: mapState(['user']),
+       data() {
             return {
                 student:{
-               		name: "",
+               		name:"",
 					surname: "",
                		age: "",
 					sex: ""
@@ -67,7 +68,11 @@
 		console.log(this.student);
             	this.addStudentAction(this.student)
             }
-        }
+        },
+       created(){ 
+       		this.student.name = this.user.givenName;
+       		this.student.surname = this.user.familyName;
+       	}
     }
 </script>
 

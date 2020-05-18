@@ -8,13 +8,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import cnam.project.QIService.entities.Student;
 import cnam.project.QIService.entities.University;
+import cnam.project.QIService.repository.StudentRepository;
 import cnam.project.QIService.repository.UniversityRepository;
+
 
 @RestController
 @RequestMapping("university")
 public class UniversityController {
-	private final UniversityRepository universityRepository;
+	
+private final UniversityRepository universityRepository;
 
 	
     @Autowired
@@ -26,7 +30,8 @@ public class UniversityController {
     public University create(
             @RequestBody University university
     ) {
-   
+    	System.out.println("university "+university);
+    	System.out.println("university name"+university.getName());
         return universityRepository.save(university);
     }
     
@@ -36,3 +41,5 @@ public class UniversityController {
     }
 
 }
+
+
