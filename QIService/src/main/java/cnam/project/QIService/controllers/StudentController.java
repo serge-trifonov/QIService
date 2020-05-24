@@ -38,7 +38,6 @@ private final UserRepository userRepository;
             @RequestBody Student student
     ) {
     	Student newStudent=studentRepository.save(student);
-    	user.setQis(newStudent);
     	userRepository.save(user);
         return newStudent;
     }

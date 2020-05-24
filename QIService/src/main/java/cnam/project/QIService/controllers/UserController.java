@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import cnam.project.QIService.entities.User;
+import cnam.project.QIService.entities.UserUniv;
 import cnam.project.QIService.repository.UserRepository;
 
 @RestController
@@ -31,9 +32,7 @@ public class UserController {
     }
 	
     @PostMapping
-    public User create(
-            @RequestBody User user
-    ) {
+    public User create(@RequestBody User user) {
    
         return userRepository.save(user);
     }
@@ -49,17 +48,16 @@ public class UserController {
     	userRepository.delete(user);
     }
     @PutMapping("{id}")
-    public User update(
-    @PathVariable("id") User userFromBD,
-    @RequestBody User user
-    ) {
+    public User updateUser(@PathVariable("id") User userFromBD,@RequestBody User user) {
 
-    BeanUtils.copyProperties(user, userFromBD, "id");
-    return userRepository.save(userFromBD);
+    	BeanUtils.copyProperties(user, userFromBD, "id");
+    	return userRepository.save(userFromBD);
     }
     
-    
-    
-    
-    
+    @PutMapping("univ/{id}")
+    public User updateUserUniv(@PathVariable("id") User userFromBD,@RequestBody UserUniv user) {
+    	
+    	userRepository.delete(userFromBD);
+    	return userRepository.save(user);
+    }   
 }

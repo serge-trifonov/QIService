@@ -26,9 +26,12 @@ public class HomeController {
     	
     	List<Program>listProg=programRepository.findAll();
     	model.addAttribute("programs",listProg);
-    	System.out.println("hello wor");
+    	
         HashMap<Object, Object> data = new HashMap<>();
         data.put("user", user);
+        
+        
+        
         model.addAttribute("userInfo", data);
         model.addAttribute("isDevMode", true);
         return "index"; 

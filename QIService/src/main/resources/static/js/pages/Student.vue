@@ -1,29 +1,31 @@
 
 <template>
    <div>
-    	<form>
+    	<form style="width: 95%;" class="mx-auto">
 		<div class="form-group row">
 			<label for="name" class="col-sm-2 col-form-label">student's name</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" v-model="student.name" required>
+				<input type="text" class="form-control" v-model="user.givenName" required>
 			</div>
 		</div>
+		
 		<div class="form-group row">
 			<label for="surname" class="col-sm-2 col-form-label">student's surname</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" v-model="student.surname" required>
+				<input type="text" class="form-control" v-model="user.familyName" required>
 			</div>
 		</div>
+		
 		<div class="form-group row">
 			<label for="age" class="col-sm-2 col-form-label">student's age</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" v-model="student.age" required>
+				<input type="text" class="form-control" v-model="user.age" required>
 			</div>
 		</div>
 		<div class="form-group row">
 			<label for="sex" class="col-sm-2 col-form-label">student's sex</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" v-model="student.sex" required>
+				<input type="text" class="form-control" v-model="user.sex" required>
 			</div>
 		</div>
 		
@@ -34,6 +36,12 @@
 			</div>
 		</div>
 		
+		<div class="form-group row">
+			<label for="status" class="col-sm-2 col-form-label">Address</label>
+			<div class="col-sm-10">
+				<Address/>	
+			</div>
+		</div>
 		
 		
 		<div class="form-group row">
@@ -47,32 +55,26 @@
 
 <script>
     import { mapActions,mapState } from 'vuex'
+    import Address from './Address'
     export default {
-       computed: mapState(['user']),
-       data() {
+    	components:{Address},
+       	computed: mapState(['user']),
+       	data() {
             return {
-                student:{
-               		name:"",
-					surname: "",
-               		age: "",
-					sex: ""
-               		
-					
-               }
+                
             }
         },
         methods: {
 	    ...mapActions(['addStudentAction']),
-            submit(student) {
+            submit(event) {
             	event.preventDefault();
-		console.log(this.student);
-            	this.addStudentAction(this.student)
+            	this.addStudentAction(this.user)
             }
         },
-       created(){ 
-       		this.student.name = this.user.givenName;
-       		this.student.surname = this.user.familyName;
-       	}
+        created(){
+        	console.log(this.user);
+        }
+      
     }
 </script>
 

@@ -7,6 +7,8 @@ import Programs from 'pages/Programs.vue'
 
 import StudVueCand from 'pages/StudVueCand.vue'
 import Users from 'pages/Users.vue'
+import Faculty from 'pages/Faculty.vue'
+import Address from 'pages/Address.vue'
 
 Vue.use(VueRouter)
 
@@ -17,7 +19,9 @@ const routes = [
     { path: '/university', component: University },
     { path: '/programs', component: Programs },
     { path: '/studVueCand', component: StudVueCand },
-    { path: '/users', component: Users }
+    { path: '/users', component: Users },
+    { path: '/faculty', component: Faculty },
+    { path: '/address', component: Address }
     
 ]
 

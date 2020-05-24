@@ -2,6 +2,7 @@ package cnam.project.QIService.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -14,9 +15,6 @@ import lombok.Data;
 @Data
 public class User implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	@Id
 	private String id;
@@ -24,22 +22,23 @@ public class User implements Serializable{
 	private String familyName;
 	private String email;
 	private Role role;
-	@OneToOne
-	private QIServiceProfile qis;
 	
+	@Column(insertable = false, updatable = false) 
+	private String dtype;
 	
+	public String getDtype() {
+		return dtype;
+	}
+	public void setDtype(String dtype) {
+		this.dtype = dtype;
+	}
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public QIServiceProfile getQis() {
-		return qis;
-	}
-	public void setQis(QIServiceProfile qis) {
-		this.qis = qis;
-	}
+	
 	public Role getRole() {
 		return role;
 	}

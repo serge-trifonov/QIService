@@ -1,35 +1,63 @@
 <template>
    <div>
-    	<form>
+    	<form style="width: 95%;" class="mx-auto">
+    	
 		<div class="form-group row">
-			<label for="universityName" class="col-sm-2 col-form-label">Le nom d'université</label>
+			<label for="universityName" class="col-sm-2 col-form-label">Le nom d'universitÃ©</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" v-model="university.name" required>
 			</div>
 		</div>
+		
 		<div class="form-group row">
-			<label for="status" class="col-sm-2 col-form-label">Formation</label>
+			<label for="status" class="col-sm-2 col-form-label">Status</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" v-model="university.status" required>
 			</div>
 		</div>
+		
 		<div class="form-group row">
+			<label for="status" class="col-sm-2 col-form-label">Address</label>
+			
 			<div class="col-sm-10">
-				<button type="submit" class="btn btn-primary" @click.stop="submit">Valider</button>
+				<Address :parentAddress="university.address"/>	
+				
 			</div>
 		</div>
+		
+		<div class="form-group row">
+			<div class="col-sm-10">
+				<button type="submit" class="btn btn-primary" @click.stop="submit">VALIDER</button>
+			</div>
+		</div>
+
 	</form>
+	
+	
    </div>
+     
 </template>
+
 
 <script>
     import { mapActions } from 'vuex'
+    import Address from './Address'
     export default {
+    	components:{Address},
         data() {
             return {
                 university:{
+                
                		name: "",
-					status: ""
+					status: "",
+					address:{ 
+					number:"",
+					street:"",
+					postalAddress:"",
+					city:"",
+					country:""
+						
+					}
                }
             }
         },
@@ -37,7 +65,7 @@
 	    ...mapActions(['addUniversityAction']),
             submit(university) {
             	event.preventDefault();
-		console.log(this.university);
+				console.log("UNIVERSITY");
             	this.addUniversityAction(this.university)
             }
         }

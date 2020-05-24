@@ -56,7 +56,7 @@
         },
         methods: {
 	    ...mapActions(['addProgramAction']),
-            submit(program) {
+            submit(event) {
             	event.preventDefault();
 		console.log(this.program);
             	this.addProgramAction(this.program)
