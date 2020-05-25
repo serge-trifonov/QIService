@@ -4,9 +4,7 @@ package cnam.project.QIService.entities;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Data;
 
 @Entity
@@ -25,10 +23,9 @@ public class University implements Serializable{
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JsonIgnore
 	private Set<Faculty>faculties;
+	
 	@OneToOne
 	private Address address;
-	
-	
 	
 	public Long getId() {
 		return id;

@@ -15,20 +15,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import cnam.project.QIService.entities.Address;
+import cnam.project.QIService.entities.Student;
 import cnam.project.QIService.entities.User;
 import cnam.project.QIService.entities.UserUniv;
+import cnam.project.QIService.repository.AddressRepository;
 import cnam.project.QIService.repository.UserRepository;
 
 @RestController
 @RequestMapping("users")
 public class UserController {
 	private final UserRepository userRepository;
+	private final AddressRepository addressRepository;
 
 	
     @Autowired
-    public UserController(UserRepository userRepository) {
+    public UserController(UserRepository userRepository,AddressRepository addressRepository) {
 		this.userRepository = userRepository;
+		this.addressRepository=addressRepository;
     }
 	
     @PostMapping
@@ -45,18 +49,30 @@ public class UserController {
     
     @DeleteMapping("{id}")
     public void delete(@PathVariable("id") User user) {
+    	
     	userRepository.delete(user);
     }
     @PutMapping("{id}")
     public User updateUser(@PathVariable("id") User userFromBD,@RequestBody User user) {
-
-    	BeanUtils.copyProperties(user, userFromBD, "id");
-    	return userRepository.save(userFromBD);
+    	
+    	System.out.println("user");
+    	
+    	userRepository.delete(userFromBD);
+    	return userRepository.save(user);
     }
     
     @PutMapping("univ/{id}")
     public User updateUserUniv(@PathVariable("id") User userFromBD,@RequestBody UserUniv user) {
     	
+    	userRepository.delete(userFromBD);
+    	return userRepository.save(user);
+    }   
+    
+    @PutMapping("stud/{id}")
+    public User updateUserStud(@PathVariable("id") User userFromBD,@RequestBody Student user) {
+    	
+    	Address address=user.getAddress();
+    	addressRepository.save(address);
     	userRepository.delete(userFromBD);
     	return userRepository.save(user);
     }   

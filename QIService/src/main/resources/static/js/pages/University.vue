@@ -1,23 +1,23 @@
 <template>
    <div>
-    	<form style="width: 95%;" class="mx-auto">
+    	<form style="width: 90%;" class="mx-auto">
     	
 		<div class="form-group row">
-			<label for="universityName" class="col-sm-2 col-form-label">Le nom d'université</label>
+			<label for="universityName" class="col-sm-2 col-form-label">UNIVERSITY'S NAME</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" v-model="university.name" required>
 			</div>
 		</div>
 		
 		<div class="form-group row">
-			<label for="status" class="col-sm-2 col-form-label">Status</label>
+			<label for="status" class="col-sm-2 col-form-label">STATUS</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" v-model="university.status" required>
 			</div>
 		</div>
 		
 		<div class="form-group row">
-			<label for="status" class="col-sm-2 col-form-label">Address</label>
+			<label for="status" class="col-sm-2 col-form-label">ADDRESS</label>
 			
 			<div class="col-sm-10">
 				<Address :parentAddress="university.address"/>	
@@ -51,12 +51,11 @@
                		name: "",
 					status: "",
 					address:{ 
-					number:"",
-					street:"",
-					postalAddress:"",
-					city:"",
-					country:""
-						
+						number:"",
+						street:"",
+						postalAddress:"",
+						city:"",
+						country:""	
 					}
                }
             }

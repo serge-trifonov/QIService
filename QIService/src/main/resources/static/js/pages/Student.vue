@@ -1,47 +1,64 @@
 
 <template>
    <div>
-    	<form style="width: 95%;" class="mx-auto">
+    	<form style="width: 90%;" class="mx-auto">
 		<div class="form-group row">
-			<label for="name" class="col-sm-2 col-form-label">student's name</label>
+			<label for="name" class="col-sm-2 col-form-label">NAME</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" v-model="user.givenName" required>
 			</div>
 		</div>
 		
 		<div class="form-group row">
-			<label for="surname" class="col-sm-2 col-form-label">student's surname</label>
+			<label for="surname" class="col-sm-2 col-form-label">SURNAME</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" v-model="user.familyName" required>
 			</div>
 		</div>
 		
 		<div class="form-group row">
-			<label for="age" class="col-sm-2 col-form-label">student's age</label>
+			<label for="age" class="col-sm-2 col-form-label">AGE</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" v-model="user.age" required>
 			</div>
 		</div>
+		
 		<div class="form-group row">
-			<label for="sex" class="col-sm-2 col-form-label">student's sex</label>
+			<label for="gender" class="col-sm-2 col-form-label">GENDER</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" v-model="user.sex" required>
+			<select class="form-control" id="gender" v-model="user.gender" required>
+				
+				<option value="Male">M</option>
+				<option value="Female">F</option>
+				
+				
+			</select>
 			</div>
 		</div>
 		
 		<div class="form-group row">
-			<label for="address" class="col-sm-2 col-form-label">student's address</label>
+			<label for="currentLevel" class="col-sm-2 col-form-label">CURRENT LAVEL</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control">
+			<select class="form-control" id="level" v-model="user.currentLevel" required>
+				
+				<option value="L1">L1</option>
+				<option value="L2">L2</option>
+				<option value="L3">L3</option>
+				<option value="M1">M1</option>
+				<option value="M2">M2</option>
+				<option value="D">D</option>
+				
+			</select>
 			</div>
 		</div>
 		
 		<div class="form-group row">
-			<label for="status" class="col-sm-2 col-form-label">Address</label>
+			<label for="status" class="col-sm-2 col-form-label">ADDRESS</label>
 			<div class="col-sm-10">
-				<Address/>	
+				<Address :parentAddress="user.address"/>	
 			</div>
 		</div>
+		
 		
 		
 		<div class="form-group row">
@@ -65,13 +82,21 @@
             }
         },
         methods: {
-	    ...mapActions(['addStudentAction']),
+	    ...mapActions(['updateStudentAction']),
             submit(event) {
             	event.preventDefault();
-            	this.addStudentAction(this.user)
+            	this.updateStudentAction(this.user);
             }
         },
         created(){
+        	this.user.address={ 
+					number:"",
+					street:"",
+					postalAddress:"",
+					city:"",
+					country:""
+						
+					}
         	console.log(this.user);
         }
       

@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import cnam.project.QIService.entities.Address;
 import cnam.project.QIService.entities.Student;
 import cnam.project.QIService.entities.University;
 import cnam.project.QIService.entities.User;
+import cnam.project.QIService.repository.AddressRepository;
 import cnam.project.QIService.repository.StudentRepository;
 import cnam.project.QIService.repository.UniversityRepository;
 
@@ -27,15 +29,19 @@ public class UniversityController {
 	
 	
 private final UniversityRepository universityRepository;
+private final AddressRepository addressRepository;
 
 	
     @Autowired
-    public UniversityController(UniversityRepository universityRepository) {
+    public UniversityController(UniversityRepository universityRepository,AddressRepository addressRepository) {
 		this.universityRepository = universityRepository;
+		this.addressRepository=addressRepository;
     }
 	
     @PostMapping
     public University create(@RequestBody University university) {
+    	Address address=university.getAddress();
+    	addressRepository.save(address);
         return universityRepository.save(university);
     }
     

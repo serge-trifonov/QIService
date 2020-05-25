@@ -18,7 +18,25 @@ public class Student extends User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private int age;
-	private String sex;
+	private Gender gender;
+	private Level currentLevel;
+	
+	public Level getCurrentLevel() {
+		return currentLevel;
+	}
+
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	public void setCurrentLevel(Level currentLevel) {
+		this.currentLevel = currentLevel;
+	}
+
 	@OneToOne
 	private Address address;
 	
@@ -32,13 +50,7 @@ public class Student extends User implements Serializable{
 		this.age = age;
 	}
 
-	public String getSex() {
-		return sex;
-	}
-
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
+	
 
 	public Address getAddress() {
 		return address;

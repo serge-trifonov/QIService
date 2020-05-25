@@ -1,9 +1,9 @@
 <template>
    <div>
-    	<form>
+    	<form style="width: 90%;" class="mx-auto">
     	
 		<div class="form-group row">
-			<label for="facultyName" class="col-sm-2 col-form-label">Faculty's name</label>
+			<label for="facultyName" class="col-sm-2 col-form-label">FACULTY'S NAME</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" v-model="faculty.name" required>
 			</div>
@@ -11,7 +11,7 @@
 			
 		<div class="form-group row">
 			<div class="col-sm-10">
-				<button type="submit" class="btn btn-primary" @click.stop="submit" >Valider</button>
+				<button type="submit" class="btn btn-primary" @click.stop="submit" >VALIDER</button>
 			</div>
 		</div>
 		</form>
