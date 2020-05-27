@@ -24,9 +24,6 @@ public class Program {
 	private Level level;
 	private UserUniv userUniv;
 		
-	@ManyToOne
-	private University university;
-	
 	@JoinColumn(name = "faculty_id", insertable = false, updatable = false)
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Faculty faculty;
@@ -72,13 +69,6 @@ public class Program {
 		this.level = level;
 	}
 
-	public University getUniversity() {
-		return university;
-	}
-
-	public void setUniversity(University university) {
-		this.university = university;
-	}
 
 	public void setName(String name) {
 		this.name = name;

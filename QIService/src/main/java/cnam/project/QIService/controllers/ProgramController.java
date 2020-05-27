@@ -2,6 +2,7 @@ package cnam.project.QIService.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,12 +23,16 @@ public class ProgramController {
     public ProgramController(ProgramRepository programRepository) {
 		this.programRepository = programRepository;
     }
-	
+    
+	@GetMapping("{id}")
+    public Program getProgram(@PathVariable("id")Program program) {
+		
+		return program;
+		
+	}
     @PostMapping
-    public Program create(
-            @RequestBody Program program
-    ) {
-    //	System.out.println("program "+program);
+    public Program create(@RequestBody Program program) {
+    
     	System.out.println("program name"+program.getLevel());
         return programRepository.save(program);
     }

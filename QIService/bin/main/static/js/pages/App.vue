@@ -32,6 +32,15 @@
  	       <router-link class="nav-link" to="student">Ajouter un student</router-link> 
 	      </li>
 	      
+	      
+	      
+	      
+	      <li class="nav-item">
+ 	       <router-link class="nav-link" to="search">Search</router-link> 
+	      </li>
+	      
+	      
+	      
 	      <li class="nav-item">
  	       <router-link class="nav-link" to="programs">Programs</router-link> 
 	      </li>

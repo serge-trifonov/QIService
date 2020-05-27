@@ -2,6 +2,9 @@ package cnam.project.QIService.controllers;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +23,12 @@ import cnam.project.QIService.repository.FacultyRepository;
 @RestController
 @RequestMapping("faculty")
 public class FacultyController {
+	
+	
 	private final FacultyRepository facultyRepository;
-
+	
+	@PersistenceContext
+    EntityManager entityManager;
 	
     @Autowired
     public FacultyController(FacultyRepository facultyRepository) {
@@ -44,5 +51,14 @@ public class FacultyController {
     public void delete(@PathVariable("id") Faculty faculty) {
     	facultyRepository.delete(faculty);
     }
+    
+    @GetMapping
+    public List<String>getFaculiesNames(){
+    	return entityManager.createQuery("SELECT  DISTINCT name  FROM Faculty").getResultList();
+    	
+    }
+    
+    
+   
 }
 

@@ -41,6 +41,8 @@
 			<div class="col-sm-10">
 			<select class="form-control" id="level" v-model="user.currentLevel" required>
 				
+				<option selected>Choose...</option>
+				<option value="BAC">BAC</option>
 				<option value="L1">L1</option>
 				<option value="L2">L2</option>
 				<option value="L3">L3</option>

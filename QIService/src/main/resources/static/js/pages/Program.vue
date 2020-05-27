@@ -28,7 +28,7 @@
 		</div>
 		
 		<div class="form-group row">
-			<label for="level" class="col-sm-2 col-form-label">FACULTY'S NAME</label>
+			<label for="facultyName" class="col-sm-2 col-form-label">FACULTY'S NAME</label>
 			<div class="col-sm-10">
 				<select class="form-control" id="facultyId" v-model="program.facultyId">
 				
