@@ -94,6 +94,7 @@
 			const result = await this.$http.get("/users");
 			this.users = result.data
 			console.log(result);
+			console.log(this.userInfo);
         }
     }
 </script>

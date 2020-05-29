@@ -12,6 +12,6 @@ public enum Level {
 	public String toString() {
 		return this.title;
 	}
-	
+	 
 	
 }

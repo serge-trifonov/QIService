@@ -11,6 +11,8 @@ import Faculty from 'pages/Faculty.vue'
 import Address from 'pages/Address.vue'
 import Search from 'pages/Search.vue'
 import ProgramFound from 'pages/ProgramFound.vue'
+import ProgramCandidat from 'pages/ProgramCandidat.vue'
+//import Candidats from 'pages/Candidats.vue'
 
 Vue.use(VueRouter)
 
@@ -25,7 +27,10 @@ const routes = [
     { path: '/faculty', component: Faculty },
     { path: '/address', component: Address },
     { path: '/search', component: Search },
-    { path: '/program/:id', component: ProgramFound}
+    { path: '/program/:id', component: ProgramFound},
+    { path: '/programCandidat/', component: ProgramCandidat}
+    //{ path: '/candidats/:id', component: Candidats}
+    
     
 ]
 

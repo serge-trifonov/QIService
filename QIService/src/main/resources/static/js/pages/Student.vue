@@ -28,8 +28,8 @@
 			<div class="col-sm-10">
 			<select class="form-control" id="gender" v-model="user.gender" required>
 				
-				<option value="Male">M</option>
-				<option value="Female">F</option>
+				<option value="M">M</option>
+				<option value="F">F</option>
 				
 				
 			</select>

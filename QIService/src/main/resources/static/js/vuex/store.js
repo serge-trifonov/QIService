@@ -15,7 +15,9 @@ export default new Vuex.Store({
 	state: {
 		allprograms: programs,
 		user: userInfo.user,
-		faculties:[]
+		faculties:[],
+		programs: userInfo.userProgram,
+		studByProg: userInfo.mapProgStud
 		
 		},
 		

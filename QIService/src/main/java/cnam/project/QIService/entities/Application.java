@@ -24,17 +24,36 @@ public class Application {
 	@JoinColumn(name = "stud_id", insertable = false, updatable = false)
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Student student;
+	
 	@Column(name = "stud_id")
 	private String studId;
-	
-	
+		
 	@JoinColumn(name = "prog_id", insertable = false, updatable = false)
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Program program;
+	
 	@Column(name = "program_id")
 	private Long programId;
 	
 	private Response response;
+	
+	private String message;
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
 
 	public Student getStudent() {
 		return student;
@@ -75,7 +94,4 @@ public class Application {
 	public void setResponse(Response response) {
 		this.response = response;
 	}
-	
-	
-
 }

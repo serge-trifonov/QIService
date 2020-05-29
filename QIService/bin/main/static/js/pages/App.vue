@@ -48,6 +48,13 @@
 	      <li class="nav-item">
  	       <router-link class="nav-link" to="users">Users</router-link> 
 	      </li>
+	      <li class="nav-item">
+ 	       <router-link class="nav-link" to="programCandidat">Program Candidat</router-link> 
+	      </li>
+	      
+	      <li class="nav-item">
+ 	       <router-link class="nav-link" to="candidats">Candidats</router-link> 
+	      </li>
 	      
 
 	      <li class="nav-item">
