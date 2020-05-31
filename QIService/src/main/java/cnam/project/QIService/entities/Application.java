@@ -28,7 +28,7 @@ public class Application {
 	@Column(name = "stud_id")
 	private String studId;
 		
-	@JoinColumn(name = "prog_id", insertable = false, updatable = false)
+	@JoinColumn(name = "program_id", insertable = false, updatable = false)
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Program program;
 	

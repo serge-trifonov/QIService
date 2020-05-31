@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import cnam.project.QIService.entities.Application;
 import cnam.project.QIService.entities.Program;
+import cnam.project.QIService.entities.Response;
 import cnam.project.QIService.entities.Role;
 import cnam.project.QIService.entities.Student;
 import cnam.project.QIService.entities.User;
@@ -42,9 +44,18 @@ public class HomeController {
     	
         HashMap<Object, Object> data = new HashMap<>();
         
-        System.out.println("begin");
+        
         
         data.put("user", user);
+        
+        if(user!=null&&user.getRole()==Role.STUDENT) {
+        	data.put("applications",applicationRepository.findByStudId(user.getId()));
+        }
+        
+        
+        
+        
+        
         
         if(user!=null&&user.getRole()==Role.UNIVERSITY) {
         	 List<Program>list=programRepository.findByUserUniv((UserUniv) user);
@@ -61,6 +72,10 @@ public class HomeController {
 	        	}
 	        );
 	        
+	        Map <String, Application>reponseByStudent= listApp.stream().collect( Collectors.toMap(Application::getStudId,
+        		Function.identity()));
+	        data.put("reponseByStud",reponseByStudent);
+	        
 	        
 	        for(Application app: listApp){
 	        	if(mapProgStud.containsKey(app.getProgramId())){
@@ -74,13 +89,12 @@ public class HomeController {
 	        	}
 	        	
 	        }
-	        
-	        
+   
         }
        
         model.addAttribute("userInfo", data);
         model.addAttribute("isDevMode", true);
-        System.out.println("sart");;
+       
         
         return "index"; 
     }

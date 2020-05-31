@@ -56,6 +56,10 @@
  	       <router-link class="nav-link" to="candidats">Candidats</router-link> 
 	      </li>
 	      
+	      <li class="nav-item">
+ 	       <router-link class="nav-link" to="progSend">ProgSend</router-link> 
+	      </li>
+	      
 
 	      <li class="nav-item">
 	        <a class="nav-link" href="#">Pricing</a>

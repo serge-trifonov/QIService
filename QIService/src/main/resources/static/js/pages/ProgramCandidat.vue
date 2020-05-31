@@ -17,7 +17,7 @@
      	
      	
      	
-     	<router-link class="btn btn-link" :to="'/candidats/'+program.id"><img src="/images/eye.png" alt="eye" height="20"></router-link>
+     	<router-link class="btn btn-link" :to="{ path: '/candidats/'+program.id, query: { prog : program.name }}" ><img src="/images/eye.png" alt="eye" height="20"></router-link>
       	 </td>
     </tr>
   </tbody>
@@ -38,28 +38,19 @@
         data() {
         
             return {
-            	
-               		
-					
-               
+            	         
             }
         },
         methods: {
-        		
-        		
-        		
-        
-        		
-        		
+     		
 	   		},
-	   		
-        
+	   		     
         async created(){
         	
         	console.log(this.userProgram);
         	console.log(this.userInfo);
         	console.log(this.studByProg);
-        	console.log(JSON.parse(JSON.stringify(this.studByProg)));
+        	
         	console.log(this.user);
         	
         }

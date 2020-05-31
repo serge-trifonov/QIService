@@ -12,7 +12,8 @@ import Address from 'pages/Address.vue'
 import Search from 'pages/Search.vue'
 import ProgramFound from 'pages/ProgramFound.vue'
 import ProgramCandidat from 'pages/ProgramCandidat.vue'
-//import Candidats from 'pages/Candidats.vue'
+import Candidats from 'pages/Candidats.vue'
+import ProgSend from 'pages/ProgSend.vue'
 
 Vue.use(VueRouter)
 
@@ -28,8 +29,9 @@ const routes = [
     { path: '/address', component: Address },
     { path: '/search', component: Search },
     { path: '/program/:id', component: ProgramFound},
-    { path: '/programCandidat/', component: ProgramCandidat}
-    //{ path: '/candidats/:id', component: Candidats}
+    { path: '/programCandidat/', component: ProgramCandidat},
+    { path: '/candidats/:id', component: Candidats},
+    { path: '/progSend/', component: ProgSend}
     
     
 ]

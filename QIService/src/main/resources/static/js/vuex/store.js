@@ -7,6 +7,7 @@ import userApi from 'api/user'
 import userUnivApi from 'api/userUniv'
 import facultyApi from 'api/faculty'
 import addressApi from 'api/address'
+import applicationApi from 'api/app'
 
 Vue.use(Vuex)
 
@@ -17,7 +18,9 @@ export default new Vuex.Store({
 		user: userInfo.user,
 		faculties:[],
 		programs: userInfo.userProgram,
-		studByProg: userInfo.mapProgStud
+		studByProg: userInfo.mapProgStud,
+		reponseByStud: userInfo.reponseByStud,
+		applications: userInfo.applications
 		
 		},
 		
@@ -65,6 +68,12 @@ export default new Vuex.Store({
 	    
 	    async addFacultyAction({commit}, faculty) {
 	    	const result = await facultyApi.add(faculty)
+	    	const data = await result.json()
+	    
+	    },
+    
+	    async updateAppReponse({commit}, application) {
+	    	const result = await applicationApi.update(application)
 	    	const data = await result.json()
 	    }
         

@@ -1,9 +1,10 @@
 <template>
-
+<div>
+<h2>{{prog}}</h2>
 <table class="table table-dark">
   <thead>
     <tr>
-      <th scope="col">N</th>
+      
       <th scope="col">Name</th>
       <th scope="col">Surname</th>
       <th scope="col">Age</th>
@@ -20,7 +21,8 @@
   <tbody>
     <tr v-for="stud in students" :key="stud.id">
     
-      <td ></td>
+      
+      
       <td scope="row">{{stud.givenName}}</td>
       <td scope="row">{{stud.familyName}}</td>
       <td scope="row">{{stud.age}}</td>
@@ -29,61 +31,70 @@
       <td >address</td>
       <td >photo</td>
       
-      <select class="form-control" id="decision" v-model="decision[stud.id]" required>
+      	<select class="form-control" id="decision" v-model="reponseByStud[stud.id].response" required>
 				
-				<option selected >Decision...</option>
-				<option value="accept">accept</option>
-				<option value="refuse">refus</option>
+			<option selected >Decision...</option>
+			<option value="ACCEPTED">accept</option>
+			<option value="REFUSED">refus</option>
 				
-				
-			</select>
-      
-      
-      
-      
-      
-      
-     
+		</select>
+   
     </tr>
+    </tbody>
     
-</table>
+	</table>
 	
-    
-  </tbody>
+	<div class="form-group row">
+			<div class="col-sm-10">
+				<button type="submit" class="btn btn-primary" @click.stop="submit">VALID</button>
+			</div>
+		</div>
+	
+    </div>
+  
    
 </template>
 
 <script>
-    import {mapState} from 'vuex'
+    import {mapState, mapActions} from 'vuex'
     
     export default {
     
    
-    computed: mapState(['studByProg']),
+    computed: mapState(['studByProg','reponseByStud']),
+    params: ['prog'],
     
     
         data() {
         
             return {
+            	prog:"",
             	students:[],
             	decision:{
             		
-            	}
-               		
-					
-               
+            	}          
             }
         },
         methods: {
-        
+        ...mapActions(['updateAppReponse']),
         
 	        	submit(event){
 		   			
 					event.preventDefault();
 					
-		   			console.log("submit button");
+					this.students.forEach(student=>{
+						if(this.reponseByStud[student.id].response !== 'PENDING') {
+						
+							
+							
+							this.updateAppReponse(this.reponseByStud[student.id]);
+						}
+					});
+					
+					
 		   			
-		   			console.log(this.decision);
+		   			
+		   			
 		   			
 		   		
 	        }	
@@ -95,7 +106,9 @@
         	
         	
         	this.students= this.studByProg[this.$route.params.id];
-        	console.log(this.students);
+			this.prog = this.$route.query.prog;
+        	
+        	
         	
         	
         }
