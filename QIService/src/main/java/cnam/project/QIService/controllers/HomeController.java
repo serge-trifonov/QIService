@@ -40,22 +40,14 @@ public class HomeController {
     public String main(Model model, @AuthenticationPrincipal User user) {
     	
     	List<Program>listProg=programRepository.findAll();
-    	model.addAttribute("programs",listProg);
-    	
+    	model.addAttribute("programs",listProg); 	
         HashMap<Object, Object> data = new HashMap<>();
-        
-        
-        
+ 
         data.put("user", user);
         
         if(user!=null&&user.getRole()==Role.STUDENT) {
         	data.put("applications",applicationRepository.findByStudId(user.getId()));
         }
-        
-        
-        
-        
-        
         
         if(user!=null&&user.getRole()==Role.UNIVERSITY) {
         	 List<Program>list=programRepository.findByUserUniv((UserUniv) user);
@@ -71,9 +63,19 @@ public class HomeController {
 	        	System.out.println(l.getId()+" "+l.getStudent());
 	        	}
 	        );
-	        
-	        Map <String, Application>reponseByStudent= listApp.stream().collect( Collectors.toMap(Application::getStudId,
-        		Function.identity()));
+	       Map<Long,List<Application>>groupByProgram=listApp.stream().collect(Collectors.groupingBy(Application::getProgramId));
+	       
+	       Map<Long,Map<String,Application>>reponseByStudent=new HashMap<>();
+	       
+	       
+	    		   
+	    	for (Map.Entry<Long, List<Application>> pair : groupByProgram.entrySet()) {
+	    		reponseByStudent.put(pair.getKey(),pair.getValue().stream().collect( Collectors.toMap(Application::getStudId,
+	            		Function.identity())));
+	    		
+	    	}
+	       
+	       
 	        data.put("reponseByStud",reponseByStudent);
 	        
 	        

@@ -13,7 +13,7 @@
   <tbody>
     <tr v-for="program in allprograms" :key="program.id" >
       <td scope="row">{{program.name}}</td>
-      <td>{{program.university?program.university.name:'-'}}</td>
+      <td>{{program.faculty?program.faculty.university.name:'-'}}</td>
       <td>{{program.duration}}</td>
       <td>{{program.level}}</td>
       	

@@ -1,6 +1,6 @@
 <template>
 <div>
-<h2>{{prog}}</h2>
+<h2>{{prog.name}}</h2>
 <table class="table table-dark">
   <thead>
     <tr>
@@ -31,7 +31,7 @@
       <td >address</td>
       <td >photo</td>
       
-      	<select class="form-control" id="decision" v-model="reponseByStud[stud.id].response" required>
+      	<select class="form-control" id="decision" v-model="reponseByStud[prog.id][stud.id].response" required>
 				
 			<option selected >Decision...</option>
 			<option value="ACCEPTED">accept</option>
@@ -83,11 +83,11 @@
 					event.preventDefault();
 					
 					this.students.forEach(student=>{
-						if(this.reponseByStud[student.id].response !== 'PENDING') {
+						if(this.reponseByStud[prog.id][student.id].response !== 'PENDING') {
 						
 							
 							
-							this.updateAppReponse(this.reponseByStud[student.id]);
+							this.updateAppReponse(this.reponseByStud[prog.id][student.id]);
 						}
 					});
 					

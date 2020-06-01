@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import cnam.project.QIService.entities.Application;
 import cnam.project.QIService.entities.Response;
 import cnam.project.QIService.entities.User;
+import cnam.project.QIService.mailservice.MailSender;
 import cnam.project.QIService.repository.ApplicationRepository;
 
 @RestController
@@ -19,6 +20,8 @@ import cnam.project.QIService.repository.ApplicationRepository;
 public class ApplicationController {
 	
 	private final ApplicationRepository applicationRepository;
+	@Autowired
+	private MailSender mailSender;
 	
     @Autowired
     public ApplicationController(ApplicationRepository applicationRepository) {
@@ -28,6 +31,7 @@ public class ApplicationController {
     @PostMapping
     public Application create(@RequestBody Application application) {
     	application.setResponse(Response.PENDING);
+    	mailSender.send("", "Hola Maria", "Hello, Maria");
         return applicationRepository.save(application);
     }
     

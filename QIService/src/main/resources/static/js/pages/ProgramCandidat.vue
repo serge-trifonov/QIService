@@ -13,11 +13,11 @@
     <tr v-for="program in programs" :key="program.id">
     	<td scope="row">{{program.name}}</td>
       
-     	<td>{{studByProg[program.id].length}}
+     	<td>{{studByProg[program.id]?studByProg[program.id].length:"no application"}}
      	
      	
      	
-     	<router-link class="btn btn-link" :to="{ path: '/candidats/'+program.id, query: { prog : program.name }}" ><img src="/images/eye.png" alt="eye" height="20"></router-link>
+     	<router-link v-if="studByProg[program.id]" class="btn btn-link" :to="{ path: '/candidats/'+program.id, query: { prog : program }}" ><img src="/images/eye.png" alt="eye" height="20"></router-link>
       	 </td>
     </tr>
   </tbody>
