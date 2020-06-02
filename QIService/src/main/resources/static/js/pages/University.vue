@@ -3,7 +3,7 @@
     	<form style="width: 90%;" class="mx-auto">
     	
 		<div class="form-group row">
-			<label for="universityName" class="col-sm-2 col-form-label"></label>
+			<label for="universityName" class="col-sm-2 col-form-label">{{$t('universityNameEnter')}}</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" v-model="university.name" required>
 			</div>
