@@ -3,8 +3,8 @@
 <table class="table table-dark">
   <thead>
     <tr>
-      <th scope="col">Program</th>
-      <th scope="col">Candidat</th>
+      <th scope="col">{{$t('prog')}}</th>
+      <th scope="col">{{$t('cand')}}</th>
       
     </tr>
   </thead>

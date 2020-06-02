@@ -31,7 +31,9 @@ public class ApplicationController {
     @PostMapping
     public Application create(@RequestBody Application application) {
     	application.setResponse(Response.PENDING);
-    	mailSender.send("", "Hola Maria", "Hello, Maria");
+    	Application savedApplication=applicationRepository.save(application);
+    	String message="***Important***\n has a new application";
+    	mailSender.send("remontkkm@aol.fr", "New Application", message);
         return applicationRepository.save(application);
     }
     

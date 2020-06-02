@@ -1,84 +1,87 @@
 <template>
+
    <div>
-   <div class="text-center">
-	<h3 class="title">QIService</h3>
-   </div>
-    <nav class="navbar navbar-expand-lg  mb-3 navbar-dark bg-dark">
-	  <a class="navbar-brand" href="#">MENU</a>
-	  
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
-	  
-	  <div class="collapse navbar-collapse" id="navbarText">
-	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item active">
-	        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-	      </li>
-	      
-	      <li class="nav-item">
- 	       <router-link class="nav-link" to="mainPage">{{$t('mainPage')}}</router-link> 
-	      </li>
-	      
-	      
-	      
-	      <li class="nav-item" v-if="user&&user.role==='ADMIN'">
- 	       <router-link class="nav-link" to="university">{{$t('addUniversity')}}</router-link> 
-	      </li>
-	      
-	      <li class="nav-item" v-if="user&&user.role==='ADMIN'">
- 	       <router-link class="nav-link" to="users">{{$t('users')}}</router-link> 
-	      </li>
-	      
-	      
-	      
-	       <li class="nav-item" v-if="user&&user.role==='UNIVERSITY'">
- 	       <router-link class="nav-link" to="faculty">{{$t('addFaculty')}}</router-link> 
-	      </li>
-	      
-	      <li class="nav-item" v-if="user&&user.role==='UNIVERSITY'">
- 	       <router-link class="nav-link" to="program">{{$t('addProgram')}}</router-link> 
-	      </li>
-	      
-	      <li class="nav-item" v-if="user&&user.role==='UNIVERSITY'">
- 	       <router-link class="nav-link" to="programCandidat">{{$t('programCandidat')}}</router-link> 
-	      </li>
-	      
-	      <li class="nav-item" v-if="user&&user.role==='UNIVERSITY'">
- 	       <router-link class="nav-link" to="candidats">{{$t('candidats')}}</router-link> 
-	      </li>
-	      
-	      
-	      
-	      
-	      
-	      
-	      <li class="nav-item" v-if="user&&user.role==='STUDENT'">
- 	       <router-link class="nav-link" to="student">Student Register </router-link> 
-	      </li>
-
-	      <li class="nav-item" v-if="user&&user.role==='STUDENT'">
- 	       <router-link class="nav-link" to="search">Search</router-link> 
-	      </li>
-	      
-
-	      <li class="nav-item" v-if="user&&user.role==='STUDENT'">
- 	       <router-link class="nav-link" to="programs">List all programs</router-link> 
-	      </li>
-	      
-	      <li class="nav-item" v-if="user&&user.role==='STUDENT'">
- 	       <router-link class="nav-link" to="progSend">ProgSend</router-link> 
-	      </li>
-	      
-	      
-
-	      
-	    </ul>
-	    
-	  </div>
-	</nav>
+   
+	   <div class="text-center">
+	   		<div class="float-right">
+	   			<a href="#" @click="setLocale('en')"><img src="/images/en.png" alt="english" height="15" width="20"></a>
+				<a href="#" @click="setLocale('fr')"><img src="/images/fr.png" alt="french" height="15" width="20"></a>
+				
+			</div>
+			<h3 class="title">QIService</h3>
+	   </div>
+	   
+	   <nav class="navbar navbar-expand-lg  mb-3 navbar-dark bg-dark">
+		  <a class="navbar-brand" href="#">MENU</a>
+		  
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+		  
+		  <div class="collapse navbar-collapse" id="navbarText">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item active">
+		        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+		      </li>
+		      
+		      <li class="nav-item">
+	 	       <router-link class="nav-link" to="mainPage">{{$t('mainPage')}}</router-link> 
+		      </li>
+		      
+		      
+		      
+		      <li class="nav-item" v-if="user&&user.role==='ADMIN'">
+	 	       <router-link class="nav-link" to="university">{{$t('addUniversity')}}</router-link> 
+		      </li>
+		      
+		      <li class="nav-item" v-if="user&&user.role==='ADMIN'">
+	 	       <router-link class="nav-link" to="users">{{$t('users')}}</router-link> 
+		      </li>
+		      
+		      
+		      
+		       <li class="nav-item" v-if="user&&user.role==='UNIVERSITY'">
+	 	       <router-link class="nav-link" to="faculty">{{$t('addFaculty')}}</router-link> 
+		      </li>
+		      
+		      <li class="nav-item" v-if="user&&user.role==='UNIVERSITY'">
+	 	       <router-link class="nav-link" to="program">{{$t('addProgram')}}</router-link> 
+		      </li>
+		      
+		      <li class="nav-item" v-if="user&&user.role==='UNIVERSITY'">
+	 	       <router-link class="nav-link" to="programCandidat">{{$t('programCandidat')}}</router-link> 
+		      </li>
+		      
+		      
+		      
+		      
+		      
+		      <li class="nav-item" v-if="user&&user.role==='STUDENT'">
+	 	       <router-link class="nav-link" to="student">{{$t('register')}}</router-link> 
+		      </li>
 	
-	<router-view></router-view>
+		      <li class="nav-item" v-if="user&&user.role==='STUDENT'">
+	 	       <router-link class="nav-link" to="search">{{$t('search')}}</router-link> 
+		      </li>
+		      
+	
+		      <li class="nav-item" v-if="user&&user.role==='STUDENT'">
+	 	      	<router-link class="nav-link" to="programs">{{$t('listProgram')}}</router-link> 
+		      </li>
+		      
+		      <li class="nav-item" v-if="user&&user.role==='STUDENT'">
+	 	       	<router-link class="nav-link" to="progSend">{{$t('progSend')}}</router-link> 
+		      </li>
+		      
+		      
+	
+		      
+		    </ul>
+		    
+		  </div>
+		</nav>
+		
+		<router-view></router-view>
    </div>
 </template>
 
@@ -95,9 +98,17 @@
                 //profile: frontendData.profile
             }
         },
-	created(){
-		console.log("created!!!!");
-	}
+         methods: {
+		     setLocale(locale){
+	
+				this.$i18n.locale = locale;
+			}
+          
+        },
+       
+		created(){
+			console.log("created!!!!");
+		}
     }
 </script>
 

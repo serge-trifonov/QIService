@@ -3,28 +3,28 @@
    <div>
     	<form style="width: 90%;" class="mx-auto">
 		<div class="form-group row">
-			<label for="name" class="col-sm-2 col-form-label">NAME</label>
+			<label for="name" class="col-sm-2 col-form-label">{{$t('name')}}</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" v-model="user.givenName" required>
 			</div>
 		</div>
 		
 		<div class="form-group row">
-			<label for="surname" class="col-sm-2 col-form-label">SURNAME</label>
+			<label for="surname" class="col-sm-2 col-form-label">{{$t('surname')}}</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" v-model="user.familyName" required>
 			</div>
 		</div>
 		
 		<div class="form-group row">
-			<label for="age" class="col-sm-2 col-form-label">AGE</label>
+			<label for="age" class="col-sm-2 col-form-label">{{$t('age')}}</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" v-model="user.age" required>
 			</div>
 		</div>
 		
 		<div class="form-group row">
-			<label for="gender" class="col-sm-2 col-form-label">GENDER</label>
+			<label for="gender" class="col-sm-2 col-form-label">{{$t('gender')}}</label>
 			<div class="col-sm-10">
 			<select class="form-control" id="gender" v-model="user.gender" required>
 				
@@ -37,11 +37,11 @@
 		</div>
 		
 		<div class="form-group row">
-			<label for="currentLevel" class="col-sm-2 col-form-label">CURRENT LAVEL</label>
+			<label for="currentLevel" class="col-sm-2 col-form-label">{{$t('currentLevel')}}</label>
 			<div class="col-sm-10">
 			<select class="form-control" id="level" v-model="user.currentLevel" required>
 				
-				<option selected>Choose...</option>
+				<option selected>{{$t('choice')}}</option>
 				<option value="BAC">BAC</option>
 				<option value="L1">L1</option>
 				<option value="L2">L2</option>
@@ -55,7 +55,7 @@
 		</div>
 		
 		<div class="form-group row">
-			<label for="status" class="col-sm-2 col-form-label">ADDRESS</label>
+			<label for="status" class="col-sm-2 col-form-label">{{$t('address')}}</label>
 			<div class="col-sm-10">
 				<Address :parentAddress="user.address"/>	
 			</div>
@@ -65,7 +65,7 @@
 		
 		<div class="form-group row">
 			<div class="col-sm-10">
-				<button type="submit" class="btn btn-primary" @click.stop="submit">Valider</button>
+				<button type="submit" class="btn btn-primary" @click.stop="submit">{{$t('valid')}}</button>
 			</div>
 		</div>
 	</form>

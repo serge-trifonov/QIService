@@ -2,11 +2,15 @@ plugins {
 	id 'org.springframework.boot' version '2.2.6.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
+	id 'eclipse'
 }
 
 group = 'cnam.project'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+compileJava {
+	sourceCompatibility = 8
+	targetCompatibility = 8
+}
 
 configurations {
 	developmentOnly

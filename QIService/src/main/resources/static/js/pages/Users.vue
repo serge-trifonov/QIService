@@ -5,7 +5,7 @@
   <thead>
     <tr>
       <th scope="col">N</th>
-      <th scope="col">User</th>
+      <th scope="col">{{$t('user')}}</th>
       <th scope="col">Role</th>
       <th scope="col">Email</th>
       <th scope="col">University_Id</th>
@@ -25,15 +25,15 @@
 					<option value="ADMIN">ADMIN</option>
 				</select></td>
       <td>{{user.email}}</td>
-      
-      
-      
+
       <td><div v-if="user.id===idToEdit&&user.role==='UNIVERSITY'">
       		<select class="form-control" id="level" v-model="user.universityId">
 				<option v-for="univ in universities" :key="univ.id" :value="univ.id" >{{univ.name}}</option>
-			</select></div>
+			</select>
+			</div>
+	</td>	
       <td><a href="#" v-if="user.id!=idToEdit" @click.stop="edit(user.id)" class="img-btn"><img src="/images/edit.png" alt="edit" height="25"></a>
-      <button v-else class="btn btn-outline-light mt-3" @click.stop="submit(user)"> Valider </button>
+      <button v-else class="btn btn-outline-light mt-3" @click.stop="submit(user)"> {{$t('valid')}} </button>
       </td>
     </tr>
   </tbody>
@@ -49,10 +49,7 @@
             	universities:[],
             	selectUniversity:false,
                 users:[],
-                idToEdit:''
-               		
-					
-               
+                idToEdit:''  
             }
         },
         methods: {
@@ -68,24 +65,17 @@
 	   			else{
 	   				this.updateUserAction(user);
 	   			}
-
 	   			this.idToEdit="";
-	   			this.selectUniversity=false;
-	   			
+	   			this.selectUniversity=false;	
 	   		},
 	   		async changeRole(user){
 	   			console.log(user.role);
 	   			if(user.role==='UNIVERSITY'){	   	
 	   					
-		   			
-					console.log(user);
 		   			this.selectUniversity=true;
-		   			
-		   			
 	   			}	   			
 	   		}
-        },
-        
+        },  
         async created(){
         
         	const response = await this.$http.get("/university");	   			
@@ -93,8 +83,6 @@
         	
 			const result = await this.$http.get("/users");
 			this.users = result.data
-			console.log(result);
-			console.log(this.userInfo);
         }
     }
 </script>

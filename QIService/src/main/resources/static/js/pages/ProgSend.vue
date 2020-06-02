@@ -1,18 +1,13 @@
 <template>
 <div>
-<h2>name student</h2>
-
-<table class="table table-dark">
-  <thead>
-    <tr>
-      
-      <th scope="col">Program's name</th>
-      <th scope="col">Status</th>
-      
-      
-      
-    </tr>
-  </thead>
+	<h2>name student</h2>
+	<table class="table table-dark">
+  		<thead>
+    		<tr> 
+		      <th scope="col">{{$t('prog')}}</th>
+		      <th scope="col">Status</th>
+    		</tr>
+  		</thead>
   
   
   <tbody>
@@ -39,47 +34,21 @@
 
 <script>
     import {mapState} from 'vuex'
-    
+  
     export default {
-    
-   
-   computed: mapState(['applications']),
-    
-    
+   		computed: mapState(['applications']),
         data() {
-        
             return {
             	          
             }
         },
         methods: {
        
-        
 	        	submit(event){
-		   			
-					event.preventDefault();
-					
-					
-					
-					
-		   			
-		   			
-		   			
-		   			
-		   		
+					event.preventDefault();	
 	        }	
 	   	},
-	   		
-	   		
-        
-        async created(){
-        	
-        	
-        	console.log(this.applications);
-        	
-        	
-        	
-        	
+        async created(){	
         }
     }
 </script>

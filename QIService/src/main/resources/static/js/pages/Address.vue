@@ -3,29 +3,30 @@
 	<form>
 	
 	  	<div class="form-group col-md-6">
-		     <label for="inputNumber">NUMBER</label>
+		     <label for="inputNumber">{{$t('number')}}</label>
 		     <input type="number" class="form-control" id="number" placeholder="123" @change="updateAddress" v-model="address.number">
 		 </div>
 	    
 		 <div class="form-group col-md-6">
-		     <label for="inputStreet">STREET</label>
+		     <label for="inputStreet">{{$t('street')}}</label>
 		     <input type="text" class="form-control" id="inputStreet" placeholder="Main steet" @change="updateAddress" v-model="address.street">
 		 </div>
 	 
 		<div class="form-group col-md-6">
-			<label for="inputPost">CODE POSTALE</label>
+			<label for="inputPost">{{$t('zipCode')}}</label>
 			<input type="text" class="form-control" id="inputPost" placeholder="123456" @change="updateAddress" v-model="address.postalAddress">
 		</div>
 	  
 		<div class="form-group col-md-6">
-			 <label for="city">CITY</label>
+			 <label for="city">{{$t('city')}}</label>
 			  <input type="text" class="form-control" id="city" placeholder="London" @change="updateAddress" v-model="address.city">
 		</div>
 	  
 	    <div class="form-group col-md-4">
-	      	<label for="inputState">COUNTRY</label>
+	      	<label for="inputState">{{$t('country')}}</label>
+	      	
 			     <select id="inputCountry" class="form-control" @change="updateAddress" v-model="address.country">
-			        <option selected>Choose...</option>
+			        <option selected>{{$t('choice')}}</option>
 			        <option value="espagne">Espagne</option>
 			        <option value="chine">Chine</option>
 			        <option value="japon">Japon</option>

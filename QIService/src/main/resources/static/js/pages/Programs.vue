@@ -1,28 +1,23 @@
 <template>
    <div>
-   <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Titre</th>
-      <th scope="col">Université</th>
-      <th scope="col">Durée</th>
-      <th scope="col">Niveau</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr v-for="program in allprograms" :key="program.id" >
-      <td scope="row">{{program.name}}</td>
-      <td>{{program.faculty?program.faculty.university.name:'-'}}</td>
-      <td>{{program.duration}}</td>
-      <td>{{program.level}}</td>
-      	
-      <td></td>
-    </tr>
-   
-  </tbody>
-</table>
-    
+	   	<table class="table table-striped">
+		  	<thead>
+				<tr>
+					<th scope="col">{{$t('prog')}}</th>
+					<th scope="col">{{$t('university')}}</th>
+					<th scope="col">{{$t('duration')}}</th>
+					<th scope="col">{{$t('level')}}</th>
+				</tr>
+		  	</thead>
+	  		<tbody>
+			    <tr v-for="program in allprograms" :key="program.id" >
+			      <td scope="row">{{program.name}}</td>
+			      <td>{{program.faculty?program.faculty.university.name:'-'}}</td>
+			      <td>{{program.duration}}</td>
+			      <td>{{program.level}}</td>
+			    </tr>
+	  		</tbody>
+		</table>
    </div>
 </template>
 

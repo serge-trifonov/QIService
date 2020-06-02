@@ -5,14 +5,14 @@
   <thead>
     <tr>
       
-      <th scope="col">Name</th>
-      <th scope="col">Surname</th>
-      <th scope="col">Age</th>
-      <th scope="col">Gender</th>
-      <th scope="col">Current' Level</th>
-      <th scope="col">Address</th>
-      <th scope="col">Photo</th>
-      <th scope="col">ACCEPT/REFUSE</th>
+      <th scope="col">{{$t('name')}}</th>
+      <th scope="col">{{$t('surname')}}</th>
+      <th scope="col">{{$t('age')}}</th>
+      <th scope="col">{{$t('gender')}}</th>
+      <th scope="col">{{$t('currentLevel')}}</th>
+      <th scope="col">{{$t('address')}}</th>
+      <th scope="col">{{$t('photo')}}</th>
+      <th scope="col">{{$t('accept')}}/{{$t('refuse')}}</th>
       
     </tr>
   </thead>
@@ -33,9 +33,9 @@
       
       	<select class="form-control" id="decision" v-model="reponseByStud[prog.id][stud.id].response" required>
 				
-			<option selected >Decision...</option>
-			<option value="ACCEPTED">accept</option>
-			<option value="REFUSED">refus</option>
+			<option selected >{{$t('decision')}}</option>
+			<option value="ACCEPTED">{{$t('accept')}}</option>
+			<option value="REFUSED">{{$t('refuse')}}</option>
 				
 		</select>
    
@@ -46,7 +46,7 @@
 	
 	<div class="form-group row">
 			<div class="col-sm-10">
-				<button type="submit" class="btn btn-primary" @click.stop="submit">VALID</button>
+				<button type="submit" class="btn btn-primary" @click.stop="submit">{{$t('valid')}}</button>
 			</div>
 		</div>
 	

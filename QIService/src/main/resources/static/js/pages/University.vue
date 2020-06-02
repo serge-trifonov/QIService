@@ -3,21 +3,21 @@
     	<form style="width: 90%;" class="mx-auto">
     	
 		<div class="form-group row">
-			<label for="universityName" class="col-sm-2 col-form-label">UNIVERSITY'S NAME</label>
+			<label for="universityName" class="col-sm-2 col-form-label"></label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" v-model="university.name" required>
 			</div>
 		</div>
 		
 		<div class="form-group row">
-			<label for="status" class="col-sm-2 col-form-label">STATUS</label>
+			<label for="status" class="col-sm-2 col-form-label">{{$t('status')}}</label>
 			<div class="col-sm-10">
 				<input type="text" class="form-control" v-model="university.status" required>
 			</div>
 		</div>
 		
 		<div class="form-group row">
-			<label for="status" class="col-sm-2 col-form-label">ADDRESS</label>
+			<label for="status" class="col-sm-2 col-form-label">{{$t('address')}}</label>
 			
 			<div class="col-sm-10">
 				<Address :parentAddress="university.address"/>	
@@ -27,17 +27,14 @@
 		
 		<div class="form-group row">
 			<div class="col-sm-10">
-				<button type="submit" class="btn btn-primary" @click.stop="submit">VALIDER</button>
+				<button type="submit" class="btn btn-primary" @click.stop="submit">{{$t('valid')}}</button>
 			</div>
 		</div>
 
 	</form>
-	
-	
    </div>
      
 </template>
-
 
 <script>
     import { mapActions } from 'vuex'
@@ -64,7 +61,6 @@
 	    ...mapActions(['addUniversityAction']),
             submit(university) {
             	event.preventDefault();
-				console.log("UNIVERSITY");
             	this.addUniversityAction(this.university)
             }
         }
