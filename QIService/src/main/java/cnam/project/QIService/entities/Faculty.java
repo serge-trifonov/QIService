@@ -24,11 +24,9 @@ public class Faculty implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String name;
 	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
 	
 	@JoinColumn(name = "university_id", insertable = false, updatable = false)
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -39,8 +37,6 @@ public class Faculty implements Serializable {
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JsonIgnore
 	private Set<Program>programs;
-	
-	
 	
 	public University getUniversity() {
 		return university;
@@ -79,7 +75,4 @@ public class Faculty implements Serializable {
 	public String toString() {
 		return "Faculty [name=" + name + ", id=" + id + "]";
 	}
-	
-	
-
 }

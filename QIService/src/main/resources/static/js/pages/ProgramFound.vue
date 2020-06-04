@@ -1,7 +1,8 @@
 <template>
-   <div style="width: 95%;" class="mx-auto shadow p-3 mb-5 bg-dark rounded text-light" >
-   
-    	<div class="alert alert-warning alert-dismissible fade show" role="alert"> {{$t('alert')}}
+<div>
+   <div v-if="!success" style="width: 95%;" class="mx-auto shadow p-3 mb-5 bg-dark rounded text-light" >
+   	
+    	<div class="alert alert-success alert-dismissible fade show" role="alert"> {{$t('alert')}}
   			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
     			<span aria-hidden="true">&times;</span>
  			 </button>
@@ -67,7 +68,10 @@
 		</div>
 	
    </div>
- 		
+   <div v-else>
+   		OK SUCCESS PUSH THE BUTTON
+   </div>
+ </div>		
 </template> 
 
 <script>
@@ -77,6 +81,7 @@
     	computed: mapState(['user']),
         data() {
             return {
+            	success: false,
             	faculty:{
             		name:""
             	},
@@ -104,7 +109,8 @@
         methods:{
         	submit(event){
         		event.preventDefault();
-        		this.$http.post("/application/",this.application);
+        		let result=this.$http.post("/application/",this.application);
+        		if(result)this.success=true;
         	}
         },
        async created(){

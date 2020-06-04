@@ -51,7 +51,6 @@ public class University implements Serializable{
 		this.name = name;
 	}
 
-
 	public Address getAddress() {
 		return address;
 	}
@@ -59,5 +58,4 @@ public class University implements Serializable{
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-
 }

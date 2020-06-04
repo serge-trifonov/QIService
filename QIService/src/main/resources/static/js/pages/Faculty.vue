@@ -28,22 +28,22 @@
                 faculty:""
             }
         },
+        
         methods: {
 	    ...mapActions(['addFacultyAction']),
+	    
             submit(event) {
             	event.preventDefault();
-		console.log(this.faculty);
-            	this.addFacultyAction(this.faculty)
+            	this.addFacultyAction(this.faculty);
+            	this.$router.push({ path: 'faculties'});
             }
         },
+        
         created(){
-        console.log(this.user);
 	        this.faculty={
 	               		name: "",
 	               		universityId:this.user.universityId
-
-	               };
-	        	
+	               };    	
         }
     }
 </script>

@@ -24,15 +24,12 @@ import cnam.project.QIService.repository.UniversityRepository;
 @RequestMapping("university")
 public class UniversityController {
 	
-	
-	
 	private final UniversityRepository universityRepository;
 	private final AddressRepository addressRepository;
 
 	@PersistenceContext
 	EntityManager entityManager;
 
-	
     @Autowired
     public UniversityController(UniversityRepository universityRepository,AddressRepository addressRepository) {
 		this.universityRepository = universityRepository;

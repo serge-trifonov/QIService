@@ -13,7 +13,6 @@
 			<label for="duration" class="col-sm-2 col-form-label">{{$t('duration')}}</label>
 			<div class="col-sm-10">
 				
-				
 				<select class="form-control" id="duration" v-model="program.duration" required>
 				
 					<option selected>{{$t('choice')}}</option>
@@ -21,7 +20,6 @@
 					<option value="3">3</option>
 					<option value="5">5</option>
 					
-				
 				</select>
 			</div>
 			
@@ -38,7 +36,6 @@
 				</select>
 			</div>
 		</div>
-		
 		
 		<div class="form-group row">
 			<label for="level" class="col-sm-2 col-form-label">{{$t('levelChoice')}}</label>
@@ -67,6 +64,7 @@
 </template>
 
 <script>
+
     import { mapActions,mapState } from 'vuex'
     export default {
     computed: mapState(['user']),
@@ -80,18 +78,21 @@
                faculties:[]
             }
         },
+        
         methods: {
 	    ...mapActions(['addProgramAction']),
+	    
             submit(event) {
             	event.preventDefault();
-				console.log(this.program);
+				
             	this.addProgramAction(this.program);
+            	this.$router.push({ path: 'programs'})
             }
         },
+        
        async created(){
         	const response=await this.$http.get("/faculty/"+this.user.universityId);
-        	this.faculties=response.data;
-        	console.log(this.faculties);
+        	this.faculties=response.data;	
         }
     }
 </script>

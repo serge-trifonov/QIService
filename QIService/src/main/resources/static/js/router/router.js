@@ -14,6 +14,9 @@ import ProgramFound from 'pages/ProgramFound.vue'
 import ProgramCandidat from 'pages/ProgramCandidat.vue'
 import Candidats from 'pages/Candidats.vue'
 import ProgSend from 'pages/ProgSend.vue'
+import Universities from'pages/Universities.vue'
+import Faculties from'pages/Faculties.vue'
+
 import MainPage from 'pages/MainPage.vue'
 
 Vue.use(VueRouter)
@@ -33,9 +36,12 @@ const routes = [
     { path: '/programCandidat/', component: ProgramCandidat},
     { path: '/candidats/:id', component: Candidats},
     { path: '/progSend/', component: ProgSend},
+    { path: '/universities/', component: Universities},
+    { path: '/faculties/', component: Faculties},
+    
     { path: '/mainPage/', component: MainPage}
     
-    
+   
     
 ]
 

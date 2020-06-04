@@ -10,13 +10,6 @@
 		</div>
 		
 		<div class="form-group row">
-			<label for="status" class="col-sm-2 col-form-label">{{$t('status')}}</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" v-model="university.status" required>
-			</div>
-		</div>
-		
-		<div class="form-group row">
 			<label for="status" class="col-sm-2 col-form-label">{{$t('address')}}</label>
 			
 			<div class="col-sm-10">
@@ -46,7 +39,6 @@
                 university:{
                 
                		name: "",
-					status: "",
 					address:{ 
 						number:"",
 						street:"",
@@ -59,9 +51,12 @@
         },
         methods: {
 	    ...mapActions(['addUniversityAction']),
+	    
             submit(university) {
+            
             	event.preventDefault();
-            	this.addUniversityAction(this.university)
+            	this.addUniversityAction(this.university);
+            	this.$router.push({ path: 'universities'});
             }
         }
     }

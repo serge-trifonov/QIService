@@ -13,8 +13,8 @@ export const i18n = new VueI18n({
 			mainPage:'Main page',
 			addFaculty:'Add a new faculty',
 			addProgram:'Add a new program',
-			programCandidat:'List programs-candidates',
-			candidats:'List candidates',
+			
+			candidats:'Candidates',
 			valid:'VALIDATE',
 			
 			facultyNameEnter:'Enter the new name of the faculty',
@@ -62,7 +62,12 @@ export const i18n = new VueI18n({
 			city:'City',
 			country:'Country',
 			search:'Search',
-			listProgram:'List of the programs',
+			
+			listProgram:'Programs',
+			listUniversity:'Universities',
+			listFaculty:'Faculties',
+			listProgramCandidat:'Programs-candidates',
+			
 			progSend:'Check the applications send',
 			alert:'Hello our future student.Program for you is below.You can send message to\
 					the responsable of the program! You\'ll get the answer via email! Good luck!',
@@ -71,7 +76,8 @@ export const i18n = new VueI18n({
 			send:'SEND',
 			back:'RETURN',
 			users:'Users',
-			user:'User',
+			user:'User'
+			
 			
 		},
 		fr : {
@@ -80,8 +86,8 @@ export const i18n = new VueI18n({
 			mainPage:'Première page',
 			addFaculty:'Ajouter une nouvelle faculté',
 			addProgram:'Ajouter une nouvelle programme',
-			programCandidat:'Liste programmes-candidats',
-			candidats:'Liste candidats',
+			
+			candidats:'Candidats',
 			valid:'VALIDER',
 			
 			facultyNameEnter:'Introduire le nouveau nom de la faculté',
@@ -129,7 +135,13 @@ export const i18n = new VueI18n({
 			city:'Ville',
 			country:'Pays',
 			search:'Rechercher',
-			listProgram:'Liste des programmes',
+			
+			
+			listUniversity:'Universités',
+			listFaculty:'Facultés',
+			listProgram:'Programmes',
+			listProgramCandidat:'Programmes-candidats',
+			
 			progSend:'Verifier les demandes envoyées',
 			alert:'Salut notre nouveau student.La programme que t\'as choici est là-bas.\
 					Tu peux écrire ton message en envoyer le demande à le responsable! Tu \

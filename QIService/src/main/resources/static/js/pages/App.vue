@@ -31,25 +31,25 @@
 		      
 		      
 		      <li class="nav-item" v-if="user&&user.role==='ADMIN'">
-	 	       <router-link class="nav-link" to="university">{{$t('addUniversity')}}</router-link> 
+	 	       <router-link class="nav-link" to="/university">{{$t('addUniversity')}}</router-link> 
 		      </li>
 		      
 		      <li class="nav-item" v-if="user&&user.role==='ADMIN'">
-	 	       <router-link class="nav-link" to="users">{{$t('users')}}</router-link> 
+	 	       <router-link class="nav-link" to="/users">{{$t('users')}}</router-link> 
 		      </li>
 		      
 		      
 		      
 		       <li class="nav-item" v-if="user&&user.role==='UNIVERSITY'">
-	 	       <router-link class="nav-link" to="faculty">{{$t('addFaculty')}}</router-link> 
+	 	       <router-link class="nav-link" to="/faculty">{{$t('addFaculty')}}</router-link> 
 		      </li>
 		      
 		      <li class="nav-item" v-if="user&&user.role==='UNIVERSITY'">
-	 	       <router-link class="nav-link" to="program">{{$t('addProgram')}}</router-link> 
+	 	       <router-link class="nav-link" to="/program">{{$t('addProgram')}}</router-link> 
 		      </li>
 		      
 		      <li class="nav-item" v-if="user&&user.role==='UNIVERSITY'">
-	 	       <router-link class="nav-link" to="programCandidat">{{$t('programCandidat')}}</router-link> 
+	 	       <router-link class="nav-link" to="/programCandidat">{{$t('listProgramCandidat')}}</router-link> 
 		      </li>
 		      
 		      
@@ -57,23 +57,32 @@
 		      
 		      
 		      <li class="nav-item" v-if="user&&user.role==='STUDENT'">
-	 	       <router-link class="nav-link" to="student">{{$t('register')}}</router-link> 
+	 	       <router-link class="nav-link" to="/student">{{$t('register')}}</router-link> 
 		      </li>
 	
 		      <li class="nav-item" v-if="user&&user.role==='STUDENT'">
-	 	       <router-link class="nav-link" to="search">{{$t('search')}}</router-link> 
+	 	       <router-link class="nav-link" to="/search">{{$t('search')}}</router-link> 
 		      </li>
-		      
-	
+
 		      <li class="nav-item" v-if="user&&user.role==='STUDENT'">
-	 	      	<router-link class="nav-link" to="programs">{{$t('listProgram')}}</router-link> 
-		      </li>
-		      
-		      <li class="nav-item" v-if="user&&user.role==='STUDENT'">
-	 	       	<router-link class="nav-link" to="progSend">{{$t('progSend')}}</router-link> 
+	 	       	<router-link class="nav-link" to="/progSend">{{$t('progSend')}}</router-link> 
 		      </li>
 		      
 		      
+		      
+		      
+		      
+		      <li class="nav-item">
+	 	      	<router-link class="nav-link" to="/universities">{{$t('listUniversity')}}</router-link> 
+		      </li>
+		      
+		      <li class="nav-item" v-if="user&&user.role==='UNIVERSITY'">
+	 	      	<router-link class="nav-link" to="/faculties">{{$t('listFaculty')}}</router-link> 
+		      </li>
+		      
+		      <li class="nav-item">
+	 	      	<router-link class="nav-link" to="/programs">{{$t('listProgram')}}</router-link> 
+		      </li>
 	
 		      
 		    </ul>
