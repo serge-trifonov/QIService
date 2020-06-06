@@ -32,9 +32,16 @@ public class ApplicationController {
     public Application create(@RequestBody Application application) {
     	application.setResponse(Response.PENDING);
     	Application savedApplication=applicationRepository.save(application);
+    	
     	String message="***Important***\n has a new application";
     	mailSender.send("remontkkm@aol.fr", "New Application", message);
-        return applicationRepository.save(application);
+    	
+    	
+    	System.out.println("app.getProg"+savedApplication.getProgram());
+    	System.out.println("app.getStud"+savedApplication.getStudent());
+    	System.out.println("app.getMess"+savedApplication.getMessage());
+    	
+        return savedApplication;
     }
     
     @PutMapping("{id}")

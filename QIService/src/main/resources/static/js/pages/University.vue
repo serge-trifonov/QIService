@@ -1,32 +1,33 @@
 <template>
-   <div>
-    	<form style="width: 90%;" class="mx-auto">
-    	
-		<div class="form-group row">
-			<label for="universityName" class="col-sm-2 col-form-label">{{$t('universityNameEnter')}}</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" v-model="university.name" required>
+<div class="container">
+	<div class="row">
+		<div class="col-sm">
+			<div class="card">
+				<div class="card-body text-center">
+					<h5 class="card-title">University registration</h5>
+					    <form action="">
+					    
+							<div class="form-group row">
+								<label for="universityName" class="col-sm-2 col-form-label">{{$t('universityNameEnter')}}</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" v-model="university.name" required>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="status" class="col-sm-1 col-form-label"></label>
+								<Address :parentAddress="university.address"/>	
+							</div>
+							<div class="form group">
+								<button type="submit" class="btn btn-success" @click.stop="submit">{{$t('valid')}}</button>
+							</div>	
+						</form>
+					</div>
+				</div>
 			</div>
-		</div>
-		
-		<div class="form-group row">
-			<label for="status" class="col-sm-2 col-form-label">{{$t('address')}}</label>
-			
-			<div class="col-sm-10">
-				<Address :parentAddress="university.address"/>	
-				
-			</div>
-		</div>
-		
-		<div class="form-group row">
-			<div class="col-sm-10">
-				<button type="submit" class="btn btn-primary" @click.stop="submit">{{$t('valid')}}</button>
-			</div>
-		</div>
-
-	</form>
-   </div>
-     
+		</div>			    
+	</div>			    
+</div>			    
 </template>
 
 <script>
