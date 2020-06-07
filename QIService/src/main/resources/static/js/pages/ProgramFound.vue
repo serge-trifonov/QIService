@@ -2,6 +2,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm">
+	
 			<div v-if="!success" class="card mx-auto shadow p-3 mb-5 bg-dark rounded text-light">
 			
 				<div class="alert alert-success alert-dismissible fade show" role="alert"> {{$t('alert')}}
@@ -65,31 +66,16 @@
 				</div>		
 			</div>
 			
-				<div v-else class="card text-center">
-				 	<div class="card-body">
-				 		<h3 class="card-title">SUCCESS!!!</h3>
-				 		<h5 class="card-title">CONGRATULATIONS YOUR MESSAGE HAS BEEN SEND</h5>
-							
-							<p class="card-text">check status of your application regulary</p>
-				 	
-						<p>check your application right now->
-							 
-							<router-link class="nav-link" to="/mainPage">
-								<button  class="btn btn-success">PUSH</button>
-							</router-link>	
+				<div v-else class="card">
+				 		<h3 class="card-title text-center">SUCCESS!!!</h3>
+				 		<h5 class="card-subtitle text-center">CONGRATULATIONS YOUR MESSAGE HAS BEEN SEND</h5>
+						
+						<p class="card-text"> 						 
+							<router-link class="nav-link" to="/progSend"> check your application</router-link>	
+							<router-link class="nav-link" to="/mainPage"> main page</router-link>	
+							<router-link class="nav-link" to="/search"> continue the search</router-link>	
+									
 						</p> 	
-						
-						<p>return to the main page->
-							<button type="submit" class="btn btn-success" @click.stop="submit">PUSH</button> 	
-						</p> 
-						
-						<p>search another the programs->
-							<button type="submit" class="btn btn-success" @click.stop="submit">PUSH</button> 	
-						</p> 
-						
-						<p>go out the program->
-							<button type="submit" class="btn btn-success" @click.stop="submit">PUSH</button> 	
-						</p> 
 							
 					</div>	
 				</div>	 
@@ -136,7 +122,7 @@
         		let result=this.$http.post("/application/",this.application);
         		if(result)this.success=true;
         		
-        		this.$router.push({ path: 'mainPage'});
+        		
         	}
         },
        async created(){
