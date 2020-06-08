@@ -33,13 +33,13 @@ const routes = [
     { path: '/address', component: Address },
     { path: '/search', component: Search },
     { path: '/program/:id', component: ProgramFound},
-    { path: '/programCandidat/', component: ProgramCandidat},
+    { path: '/programCandidat', component: ProgramCandidat},
     { path: '/candidats/:id', component: Candidats},
-    { path: '/progSend/', component: ProgSend},
-    { path: '/universities/', component: Universities},
-    { path: '/faculties/', component: Faculties},
+    { path: '/progSend', component: ProgSend},
+    { path: '/universities', component: Universities},
+    { path: '/faculties', component: Faculties},
     
-    { path: '/mainPage/', component: MainPage}
+    { path: '/', component: MainPage}
     
    
     

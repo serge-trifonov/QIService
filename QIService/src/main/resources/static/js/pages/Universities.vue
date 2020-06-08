@@ -7,6 +7,7 @@
 		    
 		      <th scope="col">Name</th>
 		      <th scope="col">Faculties</th>
+		      <th scope="col">Action</th>
 		      
 		    </tr>
 		  </thead>
@@ -16,15 +17,23 @@
 		  	
 		    	<td>{{university.name}}</td>
 		     	<td> 
-			     	<router-link class="btn btn-outline-dark mb-2" 
+			     	<router-link class="btn btn-outline-dark mb-2 text-white" 
 			     	
 				     	:to="{path:'/faculties',query:{faculties: facById[university.id]}}" 
 				     	
-				     	v-if="facById[university.id]">see {{getFaculties(university.id).length}} faculties
+				     	v-if="facById[university.id]">
+				     	<img src="/images/eye2.png" alt="edit" height="25"></a>
+				     	
+				     	 {{getFaculties(university.id).length}}
 			     	
 			     	</router-link>
 			     	
 			     	<span v-else >no fac</span>
+		     	
+		     	</td>
+		     	<td>
+		     		<img src="/images/delete2.png" alt="edit" height="25"></a>
+		     		<img src="/images/edit2.png" alt="edit" height="25"></a>
 		     	
 		     	</td>
 		     	

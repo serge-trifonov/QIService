@@ -1,20 +1,29 @@
 <template>
-   <div>
-    	<form style="width: 90%;" class="mx-auto">
-    	
-		<div class="form-group row">
-			<label for="facultyName" class="col-sm-2 col-form-label">{{$t('facultyNameEnter')}}</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" v-model="faculty.name" required>
+   <div class="container">
+   		<div class="row">
+   			<div class="col-sm">
+   				<div class="card">
+   					<div class="card-body">
+   					<h5 class="card-title text-center ">Faculty registration</h5>
+					    	<form action="">
+					    	
+								<div class="form-group row">
+									<label for="facultyName" class="col-sm-2 col-form-label">{{$t('facultyNameEnter')}}</label>
+										<div class="col-sm-10">
+											<input type="text" class="form-control" v-model="faculty.name" required>
+										</div>
+								</div>
+												
+											
+								<div  class="form-group text-center">			
+									<button type="submit" class="btn btn-success" @click.stop="submit" >{{$t('valid')}}</button>
+												
+								</div>			
+							</form>
+					</div>
+				</div>
 			</div>
 		</div>
-			
-		<div class="form-group row">
-			<div class="col-sm-10">
-				<button type="submit" class="btn btn-primary" @click.stop="submit" >{{$t('valid')}}</button>
-			</div>
-		</div>
-		</form>
    </div>
 </template>
 

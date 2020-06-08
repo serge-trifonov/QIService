@@ -1,83 +1,75 @@
 <template>
 <div>
-
-
-	<div  style="margin-top: 10px;" >
-	<img src="/images/banner.jpg" class="img-fluid max-width: 100%;" alt="banner image">
+	<div  style="margin: 5px;" >
+		<img src="/images/banner6.jpg" class="img-fluid" alt="banner image">
 	</div>
-
-
-
-
 
 	<div v-if="user&&user.currentLevel" class="container">
 	
-		<div class="row text-center border border-dark" >
-			<div class="col-sm border border-dark m-2">
-			
-				<div class="card" >
+		<div class="row  border border-dark" >
+			<div class="col-sm-3 border border-dark m-2">
+				
+				<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
+				 <div class="card-header">PROFILE</div>
+					
 					<div class="card-body">
 					
 						<img class="card-img-top" src="/images/image1.jpg" alt="card img">
-						<h5 class="card-title">Profile</h5>
-						<h6 class="card-subtitle">Create edit delete</h6>
-						<p class="card-text">Create profile</p>
+						<h5 class="card-title"></h5>
+						<h6 class="card-subtitle"></h6>
+						<p class="card-text">Edit delete</p>
 						
-						
-						<button type="button" class="btn btn-success">
-							CREATE
-						</button>	
+						<router-link class="nav-link" to="/student">
+							<button type="button" class="btn btn-success  btn-block">EDIT</button>
+						</router-link>	
 					</div>	
 				</div>
 			</div>
 				
-			<div class="col-sm border border-dark m-2">
-				<div class="card">
+			<div v-if="applications&&applications.length>0 "class="col-sm-3 border border-dark m-2">
+			
+				<div class="card text-center text-white bg-secondary" style="max-width: 15rem;">
+				 <div class="card-header">APPLICATIONS</div>
 					<div class="card-body">
 					
 						<img class="card-img-top" src="/images/image1.jpg" alt="card img">
-						<h5 class="card-title">Check</h5>
-						<h6 class="card-subtitle">Check your applications</h6>
+						<h5 class="card-title"></h5>
+						<h6 class="card-subtitle"></h6>
 						
-						<p v-if="applications&&applications.length > 0 "class="card-text">
-							You have {{applications.length}} applications</p>
-						<p v-else> You don't have 0 application. For find use search</p>
+						<p class="card-text">{{applications.length}} applications</p>
+								
+						<router-link class="nav-link" to="/progSend">
+							<button type="button" class="btn btn-success btn-block">CHECK </button>
+						</router-link>
 						
-						<button type="button" v-if="applications&&applications.length > 0" class="btn btn-primary">
-							CHECK  APP
-						</button>
-						
-						<button type="button" v-else class="btn btn-success">
-							 SERCH PROGR
-						</button>
 					</div>
 				</div>
 			</div>
 				
-			<div class="col-sm border border-dark m-2">
-				<div class="card text">
+			<div class="col-sm-3 border border-dark m-2">
+				<div class="card text text-center bg-secondary text-white"style="max-width: 15rem;">
+				 <div class="card-header">SEARCH</div>
 					<div class="card-body">
 					
 						<img class="card-img-top" src="/images/image1.jpg" alt="card img">
-						<h5 class="card-title">Search</h5>
-						<h6 class="card-subtitle">Search program</h6>
-						<p class="card-text">Find your program</p>
+						<h5 class="card-title"></h5>
+						<h6 class="card-subtitle"></h6>
+						<p class="card-text">Find  program</p>
 						
-						<button type="button" class="btn btn-success">
-							SEARCH
-						</button>
+						
+						<router-link class="nav-link" to="/search">
+							<button type="button" class="btn btn-success btn-block">SEARCH</button>
+						</router-link>
+						
 					</div>	
 				</div>
 			</div>
 			
 		</div>		
 	</div>	
-	
-	
-						<div v-else>
-							<div class="container">
-								
-							</div>
+						<div v-else class="card">
+							<h3 class="card-title text-center">YOU SHOUND CREATE PROFILE</h3>
+							<p class="card-text"> <router-link class="nav-link" to="/student">create</router-link></p>	
 						</div>	
 </div> 	
 </template>

@@ -10,27 +10,28 @@ export const i18n = new VueI18n({
 		en : {
 			addUniversity:'Add a university',
 			users:'Users',
-			mainPage:'Main page',
-			addFaculty:'Add a new faculty',
-			addProgram:'Add a new program',
+			mainPage:'MAIN PAGE',
+			addFaculty:'ADD FACULTY',
+			addProgram:'ADD PROGRAM',
 			
 			candidats:'Candidates',
 			valid:'VALIDATE',
 			
-			facultyNameEnter:'Enter the new name of the faculty',
+			facultyNameEnter:'Faculty\'s name',
 			universityNameEnter:'Enter the name of the university',
+			cityNameEnter:'Entrer the  city',
+			programNameEnter:'Program\'s name',
 			
-			facultyNameChoice:'Choose the  name of the faculty',
+			facultyNameChoice:'Faculty\'s name',
 			programNameChoice:'Choose the  name of the program',
 			universityNameChoice:'Choose the  name of the university',
 			countryNameChoice:'Choose the country',
 			
-			cityNameEnter:'Entrer the  city',
-			programNameEnter:'Enter the name of the program',
+			
 			
 			duration:'Choose the duration',
 			choice:'Choice...',
-			levelChoice:'Choose the level',
+			
 			prog:'Program',
 			university:'University',
 			universityAddress:'University\'s address',
@@ -83,27 +84,29 @@ export const i18n = new VueI18n({
 		fr : {
 			addUniversity:'Ajouter une université',
 			user:'Utilisateurs',
-			mainPage:'Première page',
-			addFaculty:'Ajouter une nouvelle faculté',
-			addProgram:'Ajouter une nouvelle programme',
+			mainPage:'PREMIERE PAGE',
+			addFaculty:'AJOUTER FACULTE',
+			addProgram:'AJOUTER PROGRAMME',
 			
 			candidats:'Candidats',
 			valid:'VALIDER',
 			
-			facultyNameEnter:'Introduire le nouveau nom de la faculté',
+			facultyNameEnter:'Nom de la faculté',
 			universityNameEnter:'Introduire le nom de l\'université',
+			cityNameEnter:'Introduire la ville',
+			programNameEnter:'Nom du programme',
 			
-			facultyNameChoice:'Choisissez le nom de la faculté',
+			
+			facultyNameChoice:'Nom de la faculté',
 			programNameChoice:'Choisissez le nom du program',
 			universityNameChoice:'Choisissez le nom de l\'université',
 			countryNameChoice:'Choisissez le pays',
 			
-			cityNameEnter:'Introduire la ville',
-			programNameEnter:'Introduire le nom du programme',
+			
 			
 			duration:'Choisissez la duration',
 			choice:'Choix...',
-			levelChoice:'Choisissez le niveau',
+			
 			prog:'Programme',
 			university:'Université',
 			universityAddress:'Adresse de l\'université',
