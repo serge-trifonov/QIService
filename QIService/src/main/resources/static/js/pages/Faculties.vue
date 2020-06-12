@@ -14,14 +14,14 @@
 		  </thead>
 		  
 		  <tbody>
-		  	<tr v-for="fac in faculties":key="fac.name">
+		  	<tr v-for="faculty in faculties":key="faculty.name">
 		  	
-		    	<td>{{fac.name}}</td>
+		    	<td>{{faculty.name}}</td>
 		    	<td><router-link class="btn btn-outline-dark mb-2" 
 			     	
 				     	:to="{path:'/programs',query:{programs: progById[faculty.id]}}" 
 				     	
-				     	v-if="progById[faculty.id]">see{{getPrograms(faculty.id).length}} programs
+				     	v-if="progById[faculty.id]"> see{{progById[faculty.id].length}} programs
 			     	
 			     	</router-link>
 			     	
@@ -43,7 +43,9 @@
      
         data() {       
             return {    
-                 faculties:""  	         
+                 faculties:"",
+                 progById:""  
+                 	         
             }
         },
         
@@ -52,7 +54,15 @@
 	   		     
         async created(){
         	this.faculties = this.$route.query.faculties;
+        	console.log(this.faculties);
+        	
+        	
+        	var result= await this.$http.get("/program/progsByFacultyId");
+        	this.progById = result.data;
+        	
+        	
         }
+        
     }
 </script>
 

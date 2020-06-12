@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cnam.project.QIService.entities.Application;
+import cnam.project.QIService.entities.Program;
 import cnam.project.QIService.entities.Response;
 import cnam.project.QIService.entities.User;
 import cnam.project.QIService.mailservice.MailSender;
@@ -37,6 +38,7 @@ public class ApplicationController {
 		this.programRepository = programRepository;	
     }
     
+    
     @PostMapping
     public Application create(@RequestBody Application application) {
     	application.setResponse(Response.PENDING);
@@ -44,18 +46,37 @@ public class ApplicationController {
     	
     	String messageName=studentRepository.getOne(savedApplication.getStudId()).getFamilyName()+" "+
     			studentRepository.getOne(savedApplication.getStudId()).getGivenName();	
-    	String messageProg=programRepository.getOne(savedApplication.getProgramId()).getName();
+    	
+    	Program program=programRepository.getOne(savedApplication.getProgramId());
+    	
+    	String messageProg=program.getName();
+    	
+    	
 	
     	String message="***Important***\n have a new application to "+messageProg+" from: "+messageName;
     	
-    	mailSender.send("domarco@bk.ru", "New Application", message);
+    	String email=program.getUserUniv().getEmail();
+    	
+    	mailSender.send(email, "New Application", message);
     	
         return savedApplication;
     }
     
     @PutMapping("{id}")
     public Application update(@PathVariable("id")Application appFromDB,@RequestBody Application app ) {
-    BeanUtils.copyProperties(app, appFromDB, "id");
+    	BeanUtils.copyProperties(app, appFromDB, "id");
+    	
+    	
+    	
+    	String messageProg=programRepository.getOne(appFromDB.getProgramId()).getName();
+    	String messageUpdate="***Important****\n Your application's to "+messageProg +" status has been changed to "+
+    			app.getResponse();
+    	
+    	String email=studentRepository.getOne(appFromDB.getStudId()).getEmail();
+    	
+    	if(appFromDB.getResponse()!=app.getResponse()) {
+    		mailSender.send(email, "Changed Application status", messageUpdate);
+    	}
 
     return applicationRepository.save(appFromDB);
 

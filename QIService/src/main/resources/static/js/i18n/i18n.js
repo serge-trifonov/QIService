@@ -69,9 +69,11 @@ export const i18n = new VueI18n({
 			listFaculty:'Faculties',
 			listProgramCandidat:'Programs-candidates',
 			
-			progSend:'Check the applications send',
+			progSend:'APPLICATIONS',
+			
 			alert:'Hello our future student.Program for you is below.You can send message to\
 					the responsable of the program! You\'ll get the answer via email! Good luck!',
+					
 			descriptionProg:'Description of the program',
 			message:'Write your message here',
 			send:'SEND',
@@ -145,7 +147,7 @@ export const i18n = new VueI18n({
 			listProgram:'Programmes',
 			listProgramCandidat:'Programmes-candidats',
 			
-			progSend:'Verifier les demandes envoyées',
+			progSend:'POSTULATIONS',
 			alert:'Salut notre nouveau student.La programme que t\'as choici est là-bas.\
 					Tu peux écrire ton message en envoyer le demande à le responsable! Tu \
 					receverras la reponse par email! Bonne chanche!',

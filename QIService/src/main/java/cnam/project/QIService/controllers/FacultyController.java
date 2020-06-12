@@ -26,9 +26,6 @@ import cnam.project.QIService.entities.University;
 import cnam.project.QIService.repository.FacultyRepository;
 import cnam.project.QIService.repository.UniversityRepository;
 
-
-
-
 @RestController
 @RequestMapping("faculty")
 public class FacultyController {

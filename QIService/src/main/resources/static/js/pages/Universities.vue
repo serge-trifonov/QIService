@@ -22,6 +22,7 @@
 				     	:to="{path:'/faculties',query:{faculties: facById[university.id]}}" 
 				     	
 				     	v-if="facById[university.id]">
+				     	
 				     	<img src="/images/eye2.png" alt="edit" height="25"></a>
 				     	
 				     	 {{getFaculties(university.id).length}}
@@ -70,6 +71,8 @@
         	
         	const fac = await this.$http.get("/faculty/map");
         	this.facById = fac.data;	
+        	
+        	console.log(this.facById);
         }
     }
 </script>

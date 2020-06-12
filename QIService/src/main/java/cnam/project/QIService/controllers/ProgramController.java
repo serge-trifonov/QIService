@@ -1,5 +1,10 @@
 package cnam.project.QIService.controllers;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -42,4 +47,24 @@ public class ProgramController {
     public void delete(@PathVariable("id") Program program) {
     	programRepository.delete(program);
     }
+    
+    @GetMapping("/progsByFacultyId")
+	public Map<Long, List<Program>> getFacultyByUniversityId() {
+
+		Map<Long, List<Program>> map = new HashMap<>();
+		for (Program prog : programRepository.findAll()) {
+
+			if (map.containsKey(prog.getFacultyId())) {
+				map.get(prog.getFacultyId()).add(prog);
+			} else {
+				ArrayList<Program> listProg = new ArrayList<>();
+				listProg.add(prog);
+
+				map.put(prog.getFacultyId(), listProg);
+			}
+		}
+		return map;
+	}
+    
+    
 }
