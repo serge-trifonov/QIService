@@ -26,20 +26,26 @@
 		         <span class="sr-only">(current)</span></a>
 		      </li>
 		      
+
 		      <li class="nav-item">
-		     
 	 	       <router-link class="nav-link" to="/">
 	 	       		<img src="/images/home2.png" alt="edit" height="25"></a>
 	 	       </router-link> 
+		      </li>
+		      
+		      
+		      
+		      
+		      <li class="nav-item" v-if="user&&user.role==='ADMIN'" >
+	 	       <router-link class="nav-link" to="/users">{{$t('users')}}</router-link> 
 		      </li>
 		      
 		      <li class="nav-item" v-if="user&&user.role==='ADMIN'">
 	 	       <router-link class="nav-link" to="/university">{{$t('addUniversity')}}</router-link> 
 		      </li>
 		      
-		      <li class="nav-item">
-	 	       <router-link class="nav-link" to="/users">{{$t('users')}}</router-link> 
-		      </li>
+		      
+		      
 		      
 		      
 		      
@@ -56,10 +62,16 @@
 		      </li>
 		      
 		      
+		      <li class="nav-item" v-if="user&&user.role==='UNIVERSITY'">
+	 	      	<router-link class="nav-link" to="/faculties">{{$t('listFaculty')}}</router-link> 
+		      </li>
+		      
+		      
+		      
 		      
 		      
 		      <li class="nav-item" v-if="user&&user.role==='STUDENT'">
-	 	       <router-link class="nav-link" to="/student">{{$t('register')}}</router-link> 
+	 	       <router-link class="nav-link" to="/student">PROFILE</router-link> 
 		      </li>
 	
 		      <li class="nav-item" v-if="user&&user.role==='STUDENT'">
@@ -70,21 +82,17 @@
 	 	       	<router-link class="nav-link" to="/progSend">{{$t('progSend')}}</router-link> 
 		      </li>
 		      
-		      
-		      
-		      
-		      
-		      <li class="nav-item">
+
+		      <li class="nav-item" v-if="user&&user.role!='UNIVERSITY'">
 	 	      	<router-link class="nav-link" to="/universities">{{$t('listUniversity')}}</router-link> 
 		      </li>
 		      
-		      <li class="nav-item" v-if="user&&user.role==='UNIVERSITY'">
-	 	      	<router-link class="nav-link" to="/faculties">{{$t('listFaculty')}}</router-link> 
-		      </li>
 		      
-		      <li class="nav-item">
-	 	      	<router-link class="nav-link" to="/programs">{{$t('listProgram')}}</router-link> 
-		      </li>
+		      
+		      
+		      
+		      
+		      
 	
 		      
 		    </ul>

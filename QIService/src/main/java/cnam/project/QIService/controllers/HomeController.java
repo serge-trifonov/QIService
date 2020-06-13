@@ -35,7 +35,6 @@ public class HomeController {
 	@Autowired
 	private ApplicationRepository applicationRepository;
 	
-	
 	@GetMapping   
     public String main(Model model, @AuthenticationPrincipal User user) {
     	
@@ -66,19 +65,15 @@ public class HomeController {
 	       Map<Long,List<Application>>groupByProgram=listApp.stream().collect(Collectors.groupingBy(Application::getProgramId));
 	       
 	       Map<Long,Map<String,Application>>reponseByStudent=new HashMap<>();
-	       
-	       
-	    		   
+	       		   
 	    	for (Map.Entry<Long, List<Application>> pair : groupByProgram.entrySet()) {
 	    		reponseByStudent.put(pair.getKey(),pair.getValue().stream().collect( Collectors.toMap(Application::getStudId,
 	            		Function.identity())));
 	    		
 	    	}
-	       
-	       
+	             
 	        data.put("reponseByStud",reponseByStudent);
-	        
-	        
+	          
 	        for(Application app: listApp){
 	        	if(mapProgStud.containsKey(app.getProgramId())){
 	        		mapProgStud.get(app.getProgramId()).add(app.getStudent());
@@ -88,17 +83,12 @@ public class HomeController {
 	        		listStud.add(app.getStudent());
 	        		
 	        		mapProgStud.put(app.getProgramId(), listStud);
-	        	}
-	        	
-	        }
-   
-        }
-       
+	        	}	        	
+	        }   
+        }    
         model.addAttribute("userInfo", data);
         model.addAttribute("isDevMode", true);
-       
-        
+             
         return "index"; 
-    }
-    
+    }    
 }

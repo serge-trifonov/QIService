@@ -8,9 +8,11 @@ export const i18n = new VueI18n({
 	fallbackLocale : 'fr',
 	messages : {
 		en : {
-			addUniversity:'Add a university',
+			
 			users:'Users',
 			mainPage:'MAIN PAGE',
+			
+			addUniversity:'ADD UNIVERSITY',
 			addFaculty:'ADD FACULTY',
 			addProgram:'ADD PROGRAM',
 			
@@ -38,7 +40,7 @@ export const i18n = new VueI18n({
 			duration:'Duration',
 			level:'Level',
 			status:'Status',
-			searche:'SEARCHE',
+			//searche:'SEARCHE',
 			newSearche:'NEW SEARCHE',
 			responsable:'Responsable',
 			contact:'Contact',
@@ -56,18 +58,18 @@ export const i18n = new VueI18n({
 			accept:'ACCEPT',
 			refuse:'REFUSE',
 			decision:'Decision...',
-			register:'Sign up',
+			
 			number:'Number',
 			street:'Street',
 			zipCode:'Zip code',
 			city:'City',
 			country:'Country',
-			search:'Search',
+			search:'SEARCH',
 			
 			listProgram:'Programs',
-			listUniversity:'Universities',
-			listFaculty:'Faculties',
-			listProgramCandidat:'Programs-candidates',
+			listUniversity:'UNIVERSITIES',
+			listFaculty:'FACULTIES',
+			listProgramCandidat:'PROGRAMS-CANDIDATES',
 			
 			progSend:'APPLICATIONS',
 			
@@ -78,15 +80,17 @@ export const i18n = new VueI18n({
 			message:'Write your message here',
 			send:'SEND',
 			back:'RETURN',
-			users:'Users',
+			users:'USERS',
 			user:'User'
 			
 			
 		},
 		fr : {
-			addUniversity:'Ajouter une université',
+			
 			user:'Utilisateurs',
 			mainPage:'PREMIERE PAGE',
+			
+			addUniversity:'AJOUTER UNIVERSITE',
 			addFaculty:'AJOUTER FACULTE',
 			addProgram:'AJOUTER PROGRAMME',
 			
@@ -115,7 +119,7 @@ export const i18n = new VueI18n({
 			duration:'Durée',
 			level:'Niveau',
 			status:'Statut',
-			searche:'RECHERCHE',
+			//searche:'RECHERCHE',
 			newSearche:'NOUVEAU RECHERCHE',
 			responsable:'Responsible',
 			contact:'Contact',
@@ -133,19 +137,19 @@ export const i18n = new VueI18n({
 			accept:'ACCEPTER',
 			refuse:'REFUSER',
 			decision:'Décision...',
-			register:'S\'enregistrer',
+			
 			number:'Numéro',
 			street:'Rue',
 			zipCode:'Code postale',
 			city:'Ville',
 			country:'Pays',
-			search:'Rechercher',
+			search:'RECHERSHE',
 			
 			
-			listUniversity:'Universités',
-			listFaculty:'Facultés',
+			listUniversity:'UNIVERSITES',
+			listFaculty:'FACULTES',
 			listProgram:'Programmes',
-			listProgramCandidat:'Programmes-candidats',
+			listProgramCandidat:'PROGRAMMES-CANDITATS',
 			
 			progSend:'POSTULATIONS',
 			alert:'Salut notre nouveau student.La programme que t\'as choici est là-bas.\
@@ -155,7 +159,7 @@ export const i18n = new VueI18n({
 			message:'Ecrire ton message ici',
 			send:'ENVOYER',
 			back:'REVENIR',
-			users:'Utilisateurs',
+			users:'UTILISATEURS',
 			user:'Utilisateur',
 		}
 		
