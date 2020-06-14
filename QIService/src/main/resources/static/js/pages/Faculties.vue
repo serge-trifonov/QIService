@@ -9,6 +9,7 @@
 		    
 		      <th scope="col">Name</th>
 		      <th scope="col">Programs</th>
+		      <th scope="col">Action</th>
 		       
 		    </tr>
 		  </thead>
@@ -25,7 +26,16 @@
 			     	
 			     	</router-link>
 			     	
-			     	<span v-else >no prog</span></td>
+			     	<span v-else >no prog</span>
+			     </td>
+			     
+			     <td>
+		     		<a href="#" @click="remove(faculty)">
+		     		<img src="/images/delete2.png"  alt="edit" height="25"></a>
+		     		
+		     		<a href="#" @click="edit(faculty)">
+					<img src="/images/edit2.png" alt="edit" height="25"></a>
+		     	</td>
 		     	
 		    </tr>
 		  </tbody>
@@ -51,7 +61,25 @@
         },
         
         methods: {	
-	   		},
+        
+        	async remove(faculty){
+        		
+        		await this.$http.delete("/faculty/"+faculty.id);
+        		
+        		this.faculties=await this.$http.get("/faculty/"+this.user.university.id);
+        		this.faculties=this.faculties.data;
+        		
+        	
+        	},
+        	async edit(faculty){
+        	
+        		
+        		this.$router.push({ path: '/faculty', query: { faculty }});
+        	}
+	
+        	
+        	
+	   	},
 	   		     
         async created(){
         	
@@ -63,18 +91,14 @@
         		this.faculties=await this.$http.get("/faculty/"+this.user.university.id);
         		this.faculties=this.faculties.data;
         	}
-        	console.log(this.faculties);
+        	
         	
         	
         	var result= await this.$http.get("/program/progsByFacultyId");
-        	this.progById = result.data;
-        	
-        	
-        	
-        	
-        	
-        	
-        }
+        	this.progById = result.data;	
+        },
+        
+       
         
     }
 </script>

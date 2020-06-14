@@ -20,7 +20,8 @@ export default new Vuex.Store({
 		programs: userInfo.userProgram,
 		studByProg: userInfo.mapProgStud,
 		reponseByStud: userInfo.reponseByStud,
-		applications: userInfo.applications
+		applications: userInfo.applications,
+		universities:userInfo.universities
 				
 	},
 	mutations:{
@@ -28,30 +29,47 @@ export default new Vuex.Store({
 			state.allprograms = [...state.allprograms,prog];
 			state.programs = [...state.programs,prog]
 			
-			console.log("mutations of ",state.programs);
 		},
-		
+		addUniversityMutation(state,university){	
+			state.universities = [...state.universities,university];
+		},
 			
 		updateProgMutation(state, prog) {
 			let updateIndex = state.allprograms.findIndex(item => item.id === prog.id);
-
 			state.allprograms = [...state.allprograms.slice(0, updateIndex),prog,...state.allprograms.slice(updateIndex + 1)];
 			updateIndex = state.programs.findIndex(item => item.id === prog.id)
 			state.programs = [...state.programs.slice(0, updateIndex),prog,...state.programs.slice(updateIndex + 1)]
 		},
+		
+		updateUniversityMutation(state, university) {
 			
-		removeProgMutation(state, domain) {
+			const updateIndex = state.universities.findIndex(item => item.id === university.id)
+			state.universities = [...state.universities.slice(0, updateIndex),university,
+				...state.universities.slice(updateIndex + 1)]
+			},
+			
+		removeProgMutation(state, prog) {
 			let deletionIndex = state.allprograms.findIndex(item => item.id === prog.id);
 
 			if (deletionIndex > -1) {
 				state.allprograms = [...state.allprograms.slice(0, deletionIndex),...state.allprograms.slice(deletionIndex + 1)];
-				deletionIndex = state.allprograms.findIndex(item => item.id === prog.id)
+				
 			}
+			deletionIndex = state.programs.findIndex(item => item.id === prog.id)
+			
+			if (deletionIndex > -1) {
+				state.programs = [...state.programs.slice(0, deletionIndex),...state.programs.slice(deletionIndex + 1)]
+			}
+		},
+		
+		removeUniversityMutation(state, university) {
+			let deletionIndex = state.universities.findIndex(item => item.id === university.id);
 
 			if (deletionIndex > -1) {
-				state.allprograms = [...state.allprograms.slice(0, deletionIndex),...state.allprograms.slice(deletionIndex + 1)]
+				state.universities = [...state.universities.slice(0, deletionIndex),...state.universities.slice(deletionIndex + 1)]
 			}
 		}
+		
 	},
 		
     actions: {
@@ -68,8 +86,11 @@ export default new Vuex.Store({
         },
         
         async addUniversityAction({commit}, university) {
+        	console.log("store js hello addUniversityAction");
+        	
 	    	const result = await universityApi.add(university)
 	    	const data = await result.json()
+	    	commit('addUniversityMutation',data)
 	    },
 	    
 	    async updateUserAction({commit}, user) {
@@ -79,19 +100,18 @@ export default new Vuex.Store({
 	    
 	    async updateStudentAction({commit}, student) {
 	    	const result = await studentApi.update(student)
-	    	const data = await result.json()
-	    	
+	    	const data = await result.json()	
 	    },
 	    async updateUniversityAction({commit}, university) {
+	    	console.log("store js hello updateUniversityAction");
 	    	const result = await universityApi.update(university)
-	    	const data = await result.json()
-	    	
+	    	const data = await result.json() 
+	    	commit('updateUniversityMutation',data)
 	    },
 	    
 	    async updateUserUnivAction({commit}, user) {
 	    	const result = await userUnivApi.update(user)
-	    	const data = await result.json()
-	    	
+	    	const data = await result.json()   	
 	    },
 	    
 	    async updateAddressAction({commit}, address) {
@@ -103,10 +123,19 @@ export default new Vuex.Store({
 	    	const result = await facultyApi.add(faculty)
 	    	const data = await result.json()
 	    },
+	    
+	   
     
 	    async updateAppReponse({commit}, application) {
 	    	const result = await applicationApi.update(application)
 	    	const data = await result.json()
-	    }   
+	    },
+	    
+	    async removeUniversityAction({commit},university){
+	    	const result = await universityApi.remove(university.id)
+	    	if (result.ok) {
+	    		commit('removeUniversityMutation', university)
+	    	}
+	    }
     }
 })

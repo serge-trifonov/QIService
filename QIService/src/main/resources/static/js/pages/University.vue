@@ -4,7 +4,8 @@
 		<div class="col-sm">
 			<div class="card">
 				<div class="card-body text-center">
-					<h5 class="card-title">University registration</h5>
+					<h5 v-if="!edit" class="card-title">University registration</h5>
+					<h5 v-else class="card-title">University modification</h5>
 					    <form action="">
 					    
 							<div class="form-group row">
@@ -19,7 +20,8 @@
 								<Address :parentAddress="university.address"/>	
 							</div>
 							<div class="form group">
-								<button type="submit" class="btn btn-success" @click.stop="submit">{{$t('valid')}}</button>
+								<button v-if="!edit" type="submit" class="btn btn-success" @click.stop="submit">{{$t('valid')}}</button>
+								<button v-else type="submit" class="btn btn-success" @click.stop="editUniversity">EDIT</button>
 							</div>	
 						</form>
 					</div>
@@ -37,8 +39,9 @@
     	components:{Address},
         data() {
             return {
+            	edit: false,
+            	
                 university:{
-                
                		name: "",
 					address:{ 
 						number:"",
@@ -51,14 +54,30 @@
             }
         },
         methods: {
-	    ...mapActions(['addUniversityAction']),
+	    ...mapActions(['addUniversityAction','updateUniversityAction']),
 	    
-            submit(university) {
+         async   submit(university) {
             
             	event.preventDefault();
-            	this.addUniversityAction(this.university);
-            	this.$router.push({ path: 'universities'});
+            	await this.addUniversityAction(this.university);
+            	this.$router.push({ path: '/universities'});
+            },
+            
+         async   editUniversity(university) {
+            
+            	event.preventDefault();
+            	
+            	await this.updateUniversityAction(this.university);
+            	
+            	this.$router.push({ path: '/universities'});
             }
+           
+        },
+        async created(){
+        	if( this.$route.query.university) {
+        		this.university = this.$route.query.university; 
+        		this.edit = true;
+        	}
         }
     }
 </script>

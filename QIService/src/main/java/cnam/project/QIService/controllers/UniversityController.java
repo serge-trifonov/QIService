@@ -5,11 +5,13 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,7 +49,14 @@ public class UniversityController {
     public void delete(@PathVariable("id") University university) {
     	universityRepository.delete(university);
     }
-    
+	
+	@PutMapping("{id}")
+	public University update(@PathVariable("id") University universityFromDB, @RequestBody University university) {
+		
+		BeanUtils.copyProperties(university, universityFromDB, "id");
+		return universityRepository.save(universityFromDB);
+	}
+	
     @GetMapping
     public List<University>list(){
     	return universityRepository.findAll();
@@ -55,8 +64,7 @@ public class UniversityController {
     
     @GetMapping("names")
     public List<String>getUniversityNames(){
-    	return entityManager.createQuery("SELECT  name  FROM University").getResultList();
-    	
+    	return entityManager.createQuery("SELECT  name  FROM University").getResultList();  	
     }
 }
 

@@ -5,9 +5,8 @@
 		<img src="/images/banner6.jpg" class="img-fluid" alt="banner image">
 	</div>
 	
-	<div v-if="user&&user.currentLevel" class="row  border border-dark" >
-	
-		<div class="col-sm border border-dark m-2">
+	<div class="row border border-dark m-2">
+		<div v-if="user&&user.currentLevel" class="col-sm border border-dark m-2">
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 			 	
 				<div class="card-body">
@@ -21,7 +20,7 @@
 			</div>
 		</div>
 				
-		<div v-if="applications&&applications.length>0 "class="col-sm border border-dark m-2">
+		<div v-if="user&&user.currentLevel&&applications&&applications.length>0 "class="col-sm border border-dark m-2">
 			<div class="card text-center text-white bg-secondary" style="max-width: 15rem;">
 			 	
 				<div class="card-body">				
@@ -36,9 +35,9 @@
 			</div>
 		</div>
 				
-		<div class="col-sm border border-dark m-2">
+		<div v-if="user&&user.currentLevel" class="col-sm border border-dark m-2">
 			<div class="card text text-center bg-secondary text-white"style="max-width: 15rem;">
-				
+
 				<div class="card-body">				
 					<img class="card-img-top" src="/images/search.jpeg" height="140" alt="search img">
 					<h5 class="card-title">SEARCH</h5>
@@ -49,39 +48,22 @@
 					</router-link>	
 				</div>	
 			</div>
-		</div>
-		
-		<div  class="col-sm border border-dark m-2">
-			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
-				
-				<div class="card-body">
-					<img class="card-img-top" src="/images/university2.jpg" height="140" alt="university img">
-					<h5 class="card-title">UNIVERSITIES</h5>
-							
-					<p class="card-text">All universities</p>
-							
-					<router-link class="nav-link" to="/universities">
-						<button type="button" class="btn btn-success  btn-block">SEE</button>
-					</router-link>	
-				</div>		
-			</div>	
-		</div>
-		
-	</div>		
+		</div>	
+			
 		
 	
-	<div v-if="user&&user.role==='STUDENT'&&!user.currentLevel" class="row">
+	<span v-if="user&&user.role==='STUDENT'&&!user.currentLevel" >
 		<div class="card">
 			<h3 class="card-title text-center">YOU SHOUND CREATE PROFILE</h3>
 			<p class="card-text"> <router-link class="nav-link" to="/student">create</router-link></p>	
 		</div>	
-	</div>	
+	</span>	
 	
 	
 	
-	<div v-if="user&&user.role==='UNIVERSITY'" class="row  border border-dark">
+	
 		
-		<div class="col-sm border border-dark m-2">
+		<div v-if="user&&user.role==='UNIVERSITY'" class="col-sm border border-dark m-2">
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 				<div class="card-body">
 					<img class="card-img-top" src="/images/faculty.jpg" height="140" alt="faculty img">
@@ -94,7 +76,7 @@
 			</div>	
 		</div>
 			
-		<div class="col-sm border border-dark m-2">		
+		<div v-if="user&&user.role==='UNIVERSITY'" class="col-sm border border-dark m-2">		
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 				<div class="card-body">
 					<img class="card-img-top" src="/images/program.jpg" height="140" alt="program img">
@@ -107,7 +89,7 @@
 			</div>	
 		</div>
 			
-		<div class="col-sm border border-dark m-2">		
+		<div v-if="user&&user.role==='UNIVERSITY'" class="col-sm border border-dark m-2">		
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 				<div class="card-body">
 					<img class="card-img-top" src="/images/candidat.jpg" height="140" alt="candidat img">
@@ -120,7 +102,7 @@
 			</div>	
 		</div>
 			
-		<div class="col-sm border border-dark m-2">		
+		<div v-if="user&&user.role==='UNIVERSITY'" class="col-sm border border-dark m-2">		
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 				<div class="card-body">
 					<img class="card-img-top" src="/images/faculties.jpg" height="140" alt="card img">
@@ -132,13 +114,11 @@
 				</div>		
 			</div>	
 		</div>
+	
 		
-	</div>
 		
-		
-	<div v-if="user&&user.role==='ADMIN'" class="row border border-dark">
-		
-		<div class="col-sm border border-dark m-2">
+	
+		<div v-if="user&&user.role==='ADMIN'" class="col-sm border border-dark m-2">
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 				<div class="card-body">
 					<img class="card-img-top" src="/images/users1.png" height="140" alt="card img">
@@ -152,7 +132,7 @@
 			</div>	
 		</div>
 			
-		<div class="col-sm border border-dark m-2">
+		<div v-if="user&&user.role==='ADMIN'" class="col-sm border border-dark m-2">
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 				<div class="card-body">
 					<img class="card-img-top" src="/images/universityAdd.jpg" height="140" alt="card img">
@@ -163,29 +143,28 @@
 					</router-link>	
 				</div>		
 			</div>	
-		</div>
-			
-		<div class="col-sm border border-dark m-2">
-		<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
-					<div class="card-body">
-						<img class="card-img-top" src="/images/university2.jpg" height="140" alt="card img">
-						<h5 class="card-title">UNIVERSITIES</h5>
-						<p class="card-text">EDIT DELETE</p>
-						<router-link class="nav-link" to="/universities">
-							<button type="button" class="btn btn-success  btn-block">EDIT</button>
-						</router-link>	
-					</div>		
+		</div>		
+	
+		<div v-if="!user||user.role!=='UNIVERSITY'"class="col-sm border border-dark m-2">
+			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
+				<div class="card-body">
+				
+					<img class="card-img-top" src="/images/university2.jpg" height="140" alt="card img">
+					
+					<h5 class="card-title">UNIVERSITIES</h5>
+					
+					<p v-if="user&&user.role==='ADMIN'"class="card-text">EDIT DELETE SEE</p>
+					
+					
+					<p v-else class="card-text">SEE</p>
+					
+					<router-link class="nav-link" to="/universities">
+						<button type="button" class="btn btn-success  btn-block">EDIT</button>
+					</router-link>	
+				</div>		
 			</div>	
 		</div>
-			
-			
-	</div>	
-				
-	
-		
-		
-		
-						
+	</div>
 												
 </div> 	
 </template>

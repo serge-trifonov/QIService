@@ -20,16 +20,21 @@ import cnam.project.QIService.entities.Program;
 import cnam.project.QIService.entities.Response;
 import cnam.project.QIService.entities.Role;
 import cnam.project.QIService.entities.Student;
+import cnam.project.QIService.entities.University;
 import cnam.project.QIService.entities.User;
 import cnam.project.QIService.entities.UserUniv;
 import cnam.project.QIService.repository.ApplicationRepository;
 import cnam.project.QIService.repository.FacultyRepository;
 import cnam.project.QIService.repository.ProgramRepository;
+import cnam.project.QIService.repository.UniversityRepository;
 
 
 @Controller
 @RequestMapping("/")
 public class HomeController {
+	
+	@Autowired
+	private UniversityRepository universityRepository;
 	
 	@Autowired
 	private ProgramRepository programRepository;
@@ -47,6 +52,9 @@ public class HomeController {
         data.put("user", user);
         
         
+        	List<University>listUniversities=universityRepository.findAll();
+        	data.put("universities",listUniversities);
+        
         
         
         if(user!=null&&user.getRole()==Role.STUDENT) {
@@ -61,7 +69,7 @@ public class HomeController {
         			 
         			 programRepository.findByUserUniv((UserUniv) user);
         	 data.put("userProgram",list);
-        	 
+         
         	 
         	 
         	 
@@ -98,10 +106,7 @@ public class HomeController {
 	        	}	        	
 	        }
 	        data.put("mapProgStud",mapProgStud);
-	        System.out.println(mapProgStud);
-	        System.out.println(listApp);
-	        //System.out.println(listProg);
-	        System.out.println(list);
+	        
 	        
 	        
         }    

@@ -33,8 +33,13 @@
 		     	
 		     	</td>
 		     	<td>
-		     		<img src="/images/delete2.png" alt="edit" height="25"></a>
-		     		<img src="/images/edit2.png" alt="edit" height="25"></a>
+		     		<a href="#" @click="remove(university)" class="responsible">
+		     		<img src="/images/delete2.png"  alt="edit" height="25"></a>
+		     		
+		     		<a href="#" @click="edit(university)" class="responsible">
+					<img src="/images/edit2.png" alt="edit" height="25"></a>
+		     	
+		     	
 		     	
 		     	</td>
 		     	
@@ -46,36 +51,49 @@
 
 <script>
 
-    import {mapState} from 'vuex' 
+    import {mapState,mapActions} from 'vuex' 
      
     export default { 
-    	
+    	computed: mapState(['universities']),
         data() {       
             return {    
-                universities:"",
+                
                 facById:"" 	         
             }
         },
         methods: {	
         
+        	...mapActions(['removeUniversityAction']),
+        	
         	async getFaculties(id){ 
         		const response=await this.$http.get("/faculty/"+id);
         		return response.data;
+        	},
+        	remove(university){
+        		this.removeUniversityAction(university);
+        	
+        	},
+        	edit(university){
+        		this.$router.push(
+        				{ path: '/university', query: { university }}
+        			)
         	}
+        	
 	   	},
 	   		   		     
         async created(){
         
-        	this.universities=await this.$http.get("/university");
-        	this.universities=this.universities.data;
+        	//this.universities=await this.$http.get("/university");
+        	//this.universities=this.universities.data;
         	
         	const fac = await this.$http.get("/faculty/map");
         	this.facById = fac.data;	
         	
-        	console.log(this.facById);
         }
     }
 </script>
+
+
 
 <style>
 </style>

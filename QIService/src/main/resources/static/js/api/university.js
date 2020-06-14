@@ -5,5 +5,6 @@ const universities = Vue.resource('/university{/id}')
 
 export default {
 	add: university => universities.save({}, university),
-    remove: id => universities.remove({id: id})
+    remove: id => universities.remove({id: id}),
+    update: university => universities.update({id: university.id}, university)
 }

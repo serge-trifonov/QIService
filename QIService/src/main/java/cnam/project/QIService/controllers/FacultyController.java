@@ -10,11 +10,13 @@ import java.util.Set;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,7 +46,12 @@ public class FacultyController {
 		this.facultyRepository = facultyRepository;
     }
     
-    
+    @PutMapping("{id}")
+	public Faculty update(@PathVariable("id") Faculty facultyFromDB, @RequestBody Faculty faculty) {
+		
+		BeanUtils.copyProperties(faculty, facultyFromDB, "id");
+		return facultyRepository.save(facultyFromDB);
+	}
 	
     @PostMapping
     public Faculty create( @RequestBody Faculty faculty) {
@@ -75,7 +82,15 @@ public class FacultyController {
     
     @DeleteMapping("{id}")
     public void delete(@PathVariable("id") Faculty faculty) {
-    	facultyRepository.delete(faculty);
+    	
+    	
+    	University universityObj=universityRepository.getOne(faculty.getUniversityId());
+    	universityObj.getFaculties().remove(faculty);
+    	
+    	universityRepository.save(universityObj);
+    	
+    	facultyRepository.delete(facultyRepository.getOne(faculty.getId()));
+    
     }
     
     @GetMapping
