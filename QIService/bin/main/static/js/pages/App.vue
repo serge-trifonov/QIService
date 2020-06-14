@@ -18,23 +18,19 @@
 		    <span class="navbar-toggler-icon"></span>
 		  </button>
 		  
-		  <div class="collapse navbar-collapse" id="navbarText">
-		    <ul class="navbar-nav mr-auto">
+		  <div class="collapse navbar-collapse text-white" id="navbarText">
+		    <ul class="navbar-nav mr-auto ">
 		    
 		      <li class="nav-item active">   
 		        <a class="nav-link" href="#">
 		         <span class="sr-only">(current)</span></a>
 		      </li>
 		      
-
 		      <li class="nav-item">
 	 	       <router-link class="nav-link" to="/">
 	 	       		<img src="/images/home2.png" alt="edit" height="25"></a>
 	 	       </router-link> 
 		      </li>
-		      
-		      
-		      
 		      
 		      <li class="nav-item" v-if="user&&user.role==='ADMIN'" >
 	 	       <router-link class="nav-link" to="/users">{{$t('users')}}</router-link> 
@@ -43,11 +39,6 @@
 		      <li class="nav-item" v-if="user&&user.role==='ADMIN'">
 	 	       <router-link class="nav-link" to="/university">{{$t('addUniversity')}}</router-link> 
 		      </li>
-		      
-		      
-		      
-		      
-		      
 		      
 		       <li class="nav-item" v-if="user&&user.role==='UNIVERSITY'">
 	 	       <router-link class="nav-link" to="/faculty">{{$t('addFaculty')}}</router-link> 
@@ -66,10 +57,7 @@
 	 	      	<router-link class="nav-link" to="/faculties">{{$t('listFaculty')}}</router-link> 
 		      </li>
 		      
-		      
-		      
-		      
-		      
+
 		      <li class="nav-item" v-if="user&&user.role==='STUDENT'">
 	 	       <router-link class="nav-link" to="/student">PROFILE</router-link> 
 		      </li>
@@ -86,17 +74,18 @@
 		      <li class="nav-item" v-if="user&&user.role!='UNIVERSITY'">
 	 	      	<router-link class="nav-link" to="/universities">{{$t('listUniversity')}}</router-link> 
 		      </li>
-		      
-		      
-		      
-		      
-		      
-		      
-		      
-	
-		      
+		        
 		    </ul>
 		    
+		  </div>
+		  
+		  <div v-if="user" class="pull-right text-white">{{user.familyName}} {{user.givenName}} 
+			  ({{user.role}}
+			  <span v-if="user.role==='UNIVERSITY'">{{user.university.name}}</span>)&nbsp;
+			  <a href="/logout">{{$t('logout')}}</a>
+		</div>
+		<div v-else class="pull-righ text-white">
+			  <a href="/login">{{$t('login')}}</a>
 		  </div>
 		</nav>
 		
@@ -112,6 +101,7 @@
     
         data() {
             return {
+            
             	//prog:programs,
               //  messages: []
                 //profile: frontendData.profile
@@ -126,7 +116,7 @@
         },
        
 		created(){
-			console.log("created!!!!");
+			console.log(this.user);
 		}
     }
 </script>

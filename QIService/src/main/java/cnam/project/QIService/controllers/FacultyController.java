@@ -43,6 +43,8 @@ public class FacultyController {
 		this.universityRepository = universityRepository;
 		this.facultyRepository = facultyRepository;
     }
+    
+    
 	
     @PostMapping
     public Faculty create( @RequestBody Faculty faculty) {
@@ -68,6 +70,8 @@ public class FacultyController {
     	List<Faculty>list=facultyRepository.findByUniversityId(id);
     	return list;	
     }
+    
+    
     
     @DeleteMapping("{id}")
     public void delete(@PathVariable("id") Faculty faculty) {

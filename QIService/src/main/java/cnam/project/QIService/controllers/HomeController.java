@@ -23,6 +23,7 @@ import cnam.project.QIService.entities.Student;
 import cnam.project.QIService.entities.User;
 import cnam.project.QIService.entities.UserUniv;
 import cnam.project.QIService.repository.ApplicationRepository;
+import cnam.project.QIService.repository.FacultyRepository;
 import cnam.project.QIService.repository.ProgramRepository;
 
 
@@ -34,6 +35,8 @@ public class HomeController {
 	private ProgramRepository programRepository;
 	@Autowired
 	private ApplicationRepository applicationRepository;
+	@Autowired
+	private FacultyRepository facultyRepository;
 	
 	@GetMapping   
     public String main(Model model, @AuthenticationPrincipal User user) {
@@ -41,23 +44,32 @@ public class HomeController {
     	List<Program>listProg=programRepository.findAll();
     	model.addAttribute("programs",listProg); 	
         HashMap<Object, Object> data = new HashMap<>();
- 
         data.put("user", user);
+        
+        
+        
         
         if(user!=null&&user.getRole()==Role.STUDENT) {
         	data.put("applications",applicationRepository.findByStudId(user.getId()));
         }
         
         if(user!=null&&user.getRole()==Role.UNIVERSITY) {
-        	 List<Program>list=programRepository.findByUserUniv((UserUniv) user);
+        	 List<Program>list=
+        			 programRepository.findByFacultyIdIn(facultyRepository.findByUniversityId(
+        					 
+        					 ((UserUniv) user).getUniversityId()).stream().map(fac->fac.getId()).collect(Collectors.toList()));
+        			 
+        			 programRepository.findByUserUniv((UserUniv) user);
         	 data.put("userProgram",list);
+        	 
+        	 
+        	 
+        	 
         
         	 List<Application>listApp=applicationRepository.findByProgramIdIn(list.stream().map(p->p.getId()).collect(Collectors.toList()));
         
         	 HashMap<Long,List<Student>>mapProgStud=new HashMap<>();
-        	 
-        	 data.put("mapProgStud",mapProgStud);
-        
+
 	        listApp.forEach(l->{
 	        	System.out.println(l.getId()+" "+l.getStudent());
 	        	}
@@ -84,10 +96,19 @@ public class HomeController {
 	        		
 	        		mapProgStud.put(app.getProgramId(), listStud);
 	        	}	        	
-	        }   
+	        }
+	        data.put("mapProgStud",mapProgStud);
+	        System.out.println(mapProgStud);
+	        System.out.println(listApp);
+	        //System.out.println(listProg);
+	        System.out.println(list);
+	        
+	        
         }    
         model.addAttribute("userInfo", data);
         model.addAttribute("isDevMode", true);
+        
+       
              
         return "index"; 
     }    

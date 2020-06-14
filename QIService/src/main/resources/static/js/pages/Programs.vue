@@ -12,7 +12,7 @@
 		  	</thead>
 		  	
 	  		<tbody>
-			    <tr v-for="program in programs" :key="program.id" >
+			    <tr v-for="program in programsToShow" :key="program.id" >
 			      <td scope="row">{{program.name}}</td>
 			      <td>{{program.faculty?program.faculty.university.name:'-'}}</td>
 			      <td>{{program.duration}}</td>
@@ -26,16 +26,21 @@
 <script>
 	import {mapState} from 'vuex'
     export default {
-	    
+    
+	    computed: mapState(['programs']),
 	    
 	        data() {
 	            return {	
-	            	programs:""
+	            	programsToShow:""
 	            }
 	        },
 		async created(){
-			
-			this.programs = this.$route.query.programs;
+			if(this.$route.query.programs){
+				this.programsToShow = this.$route.query.programs;
+			}
+			else{
+				this.programsToShow=this.programs;
+			}
 		}
     }
 </script>

@@ -11,5 +11,7 @@ import cnam.project.QIService.entities.UserUniv;
 public interface ProgramRepository extends JpaRepository<Program, Long>{
 	
 	public List<Program>findByUserUniv(UserUniv userUniv);
+	
+	public List<Program>findByFacultyIdIn(List<Long>list);
 
 }

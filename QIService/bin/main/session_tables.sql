@@ -20,6 +20,7 @@ CREATE INDEX spring_session_ix3
 ON spring_session (principal_name);
 
 
+
 CREATE TABLE spring_session_attributes (
 session_primary_id CHAR(36) NOT NULL
 CONSTRAINT spring_session_attributes_fk
@@ -30,3 +31,10 @@ attribute_bytes BYTEA NOT NULL,
 CONSTRAINT spring_session_attributes_pk
 PRIMARY KEY (session_primary_id, attribute_name)
 );
+
+ALTER TABLE SPRING_SESSION
+DROP CONSTRAINT SPRING_SESSION_PK;
+
+ALTER TABLE spring_session_attributes 
+DROP CONSTRAINT spring_session_attributes_pk;
+

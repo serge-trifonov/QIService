@@ -91,17 +91,22 @@
         methods: {
 	    ...mapActions(['addProgramAction']),
 	    
-            submit(event) {
+           async submit(event) {
+           
             	event.preventDefault();
+            	
+            	this.program.faculty = this.faculties.find(faculty=>faculty.id === this.program.facultyId);
 				
-            	this.addProgramAction(this.program);
-            	this.$router.push({ path: 'programs'})
+            	await this.addProgramAction(this.program);
+            	this.$router.push({ path: 'programs'});
+            	
             }
         },
         
        async created(){
         	const response=await this.$http.get("/faculty/"+this.user.universityId);
         	this.faculties=response.data;	
+        	
         }
     }
 </script>

@@ -4,11 +4,6 @@
 	<div  style="margin: 5px;" >
 		<img src="/images/banner6.jpg" class="img-fluid" alt="banner image">
 	</div>
-
-	<div>{{user.role}}</div>
-	
-
-	
 	
 	<div v-if="user&&user.currentLevel" class="row  border border-dark" >
 	
@@ -16,7 +11,7 @@
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 			 	
 				<div class="card-body">
-					<img class="card-img-top" src="/images/image1.png" height="150" alt="card img">
+					<img class="card-img-top" src="/images/image3.png" height="140"alt="profile img">
 					<h5 class="card-title">PROFILE</h5>
 					<p class="card-text">Edit delete</p>	
 					<router-link class="nav-link" to="/student">
@@ -30,7 +25,7 @@
 			<div class="card text-center text-white bg-secondary" style="max-width: 15rem;">
 			 	
 				<div class="card-body">				
-					<img class="card-img-top" src="/images/image1.jpg" alt="card img">
+					<img class="card-img-top" src="/images/applications.jpg" height="140" alt="applications img">
 					<h5 class="card-title">APPLICATIONS</h5>
 									
 					<p class="card-text">{{applications.length}} applications</p>							
@@ -45,7 +40,7 @@
 			<div class="card text text-center bg-secondary text-white"style="max-width: 15rem;">
 				
 				<div class="card-body">				
-					<img class="card-img-top" src="/images/image1.jpg" alt="card img">
+					<img class="card-img-top" src="/images/search.jpeg" height="140" alt="search img">
 					<h5 class="card-title">SEARCH</h5>
 						
 					<p class="card-text">Find send</p>
@@ -60,7 +55,7 @@
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 				
 				<div class="card-body">
-					<img class="card-img-top" src="/images/image1.jpg" alt="card img">
+					<img class="card-img-top" src="/images/university2.jpg" height="140" alt="university img">
 					<h5 class="card-title">UNIVERSITIES</h5>
 							
 					<p class="card-text">All universities</p>
@@ -89,7 +84,7 @@
 		<div class="col-sm border border-dark m-2">
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 				<div class="card-body">
-					<img class="card-img-top" src="/images/image1.jpg" alt="card img">
+					<img class="card-img-top" src="/images/faculty.jpg" height="140" alt="faculty img">
 					<h5 class="card-title">FACULTY</h5>
 					<p class="card-text">ADD EDIT DELETE</p>
 					<router-link class="nav-link" to="/faculty">
@@ -102,7 +97,7 @@
 		<div class="col-sm border border-dark m-2">		
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 				<div class="card-body">
-					<img class="card-img-top" src="/images/image1.jpg" alt="card img">
+					<img class="card-img-top" src="/images/program.jpg" height="140" alt="program img">
 					<h5 class="card-title">PROGRAM</h5>
 					<p class="card-text">ADD EDIT DELETE</p>
 					<router-link class="nav-link" to="/program">
@@ -115,7 +110,7 @@
 		<div class="col-sm border border-dark m-2">		
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 				<div class="card-body">
-					<img class="card-img-top" src="/images/image1.jpg" alt="card img">
+					<img class="card-img-top" src="/images/candidat.jpg" height="140" alt="candidat img">
 					<h5 class="card-title">CANDIDATES</h5>
 					<p class="card-text">ADMIT REFUSE</p>
 					<router-link class="nav-link" to="/programCandidat">
@@ -128,10 +123,10 @@
 		<div class="col-sm border border-dark m-2">		
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 				<div class="card-body">
-					<img class="card-img-top" src="/images/image1.jpg" alt="card img">
+					<img class="card-img-top" src="/images/faculties.jpg" height="140" alt="card img">
 					<h5 class="card-title">FACULTIES</h5>
 					<p class="card-text">LIST PROGRAMS</p>
-					<router-link class="nav-link" to="/programCandidat">
+					<router-link class="nav-link" to="/faculties">
 						<button type="button" class="btn btn-success  btn-block">SEE</button>
 					</router-link>	
 				</div>		
@@ -146,7 +141,7 @@
 		<div class="col-sm border border-dark m-2">
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 				<div class="card-body">
-					<img class="card-img-top" src="/images/image1.jpg" alt="card img">
+					<img class="card-img-top" src="/images/users1.png" height="140" alt="card img">
 					<h5 class="card-title">USERS</h5>
 					<h6 class="card-subtitle"></h6>
 					<p class="card-text">EDIT DELETE</p>
@@ -160,7 +155,7 @@
 		<div class="col-sm border border-dark m-2">
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 				<div class="card-body">
-					<img class="card-img-top" src="/images/image1.jpg" alt="card img">
+					<img class="card-img-top" src="/images/universityAdd.jpg" height="140" alt="card img">
 					<h5 class="card-title">UNIVERSITY</h5>
 					<p class="card-text">ADD</p>
 					<router-link class="nav-link" to="/university">
@@ -173,7 +168,7 @@
 		<div class="col-sm border border-dark m-2">
 		<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 					<div class="card-body">
-						<img class="card-img-top" src="/images/image1.jpg" alt="card img">
+						<img class="card-img-top" src="/images/university2.jpg" height="140" alt="card img">
 						<h5 class="card-title">UNIVERSITIES</h5>
 						<p class="card-text">EDIT DELETE</p>
 						<router-link class="nav-link" to="/universities">
@@ -215,10 +210,7 @@
 	   	},
         async created(){
 
-        	console.log(this.user);
-        	console.log(this.user.currentLevel);
-        	
-        		
+		
         }
     }
 </script>

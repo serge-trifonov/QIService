@@ -17,11 +17,11 @@
 		  	<tr v-for="faculty in faculties":key="faculty.name">
 		  	
 		    	<td>{{faculty.name}}</td>
-		    	<td><router-link class="btn btn-outline-dark mb-2" 
+		    	<td><router-link class="btn btn-outline-dark mb-2 text-white" 
 			     	
 				     	:to="{path:'/programs',query:{programs: progById[faculty.id]}}" 
 				     	
-				     	v-if="progById[faculty.id]"> see{{progById[faculty.id].length}} programs
+				     	v-if="progById[faculty.id]">{{progById[faculty.id].length}} programs
 			     	
 			     	</router-link>
 			     	
@@ -38,13 +38,14 @@
     import {mapState} from 'vuex'  
     
     export default { 
-    
-     params:["faculties"],
+    	computed: mapState(['user']),
+     	params:["faculties"],
      
         data() {       
             return {    
                  faculties:"",
-                 progById:""  
+                 progById:""
+                  
                  	         
             }
         },
@@ -53,12 +54,24 @@
 	   		},
 	   		     
         async created(){
-        	this.faculties = this.$route.query.faculties;
+        	
+        	if(this.$route.query.faculties){
+        		this.faculties = this.$route.query.faculties;
+        	
+        	}
+        	else{
+        		this.faculties=await this.$http.get("/faculty/"+this.user.university.id);
+        		this.faculties=this.faculties.data;
+        	}
         	console.log(this.faculties);
         	
         	
         	var result= await this.$http.get("/program/progsByFacultyId");
         	this.progById = result.data;
+        	
+        	
+        	
+        	
         	
         	
         }

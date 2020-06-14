@@ -27,7 +27,10 @@ export default new Vuex.Store({
 		addProgMutation(state, prog) {
 			state.allprograms = [...state.allprograms,prog];
 			state.programs = [...state.programs,prog]
+			
+			console.log("mutations of ",state.programs);
 		},
+		
 			
 		updateProgMutation(state, prog) {
 			let updateIndex = state.allprograms.findIndex(item => item.id === prog.id);
