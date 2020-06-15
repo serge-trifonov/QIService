@@ -4,7 +4,7 @@
 		<div class="col-sm">
 			<div class="card">
 				<div class="card-body">   
-					<h5 class="card-title text-center">Address</h5>  
+					<h5 class="card-title text-center">{{$t('address')}}</h5>  
 					 
 					<form action="">
 						<div class="form-group row">

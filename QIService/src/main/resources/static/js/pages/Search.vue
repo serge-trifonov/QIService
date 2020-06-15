@@ -74,7 +74,7 @@
 							</div>
 						</div>
 						<div class="form-group text-center">		
-						<button type="submit" class="btn btn-success" @click.stop="submit">{{$t('searche')}}</button>
+						<button type="submit" class="btn btn-success" @click.stop="submit">{{$t('search')}}</button>
 						</div>	
 					</form>
 						

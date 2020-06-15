@@ -4,7 +4,8 @@
    			<div class="col-sm">
    				<div class="card">
    					<div class="card-body">
-   						<h5 class="card-title text-center">Program registration</h5>
+   						<h5 v-if="!edit" class="card-title text-center">{{$t('programRegistration')}}</h5>
+   						<h5 v-else class="card-title text-center">{{$t('programModification')}}</h5>
    			
 					    	<form action="">
 					    	
@@ -61,7 +62,8 @@
 										
 							<div  class="form-group text-center">
 								
-								<button type="submit" class="btn btn-success" @click.stop="submit" >{{$t('valid')}}</button>
+								<button v-if="!edit" type="submit" class="btn btn-success" @click.stop="submit" >{{$t('add')}}</button>
+								<button v-else type="submit" class="btn btn-success" @click.stop="editProgram" >{{$t('edit')}}</button>
 								
 							</div>			
 						</form>
@@ -79,6 +81,7 @@
     computed: mapState(['user']),
         data() {
             return {
+            	edit:false,
                 program:{
                		name: "",
 					duration: "",
@@ -89,7 +92,7 @@
         },
         
         methods: {
-	    ...mapActions(['addProgramAction']),
+	    ...mapActions(['addProgramAction','updateProgramAction']),
 	    
            async submit(event) {
            
@@ -100,13 +103,26 @@
             	await this.addProgramAction(this.program);
             	this.$router.push({ path: 'programs'});
             	
+            },
+            async   editProgram() {      
+            	event.preventDefault();  	
+            	await this.updateProgramAction(this.program);
+            	 this.$router.push({ path: '/programs'});
+	
             }
         },
         
        async created(){
-        	const response=await this.$http.get("/faculty/"+this.user.universityId);
-        	this.faculties=response.data;	
+       
+       		if(this.$route.query.program){
+        		this.program = this.$route.query.program;
+        		this.edit=true;
         	
+        	}
+        	
+        	
+        	const responseFaculty=await this.$http.get("/faculty/"+this.user.universityId);
+			this.faculties=responseFaculty.data;	
         }
     }
 </script>

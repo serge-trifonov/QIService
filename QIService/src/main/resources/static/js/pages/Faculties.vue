@@ -1,7 +1,7 @@
 <template>
 	<div>
 	
-	<h2>{{$t('listFaculty')}}</h2>
+	<h2>{{$t('faculties')}}</h2>
 	
 		<table class="table table-dark">
 		  <thead>
@@ -9,7 +9,7 @@
 		    
 		      <th scope="col">Name</th>
 		      <th scope="col">Programs</th>
-		      <th scope="col">Action</th>
+		      <th v-if="user&&user.role==='UNIVERSITY'"scope="col">Action</th>
 		       
 		    </tr>
 		  </thead>
@@ -29,7 +29,7 @@
 			     	<span v-else >no prog</span>
 			     </td>
 			     
-			     <td>
+			     <td v-if="user&&user.role==='UNIVERSITY'">
 		     		<a href="#" @click="remove(faculty)">
 		     		<img src="/images/delete2.png"  alt="edit" height="25"></a>
 		     		
@@ -48,7 +48,7 @@
     import {mapState} from 'vuex'  
     
     export default { 
-    	computed: mapState(['user']),
+		computed: mapState(['user']),
      	params:["faculties"],
      
         data() {       
@@ -68,17 +68,11 @@
         		
         		this.faculties=await this.$http.get("/faculty/"+this.user.university.id);
         		this.faculties=this.faculties.data;
-        		
-        	
+
         	},
         	async edit(faculty){
-        	
-        		
         		this.$router.push({ path: '/faculty', query: { faculty }});
-        	}
-	
-        	
-        	
+        	}	
 	   	},
 	   		     
         async created(){

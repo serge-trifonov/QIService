@@ -17,7 +17,7 @@ export const i18n = new VueI18n({
 			addProgram:'ADD PROGRAM',
 			
 			candidats:'Candidates',
-			valid:'VALIDATE',
+			
 			
 			facultyNameEnter:'Faculty\'s name',
 			universityNameEnter:'Enter the name of the university',
@@ -40,7 +40,7 @@ export const i18n = new VueI18n({
 			duration:'Duration',
 			level:'Level',
 			status:'Status',
-			//searche:'SEARCHE',
+			
 			newSearche:'NEW SEARCHE',
 			responsable:'Responsable',
 			contact:'Contact',
@@ -65,23 +65,52 @@ export const i18n = new VueI18n({
 			city:'City',
 			country:'Country',
 			search:'SEARCH',
+			address:'Address',
 			
 			listProgram:'Programs',
-			listUniversity:'UNIVERSITIES',
-			listFaculty:'FACULTIES',
+			
+			
 			listProgramCandidat:'PROGRAMS-CANDIDATES',
 			
 			progSend:'APPLICATIONS',
 			
 			alert:'Hello our future student.Program for you is below.You can send message to\
 					the responsable of the program! You\'ll get the answer via email! Good luck!',
-					
+			alert2:'To see the list of faculties and programs you have to registrer',
+			
 			descriptionProg:'Description of the program',
 			message:'Write your message here',
 			send:'SEND',
 			back:'RETURN',
 			users:'USERS',
-			user:'User'
+			user:'User',
+			profile:'PROFILE',
+			edit:'EDIT',
+			check:'CHECK',
+			search:'SEARCH',
+			find:'FIND SEND',
+			quantity:'QUANTITY',
+			universities:'UNIVERSITIES',
+			university:'UNIVERSITY',
+			see:'SEE',
+			createProfile:'YOU SHOULD CREATE PROFILE',
+			add:'ADD',
+			faculty:'FACULTY',
+			program:'PROGRAM',
+			candidates:'CANDIDATES',
+			admit:'ADMIT',
+			refus:'REFUS',
+			status:'STATUS',
+			faculties:'FACULTIES',
+			programs:'PROGRAMS',
+			users:'USERS',
+			facultyRegistration:'Faculty registration',
+			facultyModification:'Faculty modification',
+			programRegistration:'Program registration',
+			programModification:'Program modification',
+			universityRegistration:'University registration',
+			universityModification:'University modification',
+			questionDelete:'Are you sure to delete '
 			
 			
 		},
@@ -90,12 +119,12 @@ export const i18n = new VueI18n({
 			user:'Utilisateurs',
 			mainPage:'PREMIERE PAGE',
 			
-			addUniversity:'AJOUTER UNIVERSITE',
-			addFaculty:'AJOUTER FACULTE',
+			addUniversity:'AJOUTER UNIVERSITÉ',
+			addFaculty:'AJOUTER FACULTÉ',
 			addProgram:'AJOUTER PROGRAMME',
 			
 			candidats:'Candidats',
-			valid:'VALIDER',
+			
 			
 			facultyNameEnter:'Nom de la faculté',
 			universityNameEnter:'Introduire le nom de l\'université',
@@ -119,7 +148,7 @@ export const i18n = new VueI18n({
 			duration:'Durée',
 			level:'Niveau',
 			status:'Statut',
-			//searche:'RECHERCHE',
+			
 			newSearche:'NOUVEAU RECHERCHE',
 			responsable:'Responsible',
 			contact:'Contact',
@@ -144,23 +173,54 @@ export const i18n = new VueI18n({
 			city:'Ville',
 			country:'Pays',
 			search:'RECHERSHE',
+			address:'Adresse',
 			
 			
-			listUniversity:'UNIVERSITES',
-			listFaculty:'FACULTES',
+			
+			
 			listProgram:'Programmes',
 			listProgramCandidat:'PROGRAMMES-CANDITATS',
 			
 			progSend:'POSTULATIONS',
+			
 			alert:'Salut notre nouveau student.La programme que t\'as choici est là-bas.\
 					Tu peux écrire ton message en envoyer le demande à le responsable! Tu \
 					receverras la reponse par email! Bonne chanche!',
+			alert2:'Pour voir la liste de facultés et programmes vous devez vous instrire',
+			
 			descriptionProg:'Description du programme',
 			message:'Ecrire ton message ici',
 			send:'ENVOYER',
 			back:'REVENIR',
 			users:'UTILISATEURS',
 			user:'Utilisateur',
+			profile:'PROFIL',
+			edit:'MODIFIER',
+			check:'VERIFIER',
+			search:'RECHERCHE',
+			find:'TROUVER ENVOYER',
+			quantity:'QUANTITE',
+			universities:'UNIVERSITÉS',
+			university:'UNIVERSITÉ',
+			see:'VOIR',
+			createProfile:'VOUS DEVEZ CREER PROFIL',
+			add:'AJOUTER',
+			faculty:'FACULTÉ',
+			program:'PROGRAMME',
+			candidates:'CANDIDATS',
+			admit:'ADMETTRE',
+			refus:'REFUSE',
+			status:'STATUT',
+			faculties:'FACULTÉS',
+			programs:'PROGRAMMES',
+			users:'UTILISATEUERS',
+			facultyRegistration:' L\'enregistrement de la faculté',
+			facultyModification:'Modification de la faculté',
+			programRegistration:' L\'enregistrement du programme',
+			programModification:'Modification du programme',
+			universityRegistration:' L\'enregistrement du l\'univesité',
+			universityModification:'Modification de l\'université',
+			questionDelete:'Voulez-vous vraiement supprimer '
 		}
 		
 	}

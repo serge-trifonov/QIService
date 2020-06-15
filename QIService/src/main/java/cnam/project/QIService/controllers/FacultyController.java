@@ -101,24 +101,24 @@ public class FacultyController {
     @GetMapping("/map")
     public Map<Long,List<Faculty>>getFacultyByUniversityId(){
     	
+    	
+    	
     	Map<Long,List<Faculty>>map=new HashMap<>();
     	for(Faculty fac: facultyRepository.findAll()){
-    		
-        	if(map.containsKey(fac.getUniversityId())){
+    		if(fac.getUniversityId()!=null) {
+    			if(map.containsKey(fac.getUniversityId())){
         		
-        		map.get(fac.getUniversityId()).add(fac);
-        	}
-        	else{
-        		ArrayList<Faculty>listFac=new ArrayList<>();
-        		listFac.add(fac);
-        		
-        		map.put(fac.getUniversityId(), listFac);
-        	}
-        	
+	        		map.get(fac.getUniversityId()).add(fac);
+	        	}
+	        	else{
+	        		ArrayList<Faculty>listFac=new ArrayList<>();
+	        		listFac.add(fac);
+	        		
+	        		map.put(fac.getUniversityId(), listFac);
+	        	}
+    		}	
         }
-    	return map;
-    	
-    }
-   
+    	return map;	
+    }  
 }
 

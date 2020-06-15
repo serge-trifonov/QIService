@@ -1,13 +1,13 @@
 <template>
    <div>
 	   	<table class="table table-striped">
-	   	
 		  	<thead>
 				<tr>
 					<th scope="col">{{$t('prog')}}</th>
 					<th scope="col">{{$t('university')}}</th>
 					<th scope="col">{{$t('duration')}}</th>
 					<th scope="col">{{$t('level')}}</th>
+					<th v-if="user&&user.role==='UNIVERSITY'" scope="col">Action</th>
 				</tr>
 		  	</thead>
 		  	
@@ -17,6 +17,14 @@
 			      <td>{{program.faculty?program.faculty.university.name:'-'}}</td>
 			      <td>{{program.duration}}</td>
 			      <td>{{program.level}}</td>
+			      
+			      <td v-if="user&&user.role==='UNIVERSITY'">
+		     		<a href="#" @click="remove(program)">
+		     		<img src="/images/delete3.png"  alt="remove" height="25"></a>
+		     		
+		     		<a href="#" @click="edit(program)">
+					<img src="/images/edit3.png" alt="edit" height="25"></a>
+		     	</td>
 			    </tr>   
 	  		</tbody>
 		</table>
@@ -24,19 +32,44 @@
 </template>
 
 <script>
-	import {mapState} from 'vuex'
+	import {mapState,mapActions} from 'vuex'
     export default {
     
-	    computed: mapState(['programs']),
+	    computed: mapState(['programs','user']),
 	    
 	        data() {
-	            return {	
-	            	programsToShow:""
+	            return {		
+	            	programsToShow:"",
+	            	facultyId:""
 	            }
 	        },
+	        methods: {	
+       		...mapActions(['removeProgramAction']),	 
+        	async remove(program){
+
+        		await this.removeProgramAction(program);
+        		if(this.facultyId!==""){
+        			this.programsToShow=this.programs.filter(p=>p.facultyId===this.facultyId);
+        		}
+				else{
+					this.programsToShow=this.programs;
+				}
+        		this.$forceUpdate();
+        	},
+        	
+        	async edit(program){
+        		this.$router.push({ path: '/program', query: { program }})
+        	}	
+	   	},
+    
 		async created(){
 			if(this.$route.query.programs){
+				
 				this.programsToShow = this.$route.query.programs;
+				if(this.programsToShow.length>0){
+				
+					this.facultyId=this.programsToShow[0].facultyId;
+				}
 			}
 			else{
 				this.programsToShow=this.programs;

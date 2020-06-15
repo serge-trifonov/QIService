@@ -54,7 +54,11 @@
 		      
 		      
 		      <li class="nav-item" v-if="user&&user.role==='UNIVERSITY'">
-	 	      	<router-link class="nav-link" to="/faculties">{{$t('listFaculty')}}</router-link> 
+	 	      	<router-link class="nav-link" to="/faculties">{{$t('faculties')}}</router-link> 
+		      </li>
+		      
+		      <li class="nav-item" v-if="user&&user.role==='UNIVERSITY'">
+	 	      	<router-link class="nav-link" to="/programs">{{$t('programs')}}</router-link> 
 		      </li>
 		      
 
@@ -72,7 +76,7 @@
 		      
 
 		      <li class="nav-item" v-if="user&&user.role!='UNIVERSITY'">
-	 	      	<router-link class="nav-link" to="/universities">{{$t('listUniversity')}}</router-link> 
+	 	      	<router-link class="nav-link" to="/universities">{{$t('universities')}}</router-link> 
 		      </li>
 		        
 		    </ul>

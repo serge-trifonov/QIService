@@ -33,8 +33,13 @@ export default new Vuex.Store({
 		addUniversityMutation(state,university){	
 			state.universities = [...state.universities,university];
 		},
+		addFacultyMutation(state,faculty){	
+			state.faculties = [...state.faculties,faculty];
+		},
 			
 		updateProgMutation(state, prog) {
+			
+			
 			let updateIndex = state.allprograms.findIndex(item => item.id === prog.id);
 			state.allprograms = [...state.allprograms.slice(0, updateIndex),prog,...state.allprograms.slice(updateIndex + 1)];
 			updateIndex = state.programs.findIndex(item => item.id === prog.id)
@@ -49,6 +54,7 @@ export default new Vuex.Store({
 			},
 			
 		removeProgMutation(state, prog) {
+					
 			let deletionIndex = state.allprograms.findIndex(item => item.id === prog.id);
 
 			if (deletionIndex > -1) {
@@ -103,7 +109,7 @@ export default new Vuex.Store({
 	    	const data = await result.json()	
 	    },
 	    async updateUniversityAction({commit}, university) {
-	    	console.log("store js hello updateUniversityAction");
+	    	
 	    	const result = await universityApi.update(university)
 	    	const data = await result.json() 
 	    	commit('updateUniversityMutation',data)
@@ -122,6 +128,7 @@ export default new Vuex.Store({
 	    async addFacultyAction({commit}, faculty) {
 	    	const result = await facultyApi.add(faculty)
 	    	const data = await result.json()
+	    	commit('addFacultyMutation',data)
 	    },
 	    
 	   
@@ -136,6 +143,18 @@ export default new Vuex.Store({
 	    	if (result.ok) {
 	    		commit('removeUniversityMutation', university)
 	    	}
-	    }
+	    },
+	    async removeProgramAction({commit},program){
+	    	const result = await programApi.remove(program.id)
+	    	if (result.ok) {
+	    		commit('removeProgMutation', program)
+	    	}
+	    },
+	    async updateProgramAction({commit}, program) {
+	    	console.log("store js hello update program Action");
+	    	const result = await programApi.update(program)
+	    	const data = await result.json() 
+	    	commit('updateProgMutation',data)
+	    },
     }
 })
