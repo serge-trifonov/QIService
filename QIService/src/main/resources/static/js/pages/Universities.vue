@@ -43,18 +43,14 @@
 		     	</td>
 		     	<td v-else >-</td>
 		     	
-		     	
 		     	<td v-if="user&&user.role==='ADMIN'">
 		     		<a href="#" @click="askToRemove(university)" class="responsible">
 		     		<img src="/images/delete2.png"  alt="edit" height="25"></a>
 		     		
 		     		<a href="#" @click="edit(university)" class="responsible">
 					<img src="/images/edit2.png" alt="edit" height="25"></a>
-		     	
-		     	
-		     	
-		     	</td>
-		     	
+
+		     	</td>	
 		    </tr>
 		  </tbody>
 		</table>
@@ -71,7 +67,7 @@
 <script>
 
     import {mapState,mapActions} from 'vuex' 
-     import modalWindow from '../modal/modalWindow'
+   	import modalWindow from '../modal/modalWindow'
     export default { 
     	computed: mapState(['universities','user']),
     	components:{modalWindow},
@@ -110,22 +106,12 @@
         	}
 	   	},
 	   		   		     
-        async created(){
-        
-        	//this.universities=await this.$http.get("/university");
-        	//this.universities=this.universities.data;
-        	
+        async created(){     	
         	const fac = await this.$http.get("/faculty/map");
-        	this.facById = fac.data;
-        	
-        	
-	        		
-        	
+        	this.facById = fac.data;	
         }
     }
 </script>
-
-
 
 <style>
 </style>

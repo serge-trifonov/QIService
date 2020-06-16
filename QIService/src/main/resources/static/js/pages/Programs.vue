@@ -19,7 +19,7 @@
 			      <td>{{program.level}}</td>
 			      
 			      <td v-if="user&&user.role==='UNIVERSITY'">
-		     		<a href="#" @click="remove(program)">
+		     		<a href="#" @click="askToRemove(program)">
 		     		<img src="/images/delete3.png"  alt="remove" height="25"></a>
 		     		
 		     		<a href="#" @click="edit(program)">
@@ -28,39 +28,61 @@
 			    </tr>   
 	  		</tbody>
 		</table>
+		
+		<modal-window v-if="showModal"
+			:popupTitle="'Suppression '+programToDelete.name"
+			:popupBody="$t('questionDelete')+programToDelete.name+'?'"
+			@close="showModal = false" @remove="remove(programToDelete)">
+		</modal-window>
+		
+		
    </div>
 </template>
 
 <script>
 	import {mapState,mapActions} from 'vuex'
+	import modalWindow from '../modal/modalWindow'
+	
     export default {
     
 	    computed: mapState(['programs','user']),
+	    components:{modalWindow},
 	    
 	        data() {
 	            return {		
 	            	programsToShow:"",
-	            	facultyId:""
+	            	facultyId:"",
+	            	
+	            	programToDelete:"",
+            		showModal:false
 	            }
 	        },
+	        
 	        methods: {	
-       		...mapActions(['removeProgramAction']),	 
-        	async remove(program){
-
-        		await this.removeProgramAction(program);
-        		if(this.facultyId!==""){
-        			this.programsToShow=this.programs.filter(p=>p.facultyId===this.facultyId);
-        		}
-				else{
-					this.programsToShow=this.programs;
-				}
-        		this.$forceUpdate();
-        	},
+	       		...mapActions(['removeProgramAction']),	 
+	        	async remove(program){
+	
+	        		await this.removeProgramAction(program);
+	        		if(this.facultyId!==""){
+	        			this.programsToShow=this.programs.filter(p=>p.facultyId===this.facultyId);
+	        		}
+					else{
+						this.programsToShow=this.programs;
+					}
+	        		this.$forceUpdate();
+	        		this.showModal=false;
+	        	},
+	        	
+	        	askToRemove(program){
+        			this.programToDelete=program;
+        			this.showModal=true;
         	
-        	async edit(program){
-        		this.$router.push({ path: '/program', query: { program }})
-        	}	
-	   	},
+        		},
+	        	
+	        	async edit(program){
+	        		this.$router.push({ path: '/program', query: { program }})
+	        	}	
+	   		},
     
 		async created(){
 			if(this.$route.query.programs){

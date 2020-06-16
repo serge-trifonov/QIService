@@ -11,7 +11,5 @@ import cnam.project.QIService.entities.Program;
 
 public interface FacultyRepository extends JpaRepository<Faculty, Long>{
 
-	public List<Faculty> findByUniversityId(Long id);
-	
-	
+	public List<Faculty> findByUniversityId(Long id);	
 }

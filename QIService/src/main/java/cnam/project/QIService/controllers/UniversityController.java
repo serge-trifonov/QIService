@@ -17,10 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cnam.project.QIService.entities.Address;
+import cnam.project.QIService.entities.Faculty;
+import cnam.project.QIService.entities.Program;
 import cnam.project.QIService.entities.University;
 import cnam.project.QIService.repository.AddressRepository;
+import cnam.project.QIService.repository.FacultyRepository;
+import cnam.project.QIService.repository.ProgramRepository;
 import cnam.project.QIService.repository.UniversityRepository;
-
 
 @RestController
 @RequestMapping("university")
@@ -28,6 +31,10 @@ public class UniversityController {
 	
 	private final UniversityRepository universityRepository;
 	private final AddressRepository addressRepository;
+	@Autowired
+	private  FacultyRepository facultyRepository;
+	@Autowired
+	private  ProgramRepository programRepository;
 
 	@PersistenceContext
 	EntityManager entityManager;
@@ -47,7 +54,14 @@ public class UniversityController {
     
     @DeleteMapping("{id}")
     public void delete(@PathVariable("id") University university) {
-    	universityRepository.delete(university);
+    	
+    	for(Faculty fac:facultyRepository.findByUniversityId(university.getId())) {
+    		for(Program prog:programRepository.findByFacultyId(fac.getId())) {
+    			programRepository.delete(prog);
+    		}
+    		facultyRepository.delete(fac);
+    	}
+    	universityRepository.delete(university);	
     }
 	
 	@PutMapping("{id}")

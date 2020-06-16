@@ -5,7 +5,7 @@
 			<div class="card">
 				<div class="card-body ">
 					<h5 v-if="!edit" class="card-title text-center">{{$t('universityRegistration')}}</h5>
-					<h5 v-else class="card-title">{{$t('universityModification')}}</h5>
+					<h5 v-else class="card-title text-center">{{$t('universityModification')}}</h5>
 					
 					    <form action="">
 					    
@@ -29,11 +29,7 @@
 				</div>
 			</div>
 		</div>			    
-	</div>	
-	
-	
-	
-			    
+	</div>				    
 </div>			    
 </template>
 
@@ -42,15 +38,13 @@
     
     import Address from './Address'
     export default {
+    
     	components:{Address},
     	
         data() {
         
             return {
             	edit: false,
-            	
-            	
-            	
                 university:{
                		name: "",
 					address:{ 
@@ -66,19 +60,17 @@
         methods: {
 	    ...mapActions(['addUniversityAction','updateUniversityAction']),
 	    
-         async   submit(university) {
+         async   submit() {
             
             	event.preventDefault();
             	await this.addUniversityAction(this.university);
             	this.$router.push({ path: '/universities'});
             },
             
-         async   editUniversity(university) {
+         async   editUniversity() {
             
             	event.preventDefault();
-            	
             	await this.updateUniversityAction(this.university);
-            	
             	this.$router.push({ path: '/universities'});
             }
            

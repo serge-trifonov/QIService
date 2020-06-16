@@ -120,7 +120,6 @@
         	
         	}
         	
-        	
         	const responseFaculty=await this.$http.get("/faculty/"+this.user.universityId);
 			this.faculties=responseFaculty.data;	
         }
