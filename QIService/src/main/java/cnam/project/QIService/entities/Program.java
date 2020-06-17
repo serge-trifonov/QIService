@@ -1,5 +1,7 @@
 package cnam.project.QIService.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,7 +17,7 @@ import lombok.Data;
 @Entity
 @Table
 @Data
-public class Program {
+public class Program implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 		

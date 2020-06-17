@@ -57,6 +57,7 @@ public class ApplicationController {
     	
     	mailSender.send(email, "New Application", message);
     	
+    	
         return savedApplication;
     }
     

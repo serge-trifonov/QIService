@@ -24,6 +24,7 @@
 		    </tbody>
 	    
 		</table>
+		
 		<modal-window v-if="showModal"
 			:popupTitle="'Suppression '+applicationToDelete.program.name"
 			:popupBody="$t('questionDelete')+applicationToDelete.program.name+'?'"
@@ -55,7 +56,6 @@
         		this.removeApplicationAction(application);
         		this.showModal=false;
         		
-        		console.log("remove");
         	},
         	askToRemove(application){
         		this.applicationToDelete=application;

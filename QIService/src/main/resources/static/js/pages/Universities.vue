@@ -86,8 +86,7 @@
         	},
         	remove(university){
         		this.removeUniversityAction(university);
-        		this.showModal=false;
-        	
+        		this.showModal=false;	
         	},
         	askToRemove(university){
         		this.universityToDelete=university;

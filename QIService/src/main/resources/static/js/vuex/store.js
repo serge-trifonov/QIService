@@ -28,7 +28,8 @@ export default new Vuex.Store({
 		
 		addProgMutation(state, prog) {
 			state.allprograms = [...state.allprograms,prog];
-			state.programs = [...state.programs,prog]	
+			state.programs = [...state.programs,prog]
+			
 		},
 		addUniversityMutation(state,university){	
 			state.universities = [...state.universities,university];
@@ -37,7 +38,9 @@ export default new Vuex.Store({
 			state.faculties = [...state.faculties,faculty];
 		},				
 		addApplicationMutation(state,application){	
+			application.program = state.allprograms.find(p=>p.id===application.programId);
 			state.applications = [...state.applications,application];
+			
 		},
 			
 		updateProgMutation(state, prog) {
