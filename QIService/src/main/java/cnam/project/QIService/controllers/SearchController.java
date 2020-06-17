@@ -13,7 +13,6 @@ import cnam.project.QIService.entities.SearchMethod;
 import cnam.project.QIService.entities.SearchParam;
 import cnam.project.QIService.repository.ProgramRepository;
 
-
 @RestController
 @RequestMapping("search")
 public class SearchController {
@@ -27,10 +26,6 @@ public class SearchController {
 	@PostMapping
     public List<Program> createSearch(@RequestBody SearchParam searchParam) {
 		
-		
-		
-		//return programrepo.findAll();
     	return search.programFound(searchParam);
-	
     }
 }

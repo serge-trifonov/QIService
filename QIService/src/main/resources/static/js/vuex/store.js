@@ -25,21 +25,23 @@ export default new Vuex.Store({
 				
 	},
 	mutations:{
+		
 		addProgMutation(state, prog) {
 			state.allprograms = [...state.allprograms,prog];
-			state.programs = [...state.programs,prog]
-			
+			state.programs = [...state.programs,prog]	
 		},
 		addUniversityMutation(state,university){	
 			state.universities = [...state.universities,university];
 		},
 		addFacultyMutation(state,faculty){	
 			state.faculties = [...state.faculties,faculty];
+		},				
+		addApplicationMutation(state,application){	
+			state.applications = [...state.applications,application];
 		},
 			
 		updateProgMutation(state, prog) {
-			
-			
+						
 			let updateIndex = state.allprograms.findIndex(item => item.id === prog.id);
 			state.allprograms = [...state.allprograms.slice(0, updateIndex),prog,...state.allprograms.slice(updateIndex + 1)];
 			updateIndex = state.programs.findIndex(item => item.id === prog.id)
@@ -58,8 +60,7 @@ export default new Vuex.Store({
 			let deletionIndex = state.allprograms.findIndex(item => item.id === prog.id);
 
 			if (deletionIndex > -1) {
-				state.allprograms = [...state.allprograms.slice(0, deletionIndex),...state.allprograms.slice(deletionIndex + 1)];
-				
+				state.allprograms = [...state.allprograms.slice(0, deletionIndex),...state.allprograms.slice(deletionIndex + 1)];				
 			}
 			deletionIndex = state.programs.findIndex(item => item.id === prog.id)
 			
@@ -74,8 +75,15 @@ export default new Vuex.Store({
 			if (deletionIndex > -1) {
 				state.universities = [...state.universities.slice(0, deletionIndex),...state.universities.slice(deletionIndex + 1)]
 			}
-		}
+		},
 		
+		removeApplicationMutation(state, application) {
+			let deletionIndex = state.applications.findIndex(item => item.id === application.id);
+			
+			if (deletionIndex > -1) {
+				state.applications = [...state.applications.slice(0, deletionIndex),...state.applications.slice(deletionIndex + 1)]
+			}
+		}		
 	},
 		
     actions: {
@@ -90,10 +98,26 @@ export default new Vuex.Store({
             const result = await studentApi.add(student)
             const data = await result.json()
         },
+       
+        async addApplicationAction({commit}, application) {
+        	const result = await applicationApi.add(application)
+        	const data = await result.json()
+        	commit('addApplicationMutation', data)
+        }, 
+     
+        async updateApplicationAction({commit}, application) {
+	    	const result = await applicationApi.update(application)
+	    	const data = await result.json()	
+	    },
+	    
+	    async removeApplicationAction({commit},application){
+	    	const result = await applicationApi.remove(application.id)
+	    	if (result.ok) {
+	    		commit('removeApplicationMutation', application)
+	    	}
+	    },
         
-        async addUniversityAction({commit}, university) {
-        	console.log("store js hello addUniversityAction");
-        	
+        async addUniversityAction({commit}, university) {      	
 	    	const result = await universityApi.add(university)
 	    	const data = await result.json()
 	    	commit('addUniversityMutation',data)
@@ -131,8 +155,6 @@ export default new Vuex.Store({
 	    	commit('addFacultyMutation',data)
 	    },
 	    
-	   
-    
 	    async updateAppReponse({commit}, application) {
 	    	const result = await applicationApi.update(application)
 	    	const data = await result.json()
@@ -151,7 +173,6 @@ export default new Vuex.Store({
 	    	}
 	    },
 	    async updateProgramAction({commit}, program) {
-	    	console.log("store js hello update program Action");
 	    	const result = await programApi.update(program)
 	    	const data = await result.json() 
 	    	commit('updateProgMutation',data)

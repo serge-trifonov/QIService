@@ -105,10 +105,6 @@
     
         data() {
             return {
-            
-            	//prog:programs,
-              //  messages: []
-                //profile: frontendData.profile
             }
         },
          methods: {
@@ -116,7 +112,6 @@
 	
 				this.$i18n.locale = locale;
 			}
-          
         },
        
 		created(){

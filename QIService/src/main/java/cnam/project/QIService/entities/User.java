@@ -63,8 +63,4 @@ public class User implements Serializable{
 	public void setFamilyName(String familyName) {
 		this.familyName = familyName;
 	}
-	
-	
-	 
-
 }

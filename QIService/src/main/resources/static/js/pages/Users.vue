@@ -2,14 +2,14 @@
 	<table class="table table-dark">
 	
 		 <thead>
-		   <tr>
-		     <th scope="col">N</th>
-		     <th scope="col">{{$t('user')}}</th>
-		     <th scope="col">Role</th>
-		     <th scope="col">Email</th>
-		     <th scope="col">University_Id</th>
-		     <th scope="col">Action</th>
-		   </tr>
+		 	<tr>
+			    <th scope="col">N</th>
+			    <th scope="col">{{$t('user')}}</th>
+			    <th scope="col">Role</th>
+			    <th scope="col">Email</th>
+			    <th scope="col">University_Id</th>
+			    <th scope="col">Action</th>
+		 	</tr>
 		 </thead>
 		  
 		 <tbody>

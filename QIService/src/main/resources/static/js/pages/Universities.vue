@@ -1,58 +1,55 @@
 <template>
 	<div>
 	
-	<h2>{{$t('universities')}}</h2>
+		<h2>{{$t('universities')}}</h2>
+	
 		<div v-if="!user" class="alert alert-danger alert-dismissible fade show" role="alert"> 
 				{{$t('alert2')}}
-				
-			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			    <span aria-hidden="true">&times;</span>
-			 </button>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
 		</div>
 	
-	
 		<table class="table table-dark">
-		  <thead>
-		    <tr>
-		    
-		      <th scope="col">Name</th>
-		      <th scope="col">Faculties</th>
-		      <th v-if="user&&user.role==='ADMIN'" scope="col">Action</th>
-		      
-		    </tr>
-		  </thead>
-		  
-		  <tbody>
-		  	<tr v-for="university in universities":key="university.id">
-		  	
-		    	<td>{{university.name}}</td>
-		     	<td v-if="user"> 
-			     	<router-link class="btn btn-outline-dark mb-2 text-white" 
-			     	
-				     	:to="{path:'/faculties',query:{faculties: facById[university.id]}}" 
+			 <thead>
+			    <tr>
+				    <th scope="col">Name</th>
+				    <th scope="col">Faculties</th>
+				   	<th v-if="user&&user.role==='ADMIN'" scope="col">Action</th>    
+			 	</tr>
+			 </thead>
+			  
+			 <tbody>
+			  	<tr v-for="university in universities":key="university.id">
+			  	
+			    	<td>{{university.name}}</td>
+			     	<td v-if="user"> 
+				     	<router-link class="btn btn-outline-dark mb-2 text-white" 
 				     	
-				     	v-if="facById[university.id]">
+					     	:to="{path:'/faculties',query:{faculties: facById[university.id]}}" 
+					     	
+					     	v-if="facById[university.id]">
+					     	
+					     	<img src="/images/eye2.png" alt="edit" height="25"></a>
+					     	
+					     	 {{getFaculties(university.id).length}}
 				     	
-				     	<img src="/images/eye2.png" alt="edit" height="25"></a>
+				     	</router-link>
 				     	
-				     	 {{getFaculties(university.id).length}}
+				     	<span v-else >no fac</span>
+			     	</td>
+			     	<td v-else >-</td>
 			     	
-			     	</router-link>
-			     	
-			     	<span v-else >no fac</span>
-		     	</td>
-		     	<td v-else >-</td>
-		     	
-		     	<td v-if="user&&user.role==='ADMIN'">
-		     		<a href="#" @click="askToRemove(university)" class="responsible">
-		     		<img src="/images/delete2.png"  alt="edit" height="25"></a>
-		     		
-		     		<a href="#" @click="edit(university)" class="responsible">
-					<img src="/images/edit2.png" alt="edit" height="25"></a>
-
-		     	</td>	
-		    </tr>
-		  </tbody>
+			     	<td v-if="user&&user.role==='ADMIN'">
+			     		<a href="#" @click="askToRemove(university)" class="responsible">
+			     		<img src="/images/delete2.png"  alt="edit" height="25"></a>
+			     		
+			     		<a href="#" @click="edit(university)" class="responsible">
+						<img src="/images/edit2.png" alt="edit" height="25"></a>
+	
+			     	</td>	
+				</tr>
+			</tbody>
 		</table>
 		
 		<modal-window v-if="showModal"
@@ -61,7 +58,6 @@
 			@close="showModal = false" @remove="remove(universityToDelete)">
 		</modal-window>
 	</div>  
-	
 </template>
 
 <script>
@@ -77,7 +73,6 @@
             
                 universityToDelete:"",
             	showModal:false,
-            	
                 facById:"" 	         
             }
         },

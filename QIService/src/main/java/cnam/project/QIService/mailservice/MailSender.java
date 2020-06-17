@@ -22,6 +22,14 @@ public class MailSender {
 		mailMessage.setSubject(subject);
 		mailMessage.setText(message);
 
-		javaMailSender.send(mailMessage);
+		try {
+			javaMailSender.send(mailMessage);
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		
 	}
 }

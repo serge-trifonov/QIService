@@ -33,9 +33,7 @@
 			:popupTitle="'Suppression '+programToDelete.name"
 			:popupBody="$t('questionDelete')+programToDelete.name+'?'"
 			@close="showModal = false" @remove="remove(programToDelete)">
-		</modal-window>
-		
-		
+		</modal-window>	
    </div>
 </template>
 
@@ -52,7 +50,6 @@
 	            return {		
 	            	programsToShow:"",
 	            	facultyId:"",
-	            	
 	            	programToDelete:"",
             		showModal:false
 	            }
@@ -76,7 +73,6 @@
 	        	askToRemove(program){
         			this.programToDelete=program;
         			this.showModal=true;
-        	
         		},
 	        	
 	        	async edit(program){

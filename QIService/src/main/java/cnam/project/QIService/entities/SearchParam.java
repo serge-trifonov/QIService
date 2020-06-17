@@ -1,7 +1,5 @@
 package cnam.project.QIService.entities;
 
-
-
 public class SearchParam {
 	
 	private String city;
@@ -11,8 +9,7 @@ public class SearchParam {
 	private String faculty;
 	private String program;
 	private String university;
-	
-	
+		
 	public String getCity() {
 		return city;
 	}
@@ -48,9 +45,5 @@ public class SearchParam {
 	}
 	public void setProgram(String program) {
 		this.program = program;
-	}
-	
-	
-	
-	
+	}	
 }

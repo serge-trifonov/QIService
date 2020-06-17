@@ -64,8 +64,7 @@
                 progById:"",
                 
                 facultyToDelete:"",
-            	showModal:false
-    	         
+            	showModal:false   
             }
         },  
         methods: {	

@@ -31,10 +31,8 @@ import cnam.project.QIService.repository.UniversityRepository;
 @RestController
 @RequestMapping("faculty")
 public class FacultyController {
-	
-	
+		
 	private final FacultyRepository facultyRepository;
-	
 	private final UniversityRepository universityRepository;
 	
 	@PersistenceContext
@@ -77,32 +75,24 @@ public class FacultyController {
     	List<Faculty>list=facultyRepository.findByUniversityId(id);
     	return list;	
     }
-    
-    
-    
+       
     @DeleteMapping("{id}")
     public void delete(@PathVariable("id") Faculty faculty) {
-    	
     	
     	University universityObj=universityRepository.getOne(faculty.getUniversityId());
     	universityObj.getFaculties().remove(faculty);
     	
     	universityRepository.save(universityObj);
-    	
     	facultyRepository.delete(facultyRepository.getOne(faculty.getId()));
-    
     }
     
     @GetMapping
     public List<String>getFaculiesNames(){
-    	return entityManager.createQuery("SELECT  DISTINCT name  FROM Faculty").getResultList();
-    	
+    	return entityManager.createQuery("SELECT  DISTINCT name  FROM Faculty").getResultList();	
     }
     @GetMapping("/map")
     public Map<Long,List<Faculty>>getFacultyByUniversityId(){
-    	
-    	
-    	
+
     	Map<Long,List<Faculty>>map=new HashMap<>();
     	for(Faculty fac: facultyRepository.findAll()){
     		if(fac.getUniversityId()!=null) {

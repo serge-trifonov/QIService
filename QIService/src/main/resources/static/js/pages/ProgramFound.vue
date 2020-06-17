@@ -12,80 +12,78 @@
 				</div>
 				
 				<div class="card-body">
-				<h3 class="card-title text-center">{{$t('descriptionProg')}}</h3>
-							
-					<div class="text-center"><h2>{{program.name}}</h2></div>
-					<div>
-						<p><span class="text-primary">{{$t('duration')}}: </span>{{program.duration}}</p>
-					</div>
-					<div>
-						<p><span class="text-primary">{{$t('level')}}: </span>{{program.level}}</p>	
-					</div>
-						<div>
-						<p><span class="text-primary">{{$t('contact')}}: </span > 
-								{{program.userUniv.givenName}} 
-								{{program.userUniv.familyName}} 
-							<span class="text-primary">:</span> 
-								{{program.userUniv.email}}
-						</p>
-					</div>
-									
-					<div>
-						<p><span class="text-primary">{{$t('faculty')}}:</span> {{program.faculty.name}}</p>
-					</div>
-					<div>
-						<p><span class="text-primary">{{$t('university')}}: </span>{{program.faculty.university.name}}</p>
-					</div>
-					<div>
-						<p><span class="text-primary">{{$t('universityAddress')}}: </span>
-							{{program.faculty.university.address.postalAddress}}
-							{{program.faculty.university.address.country}}
-							{{program.faculty.university.address.city}} 
-							{{program.faculty.university.address.number}} 
-							{{program.faculty.university.address.street}} 
-						</p>
-					</div>	
-									
-					<div>
-						<p><label for="message" ><span class="text-primary">{{$t('message')}}: </span></label>
-						</br>
-							<textarea id="message" name="message" rows="6" cols="35" placeholder="Hello!..." v-model="application.message"></textarea>
-						</p>
-					</div>
-							
-					<div class="form-group row">
-						<div class="col-sm-10">
-							<router-link class="btn btn-link" to="/search">
-								<button type="submit" class="btn btn-primary">{{$t('back')}}</button>
-							</router-link>
-					
-							<button type="submit" class="btn btn-primary" @click.stop="submit">{{$t('send')}}</button>
-						</div>
-					</div>
+					<h3 class="card-title text-center">{{$t('descriptionProg')}}</h3>
 								
-				</div>		
-			</div>
+					<div class="text-center"><h2>{{program.name}}</h2></div>
+						<div>
+							<p><span class="text-primary">{{$t('duration')}}: </span>{{program.duration}}</p>
+						</div>
+						<div>
+							<p><span class="text-primary">{{$t('level')}}: </span>{{program.level}}</p>	
+						</div>
+							<div>
+							<p><span class="text-primary">{{$t('contact')}}: </span > 
+									{{program.userUniv.givenName}} 
+									{{program.userUniv.familyName}} 
+								<span class="text-primary">:</span> 
+									{{program.userUniv.email}}
+							</p>
+						</div>
+										
+						<div>
+							<p><span class="text-primary">{{$t('faculty')}}:</span> {{program.faculty.name}}</p>
+						</div>
+						<div>
+							<p><span class="text-primary">{{$t('university')}}: </span>{{program.faculty.university.name}}</p>
+						</div>
+						<div>
+							<p><span class="text-primary">{{$t('universityAddress')}}: </span>
+								{{program.faculty.university.address.postalAddress}}
+								{{program.faculty.university.address.country}}
+								{{program.faculty.university.address.city}} 
+								{{program.faculty.university.address.number}} 
+								{{program.faculty.university.address.street}} 
+							</p>
+						</div>	
+										
+						<div>
+							<p><label for="message" ><span class="text-primary">{{$t('message')}}: </span></label>
+							</br>
+								<textarea id="message" name="message" rows="6" cols="35" placeholder="Hello!..." v-model="application.message"></textarea>
+							</p>
+						</div>
+								
+						<div class="form-group row">
+							<div class="col-sm-10">
+								<router-link class="btn btn-link" to="/search">
+									<button type="submit" class="btn btn-primary">{{$t('back')}}</button>
+								</router-link>
+						
+								<button type="submit" class="btn btn-primary" @click.stop="submit">{{$t('send')}}</button>
+							</div>
+						</div>				
+					</div>		
+				</div>
 			
 				<div v-else class="card">
-				 		<h3 class="card-title text-center">SUCCESS!!!</h3>
-				 		<h5 class="card-subtitle text-center">CONGRATULATIONS YOUR MESSAGE HAS BEEN SEND</h5>
-						
-						<p class="card-text"> 						 
-							<router-link class="nav-link" to="/progSend"> check your application</router-link>	
-							<router-link class="nav-link" to="/mainPage"> main page</router-link>	
-							<router-link class="nav-link" to="/search"> continue the search</router-link>	
-									
-						</p> 	
+			 		<h3 class="card-title text-center">{{$t('send')}}</h3>
+			 		<h5 class="card-subtitle text-center">{{$t('messageSuccess')}}</h5>
+					
+					<p class="card-text"> 						 
+						<router-link class="nav-link" to="/progSend">{{$t('checkApp')}}</router-link>	
+						<router-link class="nav-link" to="/">MAIN PAGE</router-link>	
+						<router-link class="nav-link" to="/search">{{$t('search')}}</router-link>			
+					</p> 	
 							
-					</div>	
-				</div>	 
+				</div>	
+			</div>	 
 		</div>				 	
 	</div>					 	
 </div>					 	
 </template> 
 
 <script>
-       	import { mapState } from 'vuex'
+       	import { mapState,mapActions } from 'vuex'
        	
     	export default {
     	computed: mapState(['user']),
@@ -105,24 +103,23 @@
                 		university:{
                 			address:""
                 		}
-                	}
-                		
+                	}	
                 },
                 application:{
 	                	studId:"",
 	                	programId:"",
-	                	message:""
-	                	
+	                	message:""	
                 	} 		
  			}
         },
         methods:{
-        	submit(event){
+        
+        ...mapActions(['addApplicationAction',]),
+        
+        	async submit(event){
         		event.preventDefault();
-        		let result=this.$http.post("/application/",this.application);
-        		if(result)this.success=true;
-        		
-        		
+        		await this.addApplicationAction(this.application);
+        		this.success=true;	
         	}
         },
        async created(){

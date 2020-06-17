@@ -10,7 +10,6 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-
 @Data
 public class UserUniv extends User{
 	
@@ -19,8 +18,10 @@ public class UserUniv extends User{
 	@JoinColumn(name = "university_id", insertable = false, updatable = false)
 	@ManyToOne(fetch = FetchType.EAGER)
 	private University university;
+	
 	@Column(name = "university_id")
 	private Long universityId;
+	
 	public University getUniversity() {
 		return university;
 	}
@@ -32,7 +33,5 @@ public class UserUniv extends User{
 	}
 	public void setUniversityId(Long universityId) {
 		this.universityId = universityId;
-	}
-
-	
+	}	
 }

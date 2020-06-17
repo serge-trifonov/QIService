@@ -39,13 +39,8 @@ const routes = [
     { path: '/universities', component: Universities},
     { path: '/faculties', component: Faculties},
     
-    { path: '/', component: MainPage}
-    
-   
-    
+    { path: '/', component: MainPage}   
 ]
-
-
 export default new VueRouter({
     mode: 'history',
     routes

@@ -68,8 +68,7 @@ public class Program {
 	public void setLevel(Level level) {
 		this.level = level;
 	}
-
-
+	
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -84,6 +83,5 @@ public class Program {
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	
+	}	
 }

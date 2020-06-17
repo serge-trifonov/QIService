@@ -5,8 +5,8 @@
 		<img src="/images/banner6.jpg" class="img-fluid" alt="banner image">
 	</div>
 	
-	<div class="row border border-dark m-2">
-		<div v-if="user&&user.currentLevel" class="col-sm border border-dark m-2">
+	<div class="row m-2">
+		<div v-if="user&&user.currentLevel" class="col-sm m-2">
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 			 	
 				<div class="card-body">
@@ -20,12 +20,12 @@
 			</div>
 		</div>
 				
-		<div v-if="user&&user.currentLevel&&applications&&applications.length>0 "class="col-sm border border-dark m-2">
+		<div v-if="user&&user.currentLevel&&applications&&applications.length>0 "class="col-sm m-2">
 			<div class="card text-center text-white bg-secondary" style="max-width: 15rem;">
 			 	
 				<div class="card-body">				
 					<img class="card-img-top" src="/images/applications.jpg" height="140" alt="applications img">
-					<h5 class="card-title">APPLICATIONS</h5>
+					<h5 class="card-title">{{$t('progSend')}}</h5>
 									
 					<p class="card-text"> {{$t('quantity')}} : {{applications.length}}</p>							
 					<router-link class="nav-link" to="/progSend">
@@ -35,7 +35,7 @@
 			</div>
 		</div>
 				
-		<div v-if="user&&user.currentLevel" class="col-sm border border-dark m-2">
+		<div v-if="user&&user.currentLevel" class="col-sm m-2">
 			<div class="card text text-center bg-secondary text-white"style="max-width: 15rem;">
 
 				<div class="card-body">				
@@ -44,7 +44,7 @@
 						
 					<p class="card-text">{{$t('find')}}</p>
 					<router-link class="nav-link" to="/search">
-						<button type="button" class="btn btn-success btn-block">{{$t('search')}}</button>
+						<button type="button" class="btn btn-success btn-block">{{$t('searchAction')}}</button>
 					</router-link>	
 				</div>	
 			</div>
@@ -57,7 +57,7 @@
 			</div>	
 		</span>	
 	
-		<div v-if="user&&user.role==='UNIVERSITY'" class="col-sm border border-dark m-2">
+		<div v-if="user&&user.role==='UNIVERSITY'" class="col-sm m-2">
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 				<div class="card-body">
 					<img class="card-img-top" src="/images/faculty.jpg" height="140" alt="faculty img">
@@ -70,7 +70,7 @@
 			</div>	
 		</div>
 			
-		<div v-if="user&&user.role==='UNIVERSITY'" class="col-sm border border-dark m-2">		
+		<div v-if="user&&user.role==='UNIVERSITY'" class="col-sm m-2">		
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 				<div class="card-body">
 					<img class="card-img-top" src="/images/program.jpg" height="140" alt="program img">
@@ -83,7 +83,7 @@
 			</div>	
 		</div>
 			
-		<div v-if="user&&user.role==='UNIVERSITY'" class="col-sm border border-dark m-2">		
+		<div v-if="user&&user.role==='UNIVERSITY'" class="col-sm m-2">		
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 				<div class="card-body">
 					<img class="card-img-top" src="/images/candidat.jpg" height="140" alt="candidat img">
@@ -96,7 +96,7 @@
 			</div>	
 		</div>
 			
-		<div v-if="user&&user.role==='UNIVERSITY'" class="col-sm border border-dark m-2">		
+		<div v-if="user&&user.role==='UNIVERSITY'" class="col-sm m-2">		
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 				<div class="card-body">
 					<img class="card-img-top" src="/images/faculties.jpg" height="140" alt="card img">
@@ -109,7 +109,7 @@
 			</div>	
 		</div>
 	
-		<div v-if="user&&user.role==='ADMIN'" class="col-sm border border-dark m-2">
+		<div v-if="user&&user.role==='ADMIN'" class="col-sm m-2">
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 				<div class="card-body">
 					<img class="card-img-top" src="/images/users1.png" height="140" alt="card img">
@@ -123,7 +123,7 @@
 			</div>	
 		</div>
 			
-		<div v-if="user&&user.role==='ADMIN'" class="col-sm border border-dark m-2">
+		<div v-if="user&&user.role==='ADMIN'" class="col-sm m-2">
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 				<div class="card-body">
 					<img class="card-img-top" src="/images/universityAdd.jpg" height="140" alt="card img">
@@ -136,7 +136,7 @@
 			</div>	
 		</div>		
 	
-		<div v-if="!user||user.role!=='UNIVERSITY'"class="col-sm border border-dark m-2">
+		<div v-if="!user||user.role!=='UNIVERSITY'"class="col-sm m-2">
 			<div class="card text-center text-white bg-secondary"style="max-width: 15rem;">
 				<div class="card-body">
 				
@@ -176,7 +176,6 @@
         methods: {
 	        	submit(event){
 					event.preventDefault();
-	
 	        }	
 	   	},
         async created(){

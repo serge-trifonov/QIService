@@ -7,46 +7,34 @@ export const i18n = new VueI18n({
 	locale : 'en',
 	fallbackLocale : 'fr',
 	messages : {
-		en : {
-			
+		en : {		
 			users:'Users',
 			mainPage:'MAIN PAGE',
-			
 			addUniversity:'ADD UNIVERSITY',
 			addFaculty:'ADD FACULTY',
 			addProgram:'ADD PROGRAM',
-			
 			candidats:'Candidates',
-			
-			
 			facultyNameEnter:'Faculty\'s name',
-			universityNameEnter:'Enter the name of the university',
+			universityNameEnter:'The name of the university',
 			cityNameEnter:'Entrer the  city',
 			programNameEnter:'Program\'s name',
-			
 			facultyNameChoice:'Faculty\'s name',
-			programNameChoice:'Choose the  name of the program',
-			universityNameChoice:'Choose the  name of the university',
+			programNameChoice:'Choose the program',
+			universityNameChoice:'Choose the university',
 			countryNameChoice:'Choose the country',
-			
-			
-			
 			duration:'Choose the duration',
 			choice:'Choice...',
-			
 			prog:'Program',
 			university:'University',
 			universityAddress:'University\'s address',
 			duration:'Duration',
 			level:'Level',
 			status:'Status',
-			
 			newSearche:'NEW SEARCHE',
 			responsable:'Responsable',
 			contact:'Contact',
 			faculty:'Faculty',
-
-			cand:'Candidate',
+			candidate:'Candidate',
 			noApplication:'No application',
 			name:'Name',
 			surname:'Surname',
@@ -58,7 +46,6 @@ export const i18n = new VueI18n({
 			accept:'ACCEPT',
 			refuse:'REFUSE',
 			decision:'Decision...',
-			
 			number:'Number',
 			street:'Street',
 			zipCode:'Zip code',
@@ -66,18 +53,12 @@ export const i18n = new VueI18n({
 			country:'Country',
 			search:'SEARCH',
 			address:'Address',
-			
 			listProgram:'Programs',
-			
-			
 			listProgramCandidat:'PROGRAMS-CANDIDATES',
-			
 			progSend:'APPLICATIONS',
-			
 			alert:'Hello our future student.Program for you is below.You can send message to\
 					the responsable of the program! You\'ll get the answer via email! Good luck!',
 			alert2:'To see the list of faculties and programs you have to registrer',
-			
 			descriptionProg:'Description of the program',
 			message:'Write your message here',
 			send:'SEND',
@@ -88,6 +69,7 @@ export const i18n = new VueI18n({
 			edit:'EDIT',
 			check:'CHECK',
 			search:'SEARCH',
+			searchAction:'SEARCH',
 			find:'FIND SEND',
 			quantity:'QUANTITY',
 			universities:'UNIVERSITIES',
@@ -100,7 +82,7 @@ export const i18n = new VueI18n({
 			candidates:'CANDIDATES',
 			admit:'ADMIT',
 			refus:'REFUS',
-			status:'STATUS',
+			status:'Status',
 			faculties:'FACULTIES',
 			programs:'PROGRAMS',
 			users:'USERS',
@@ -110,52 +92,41 @@ export const i18n = new VueI18n({
 			programModification:'Program modification',
 			universityRegistration:'University registration',
 			universityModification:'University modification',
-			questionDelete:'Are you sure to delete '
-			
-			
+			questionDelete:'Are you sure to delete ',
+			success:'Success!',
+			messageSuccess:'CONGRATULATIONS YOUR MESSAGE HAS BEEN SEND, CHECK YOUR APPLICATIONS',
+			checkApp:'CHECK APPLICATIONS'
 		},
+		
 		fr : {
-			
 			user:'Utilisateurs',
 			mainPage:'PREMIERE PAGE',
-			
 			addUniversity:'AJOUTER UNIVERSITÉ',
 			addFaculty:'AJOUTER FACULTÉ',
 			addProgram:'AJOUTER PROGRAMME',
-			
 			candidats:'Candidats',
-			
-			
 			facultyNameEnter:'Nom de la faculté',
-			universityNameEnter:'Introduire le nom de l\'université',
+			universityNameEnter:'Le nom de l\'université',
 			cityNameEnter:'Introduire la ville',
 			programNameEnter:'Nom du programme',
-			
-			
 			facultyNameChoice:'Nom de la faculté',
-			programNameChoice:'Choisissez le nom du program',
-			universityNameChoice:'Choisissez le nom de l\'université',
+			programNameChoice:'Choisissez du program',
+			universityNameChoice:'Choisissez  l\'université',
 			countryNameChoice:'Choisissez le pays',
-			
-			
-			
-			duration:'Choisissez la duration',
+			duration:'Choisissez la durée',
 			choice:'Choix...',
-			
 			prog:'Programme',
 			university:'Université',
 			universityAddress:'Adresse de l\'université',
 			duration:'Durée',
 			level:'Niveau',
 			status:'Statut',
-			
 			newSearche:'NOUVEAU RECHERCHE',
 			responsable:'Responsible',
 			contact:'Contact',
 			faculty:'Faculté',
-			
-			cand:'Candidat',
-			noApplication:'Aucune application',
+			candidate:'Candidat',
+			noApplication:'Aucune postulation',
 			name:'Prénom',
 			surname:'Nom',
 			age:'Âge',
@@ -166,30 +137,23 @@ export const i18n = new VueI18n({
 			accept:'ACCEPTER',
 			refuse:'REFUSER',
 			decision:'Décision...',
-			
 			number:'Numéro',
 			street:'Rue',
 			zipCode:'Code postale',
 			city:'Ville',
 			country:'Pays',
 			search:'RECHERSHE',
+			searchAction:'RECHERSHER',
 			address:'Adresse',
-			
-			
-			
-			
 			listProgram:'Programmes',
 			listProgramCandidat:'PROGRAMMES-CANDITATS',
-			
 			progSend:'POSTULATIONS',
-			
 			alert:'Salut notre nouveau student.La programme que t\'as choici est là-bas.\
 					Tu peux écrire ton message en envoyer le demande à le responsable! Tu \
 					receverras la reponse par email! Bonne chanche!',
 			alert2:'Pour voir la liste de facultés et programmes vous devez vous instrire',
-			
 			descriptionProg:'Description du programme',
-			message:'Ecrire ton message ici',
+			message:'Ecrivez votre message ici',
 			send:'ENVOYER',
 			back:'REVENIR',
 			users:'UTILISATEURS',
@@ -210,7 +174,7 @@ export const i18n = new VueI18n({
 			candidates:'CANDIDATS',
 			admit:'ADMETTRE',
 			refus:'REFUSE',
-			status:'STATUT',
+			status:'Statut',
 			faculties:'FACULTÉS',
 			programs:'PROGRAMMES',
 			users:'UTILISATEUERS',
@@ -220,8 +184,10 @@ export const i18n = new VueI18n({
 			programModification:'Modification du programme',
 			universityRegistration:' L\'enregistrement du l\'univesité',
 			universityModification:'Modification de l\'université',
-			questionDelete:'Voulez-vous vraiement supprimer '
-		}
-		
+			questionDelete:'Voulez-vous vraiement supprimer ',
+			success:'Le succès!',
+			messageSuccess:'Felicitation! Votre message a été envoyé. Vérifiez vos postulations',
+			checkApp:'VERIFIEZ LES POSTULATIONS'
+		}	
 	}
 })

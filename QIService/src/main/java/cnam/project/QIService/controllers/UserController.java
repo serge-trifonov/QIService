@@ -1,7 +1,5 @@
 package cnam.project.QIService.controllers;
 
-
-
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -28,7 +26,6 @@ public class UserController {
 	private final UserRepository userRepository;
 	private final AddressRepository addressRepository;
 
-	
     @Autowired
     public UserController(UserRepository userRepository,AddressRepository addressRepository) {
 		this.userRepository = userRepository;

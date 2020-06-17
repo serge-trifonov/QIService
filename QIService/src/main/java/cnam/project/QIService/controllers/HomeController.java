@@ -50,13 +50,10 @@ public class HomeController {
     	model.addAttribute("programs",listProg); 	
         HashMap<Object, Object> data = new HashMap<>();
         data.put("user", user);
-        
-        
+          
         	List<University>listUniversities=universityRepository.findAll();
         	data.put("universities",listUniversities);
-        
-        
-        
+
         if(user!=null&&user.getRole()==Role.STUDENT) {
         	data.put("applications",applicationRepository.findByStudId(user.getId()));
         }
@@ -68,12 +65,8 @@ public class HomeController {
         					 ((UserUniv) user).getUniversityId()).stream().map(fac->fac.getId()).collect(Collectors.toList()));
         			 
         			 programRepository.findByUserUniv((UserUniv) user);
-        	 data.put("userProgram",list);
+        			 data.put("userProgram",list);
          
-        	 
-        	 
-        	 
-        
         	 List<Application>listApp=applicationRepository.findByProgramIdIn(list.stream().map(p->p.getId()).collect(Collectors.toList()));
         
         	 HashMap<Long,List<Student>>mapProgStud=new HashMap<>();
@@ -90,8 +83,7 @@ public class HomeController {
 	    		reponseByStudent.put(pair.getKey(),pair.getValue().stream().collect( Collectors.toMap(Application::getStudId,
 	            		Function.identity())));
 	    		
-	    	}
-	             
+	    	}      
 	        data.put("reponseByStud",reponseByStudent);
 	          
 	        for(Application app: listApp){
@@ -105,16 +97,11 @@ public class HomeController {
 	        		mapProgStud.put(app.getProgramId(), listStud);
 	        	}	        	
 	        }
-	        data.put("mapProgStud",mapProgStud);
-	        
-	        
-	        
+	        data.put("mapProgStud",mapProgStud);    
         }    
         model.addAttribute("userInfo", data);
         model.addAttribute("isDevMode", true);
         
-       
-             
         return "index"; 
     }    
 }

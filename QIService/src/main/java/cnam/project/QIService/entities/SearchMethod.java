@@ -12,13 +12,11 @@ import javax.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class SearchMethod {
 	
 	@Autowired
 	private EntityManager entityManager;
-	
 	
 			private String city;
 			private String country;
@@ -26,14 +24,9 @@ public class SearchMethod {
 			private String faculty;
 			private String program;
 			private String university;
-			
-			
-			
-	
+
 	public List<Program>programFound (SearchParam searchParam) {
 		
-			
-			
 			CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();		
 			CriteriaQuery<Program> criteriaQuery = criteriaBuilder.createQuery(Program.class);
 			
@@ -66,18 +59,9 @@ public class SearchMethod {
 			if(!searchParam.getUniversity().equals(null)&&!searchParam.getUniversity().equals("")) {
 				predicate = criteriaBuilder.and(predicate,criteriaBuilder.equal(universityJoin.get("name"),searchParam.getUniversity()));	
 			}
-			
-			
-			
-				
-			
-			
-			
+
 			criteriaQuery.where(predicate);
 			
-			return entityManager.createQuery(criteriaQuery).getResultList();
-			
-			
-	    	
+			return entityManager.createQuery(criteriaQuery).getResultList();	
 	    }
 }

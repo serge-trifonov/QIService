@@ -9,8 +9,6 @@ import store from 'vuex/store'
 import {i18n} from 'i18n/i18n'
 Vue.use(VueResource)
 
-
-
 new Vue({
     el: '#app',
     router,

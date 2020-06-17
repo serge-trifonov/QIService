@@ -34,7 +34,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	public PrincipalExtractor principalExtractor(UserRepository userRepo) {
 		
-
 		return map -> {
 			String id = (String) map.get("sub");
 
@@ -50,7 +49,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			});
 			return userRepo.save(user);
 		};
-
 	}
 }
 

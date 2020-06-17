@@ -9,5 +9,4 @@ public class QiServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(QiServiceApplication.class, args);
 	}
-
 }

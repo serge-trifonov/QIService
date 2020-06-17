@@ -97,9 +97,7 @@
            async submit(event) {
            
             	event.preventDefault();
-            	
             	this.program.faculty = this.faculties.find(faculty=>faculty.id === this.program.facultyId);
-				
             	await this.addProgramAction(this.program);
             	this.$router.push({ path: 'programs'});
             	
@@ -108,7 +106,6 @@
             	event.preventDefault();  	
             	await this.updateProgramAction(this.program);
             	 this.$router.push({ path: '/programs'});
-	
             }
         },
         
@@ -117,7 +114,6 @@
        		if(this.$route.query.program){
         		this.program = this.$route.query.program;
         		this.edit=true;
-        	
         	}
         	
         	const responseFaculty=await this.$http.get("/faculty/"+this.user.universityId);

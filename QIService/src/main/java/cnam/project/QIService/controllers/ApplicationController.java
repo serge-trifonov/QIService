@@ -2,6 +2,7 @@ package cnam.project.QIService.controllers;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -38,7 +39,6 @@ public class ApplicationController {
 		this.programRepository = programRepository;	
     }
     
-    
     @PostMapping
     public Application create(@RequestBody Application application) {
     	application.setResponse(Response.PENDING);
@@ -51,8 +51,6 @@ public class ApplicationController {
     	
     	String messageProg=program.getName();
     	
-    	
-	
     	String message="***Important***\n have a new application to "+messageProg+" from: "+messageName;
     	
     	String email=program.getUserUniv().getEmail();
@@ -66,8 +64,6 @@ public class ApplicationController {
     public Application update(@PathVariable("id")Application appFromDB,@RequestBody Application app ) {
     	BeanUtils.copyProperties(app, appFromDB, "id");
     	
-    	
-    	
     	String messageProg=programRepository.getOne(appFromDB.getProgramId()).getName();
     	String messageUpdate="***Important****\n Your application's to "+messageProg +" status has been changed to "+
     			app.getResponse();
@@ -79,7 +75,11 @@ public class ApplicationController {
     	}
 
     return applicationRepository.save(appFromDB);
-
     } 
+    
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable("id") Application application) {
+    	applicationRepository.delete(application);
+    }
 }
 

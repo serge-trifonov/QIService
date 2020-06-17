@@ -12,7 +12,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 @Entity
-
 @Data
 public class Student extends User implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -40,8 +39,6 @@ public class Student extends User implements Serializable{
 	@OneToOne
 	private Address address;
 	
-	
-
 	public int getAge() {
 		return age;
 	}
@@ -49,8 +46,6 @@ public class Student extends User implements Serializable{
 	public void setAge(int age) {
 		this.age = age;
 	}
-
-	
 
 	public Address getAddress() {
 		return address;
