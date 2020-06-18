@@ -20,6 +20,14 @@ configurations {
 	}
 }
 
+repositories.whenObjectAdded {
+    if (it instanceof IvyArtifactRepository) {
+        metadataSources {
+            artifact()
+        }
+    }
+}
+
 task buildFront(type: YarnTask) {
 	args = ['build']
 }
