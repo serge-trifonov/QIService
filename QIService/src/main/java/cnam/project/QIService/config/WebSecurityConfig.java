@@ -44,12 +44,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				newUser.setGivenName((String) map.get("given_name"));
 				newUser.setFamilyName((String) map.get("family_name"));
 				newUser.setEmail((String) map.get("email"));
-				if(newUser.getEmail().equals("mariakazakova795@gmail.com")) {
-					newUser.setRole(Role.ADMIN);
-				}
+				
 				newUser.setRole(Role.STUDENT);
 				return newUser;
 			});
+			if(user.getEmail().equals("hhead173@gmail.com")) {
+					user.setRole(Role.ADMIN);
+			}
 			return userRepo.save(user);
 		};
 	}
