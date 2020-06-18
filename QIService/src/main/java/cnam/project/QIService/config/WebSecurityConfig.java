@@ -44,7 +44,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				newUser.setGivenName((String) map.get("given_name"));
 				newUser.setFamilyName((String) map.get("family_name"));
 				newUser.setEmail((String) map.get("email"));
-				
 				newUser.setRole(Role.STUDENT);
 				return newUser;
 			});
