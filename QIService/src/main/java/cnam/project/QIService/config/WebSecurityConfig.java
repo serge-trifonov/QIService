@@ -44,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				newUser.setGivenName((String) map.get("given_name"));
 				newUser.setFamilyName((String) map.get("family_name"));
 				newUser.setEmail((String) map.get("email"));
-				if(newUser.getId().equals("115343119037637268040")) {
+				if(newUser.getEmail().equals("mariakazakova795@gmail.com")) {
 					newUser.setRole(Role.ADMIN);
 				}
 				newUser.setRole(Role.STUDENT);
