@@ -44,7 +44,7 @@ public class HomeController {
 	private FacultyRepository facultyRepository;
 	
 	@GetMapping   
-    public String main(Model model, @AuthenticationPrincipal User user) {
+    	public String main(Model model, @AuthenticationPrincipal User user) {
     	
     	List<Program>listProg=programRepository.findAll();
     	model.addAttribute("programs",listProg); 	
